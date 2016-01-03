@@ -12,9 +12,9 @@
 }
 
 .form-control-stats {
-height: 44px;
-font-size: 18px;
-text-align: center;
+	height: 44px;
+	font-size: 18px;
+	text-align: center;
 }
 
 .weapon-move {
@@ -169,4 +169,40 @@ text-align: center;
 
 .input-group-addon {
 	border-radius: 0px;
+}
+
+.div-table {
+	display: table;
+	width: 943px;
+
+}
+.div-table-row {
+	display: table-row;
+	width: auto;
+	clear: both;
+
+}
+.div-table-col {
+	float: left;/*fix for  buggy browsers*/
+	display: table-column;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	vertical-align: middle;
+	border: 1px solid  #000000;
+}
+
+.div-table-col-dmg-type {
+	width: 80px;
+}
+
+.div-table-col-weapon {
+	width: 280px;
+}
+.div-table-col-borderless {
+	border: none;
+}
+.weapon-change {
+	padding: 0px;
 }

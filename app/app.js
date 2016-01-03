@@ -14,4 +14,8 @@ config(['$routeProvider', function($routeProvider) {
 		controller: 'combatGearCtrl'
 	});
 
+	$routeProvider.when('/combat', {
+		templateUrl: 'modules/combat/combat.html',
+		controller: 'combatCtrl'
+	});
 }]);
