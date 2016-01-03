@@ -1,8 +1,7 @@
 .body-css {
-	position: fixed;
-	top: 51px;
-	padding: 20px;
+	padding: 55px;
 }
+
 .body-css-container {
 	width: 1000px;
 	margin: 0 auto;
@@ -48,6 +47,83 @@ text-align: center;
 	border-radius: 0px;
 }
 
+.input-group-addon-reach {
+	width: 47px;
+}
+
+.input-group-addon-weight {
+	width: 39px;
+}
+
+.input-group-addon-dv {
+	width: 45px;
+}
+
+.input-group-addon-av {
+	width: 45px;
+}
+
+.input-group-addon-min-str {
+	width: 56px;
+}
+
+.input-group-addon-sw {
+	width: 150px;
+}
+
+.input-group-addon-th {
+	width: 150px;
+}
+
+.input-group-addon-break {
+	width: 63px;
+}
+
+.input-group-addon-sh-hp {
+	width: 45px;
+}
+
+.input-group-addon-sh-defense {
+	width: 79px;
+}
+
+.input-group-addon-sh-dmg {
+	width: 150px;
+}
+
+.input-group-addon-range-penalty {
+	width: 73px;
+}
+
+.input-group-addon-range {
+	width: 68px;
+}
+
+.input-group-addon-range-dmg {
+	width: 80px;
+}
+
+.input-group-addon-range-str {
+	width: 54px;
+}
+
+.input-group-addon-ammo-quantity {
+	width: 50px;
+}
+
+.input-group-addon-ammo-min-str {
+	width: 56px;
+}
+
+.input-group-addon-ammo-dmg {
+	width: 80px;
+}
+
+.input-group-addon-armor {
+	width: 70px;
+}
+
+
 .stat-area-stats {
 	width: 137px;
 }
@@ -59,8 +135,7 @@ text-align: center;
 
 .stat-area-weapons {
 	margin-top: 10px;
-	min-width: 954px;
-	max-width: 954px;
+	width: 943px;
 }
 
 .input-group-combat-skills {
