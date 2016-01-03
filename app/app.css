@@ -1,30 +1,97 @@
-/* app css stylesheet */
-
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+.body-css {
+	position: fixed;
+	top: 51px;
+	padding: 20px;
+}
+.body-css-container {
+	width: 1000px;
+	margin: 0 auto;
 }
 
-.menu:before {
-  content: "[";
+.input-group-stats {
+	padding-bottom: 5px;
 }
 
-.menu:after {
-  content: "]";
+.form-control-stats {
+height: 44px;
+font-size: 18px;
+text-align: center;
 }
 
-.menu > li {
-  display: inline;
+.weapon-move {
+	width: 40px;
 }
 
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
+.form-control-weapon {
+	height: 44px;
+	font-size: 18px;
+	text-align: center;
 }
 
-.menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
+.input-group-btn-weapon {
+	height: 44px;
+}
+
+.input-group-addon-stats {
+	min-width: 50px;
+	max-width: 50px;
+	background-color: #d9534f;
+	color: #ffffff;
+}
+
+.stat-area {
+	text-align: center;
+	padding: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #dddddd;
+	border-radius: 0px;
+}
+
+.stat-area-stats {
+	width: 137px;
+}
+
+.stat-area-combat-skills {
+	min-width: 790px;
+	max-width: 790px;
+}
+
+.stat-area-weapons {
+	margin-top: 10px;
+	min-width: 954px;
+	max-width: 954px;
+}
+
+.input-group-combat-skills {
+	width: 200px;
+	padding-bottom: 5px;
+}
+
+.form-control-combat-skills {
+	height: 44px;
+	font-size: 18px;
+	text-align: center;
+	min-width: 51px;
+	max-width: 51px;
+}
+
+.input-group-addon-combat-skills {
+	background-color: #d9534f;
+	color: #ffffff;
+	min-width: 300px;
+	max-width: 300px;
+}
+
+/* Changing bootstrap*/
+.btn {
+	border-radius: 0px;
+}
+
+.form-control {
+	border-radius: 0px;
+}
+
+.input-group-addon {
+	border-radius: 0px;
 }
