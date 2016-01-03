@@ -185,24 +185,46 @@
 .div-table-col {
 	float: left;/*fix for  buggy browsers*/
 	display: table-column;
-	width: 40px;
-	height: 40px;
+	width: 44px;
+	height: 44px;
 	text-align: center;
-	line-height: 40px;
+	line-height: 44px;
 	vertical-align: middle;
 	border: 1px solid  #000000;
 }
 
-.div-table-col-dmg-type {
-	width: 80px;
+.div-table-col-2 {
+	width: 88px;
+}
+
+.div-table-col-3 {
+	width: 132px;
 }
 
 .div-table-col-weapon {
-	width: 280px;
+	width: 308px;
 }
 .div-table-col-borderless {
 	border: none;
 }
 .weapon-change {
 	padding: 0px;
+}
+
+.div-table-col-borderless-2 {
+	width: 88px;
+	border: none;
+}
+.btn-move-item {
+	width: 44px;
+}
+
+.btn-group-move-item {
+	line-height: normal;
+}
+.temp-bg-bolor {
+	background-color: #f0ad4e;
+}
+.temp-bg-bolor-2 {
+	background-color: #5cb85c;
 }
