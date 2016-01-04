@@ -1,16 +1,17 @@
+
 <!--Start Of Attributes and Combat Skills-->
 <div class="row">
 	<div class="col-md-2">
 		<div class="stat-area stat-area-stats">
 			<span>Attributes</span>
 			<div class="input-group input-group-stats">
-				<input type="text" class="form-control form-control-stats">
+				<input type="text" class="form-control form-control-stats" ng-value="attrStr">
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-							<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+						<button type="button" class="btn btn-default btn-xs" ng-click="attrStr = attrStr + 1">
+							<span class="glyphicon glyphicon-chevron-up"></span>
 						</button><br>
-						<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
+						<button type="button" class="btn btn-default btn-xs" ng-click="attrStr = attrStr - 1">
 							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
 						</button>
 					</div>
@@ -18,7 +19,7 @@
 				<span class="input-group-addon input-group-addon-stats">STR</span>
 			</div>
 			<div class="input-group input-group-stats">
-				<input type="text" class="form-control form-control-stats">
+				<input type="text" class="form-control form-control-stats" ng-value="10">
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
 						<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
@@ -32,7 +33,7 @@
 				<span class="input-group-addon input-group-addon-stats">STA</span>
 			</div>
 			<div class="input-group input-group-stats">
-				<input type="text" class="form-control form-control-stats">
+				<input type="text" class="form-control form-control-stats" ng-value="10">
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
 						<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
@@ -46,7 +47,7 @@
 				<span class="input-group-addon input-group-addon-stats">DEX</span>
 			</div>
 			<div class="input-group input-group-stats">
-				<input type="text" class="form-control form-control-stats">
+				<input type="text" class="form-control form-control-stats" ng-value="10">
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
 						<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
@@ -60,7 +61,7 @@
 				<span class="input-group-addon input-group-addon-stats">PEF</span>
 			</div>
 			<div class="input-group input-group-stats">
-				<input type="text" class="form-control form-control-stats">
+				<input type="text" class="form-control form-control-stats" ng-value="10">
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
 						<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
@@ -74,7 +75,7 @@
 				<span class="input-group-addon input-group-addon-stats">PER</span>
 			</div>
 			<div class="input-group input-group-stats">
-				<input type="text" class="form-control form-control-stats">
+				<input type="text" class="form-control form-control-stats" ng-value="10">
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
 						<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
