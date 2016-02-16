@@ -8,10 +8,10 @@
 				<input type="text" class="form-control form-control-stats" ng-value="attrStr">
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default btn-xs" ng-click="pointChangePlusStr();">
+						<button type="button" class="btn btn-default btn-xs" ng-click="pointChangePlus(attrStr);">
 							<span class="glyphicon glyphicon-chevron-up"></span>
 						</button><br>
-						<button type="button" class="btn btn-default btn-xs" ng-disabled="attrStr < 10" ng-click="pointChangeMinusStr();">
+						<button type="button" class="btn btn-default btn-xs" ng-disabled="attrStr < 2" ng-click="pointChangeMinusStr();">
 							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
 						</button>
 					</div>
@@ -25,7 +25,7 @@
 						<button type="button" class="btn btn-default btn-xs" ng-click="pointChangePlusSta();">
 							<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
 						</button><br>
-						<button type="button" class="btn btn-default btn-xs" ng-click="pointChangeMinusSta();">
+						<button type="button" class="btn btn-default btn-xs" ng-disabled="attrSta < 2" ng-click="pointChangeMinusSta();">
 							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
 						</button>
 					</div>
@@ -39,7 +39,7 @@
 						<button type="button" class="btn btn-default btn-xs" ng-click="attrDex = attrDex + 1">
 							<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
 						</button><br>
-						<button type="button" class="btn btn-default btn-xs" ng-click="attrDex = attrDex - 1">
+						<button type="button" class="btn btn-default btn-xs" ng-disabled="attrDex < 2" ng-click="attrDex = attrDex - 1">
 							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
 						</button>
 					</div>
@@ -53,7 +53,7 @@
 						<button type="button" class="btn btn-default btn-xs" ng-click="attrRef = attrRef + 1">
 							<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
 						</button><br>
-						<button type="button" class="btn btn-default btn-xs" ng-click="attrRef = attrRef - 1">
+						<button type="button" class="btn btn-default btn-xs" ng-disabled="attrRef < 2" ng-click="attrRef = attrRef - 1">
 							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
 						</button>
 					</div>
@@ -67,7 +67,7 @@
 						<button type="button" class="btn btn-default btn-xs" ng-click="attrPer = attrPer + 1">
 							<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
 						</button><br>
-						<button type="button" class="btn btn-default btn-xs" ng-click="attrPer = attrPer - 1">
+						<button type="button" class="btn btn-default btn-xs" ng-disabled="attrPer < 2" ng-click="attrPer = attrPer - 1">
 							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
 						</button>
 					</div>
@@ -81,7 +81,7 @@
 						<button type="button" class="btn btn-default btn-xs" ng-click="attrWil = attrWil + 1">
 							<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
 						</button><br>
-						<button type="button" class="btn btn-default btn-xs" ng-click="attrWil = attrWil - 1">
+						<button type="button" class="btn btn-default btn-xs" ng-disabled="attrWil < 2" ng-click="attrWil = attrWil - 1">
 							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
 						</button>
 					</div>
@@ -95,79 +95,9 @@
 			<span>Combat Skills</span>
 			<div class="row">
 				<div class="col-md-6">
-					<div class="input-group input-group-stats">
-						<span class="input-group-addon input-group-addon-combat-skills">Athletics</span>
-						<input type="text" class="form-control form-control-combat-skills">
-						<span class="input-group-btn">
-							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-								</button><br>
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-								</button>
-							</div>
-						</span>
-					</div>
-					<div class="input-group input-group-stats">
-						<span class="input-group-addon input-group-addon-combat-skills">Evade</span>
-						<input type="text" class="form-control form-control-combat-skills">
-						<span class="input-group-btn">
-							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-								</button><br>
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-								</button>
-							</div>
-						</span>
-					</div>
-					<div class="input-group input-group-stats">
-						<span class="input-group-addon input-group-addon-combat-skills">Close Quarters</span>
-						<input type="text" class="form-control form-control-combat-skills">
-						<span class="input-group-btn">
-							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-								</button><br>
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-								</button>
-							</div>
-						</span>
-					</div>
-					<div class="input-group input-group-stats">
-						<span class="input-group-addon input-group-addon-combat-skills">Sword</span>
-						<input type="text" class="form-control form-control-combat-skills">
-						<span class="input-group-btn">
-							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-								</button><br>
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-								</button>
-							</div>
-						</span>
-					</div>
-					<div class="input-group input-group-stats">
-						<span class="input-group-addon input-group-addon-combat-skills">Axe</span>
-						<input type="text" class="form-control form-control-combat-skills">
-						<span class="input-group-btn">
-							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-								</button><br>
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-								</button>
-							</div>
-						</span>
-					</div>
-					<div class="input-group input-group-stats">
-						<span class="input-group-addon input-group-addon-combat-skills">Spear</span>
-						<input type="text" class="form-control form-control-combat-skills">
+					<div class="input-group input-group-stats" ng-repeat="(combatSkill, level) in combatSkills">
+						<span class="input-group-addon input-group-addon-combat-skills">{{combatSkill}}</span>
+						<input type="text" class="form-control form-control-combat-skills" ng-value="level">
 						<span class="input-group-btn">
 							<div class="btn-group" role="group">
 								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
@@ -181,90 +111,9 @@
 					</div>
 				</div>
 				<div class="col-md-6">
-					<div class="input-group input-group-stats">
-						<span class="input-group-addon input-group-addon-combat-skills">Dagger</span>
-						<input type="text" class="form-control form-control-combat-skills">
-						<span class="input-group-btn">
-							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-								</button><br>
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-								</button>
-							</div>
-						</span>
-					</div>
-					<div class="input-group input-group-stats">
-						<span class="input-group-addon input-group-addon-combat-skills">Flail</span>
-						<input type="text" class="form-control form-control-combat-skills">
-						<span class="input-group-btn">
-							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-								</button><br>
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-								</button>
-							</div>
-						</span>
-					</div>
-					<div class="input-group input-group-stats">
-						<span class="input-group-addon input-group-addon-combat-skills">Close Quarters</span>
-						<input type="text" class="form-control form-control-combat-skills">
-						<span class="input-group-btn">
-							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-								</button><br>
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-								</button>
-							</div>
-						</span>
-					</div>
-					<div class="input-group input-group-stats">
-						<span class="input-group-addon input-group-addon-combat-skills">Bow</span>
-						<input type="text" class="form-control form-control-combat-skills">
-						<span class="input-group-btn">
-							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-								</button><br>
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-								</button>
-							</div>
-						</span>
-					</div>
-					<div class="input-group input-group-stats">
-						<span class="input-group-addon input-group-addon-combat-skills">Throwing</span>
-						<input type="text" class="form-control form-control-combat-skills">
-						<span class="input-group-btn">
-							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-								</button><br>
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-								</button>
-							</div>
-						</span>
-					</div>
-					<div class="input-group input-group-stats">
-						<span class="input-group-addon input-group-addon-combat-skills">Blunt</span>
-						<input type="text" class="form-control form-control-combat-skills">
-						<span class="input-group-btn">
-							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-								</button><br>
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
-									<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-								</button>
-							</div>
-						</span>
-					</div>
+
+
+
 				</div>
 			</div>
 		</div>
