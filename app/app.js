@@ -4,6 +4,7 @@
 angular.module('myApp', [
 	'ngRoute',
 	'myApp.combatGear',
+	'myApp.combat',
 	'myApp.version'
 ]).
 config(['$routeProvider', function($routeProvider) {

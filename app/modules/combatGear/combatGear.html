@@ -8,10 +8,10 @@
 				<input type="text" class="form-control form-control-stats" ng-value="attrStr">
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default btn-xs" ng-click="attrStr = attrStr + 1">
+						<button type="button" class="btn btn-default btn-xs" ng-click="pointChangePlusStr();">
 							<span class="glyphicon glyphicon-chevron-up"></span>
 						</button><br>
-						<button type="button" class="btn btn-default btn-xs" ng-click="attrStr = attrStr - 1">
+						<button type="button" class="btn btn-default btn-xs" ng-click="pointChangeMinusStr();">
 							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
 						</button>
 					</div>
@@ -19,13 +19,13 @@
 				<span class="input-group-addon input-group-addon-stats">STR</span>
 			</div>
 			<div class="input-group input-group-stats">
-				<input type="text" class="form-control form-control-stats" ng-value="10">
+				<input type="text" class="form-control form-control-stats" ng-value="attrSta">
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
+						<button type="button" class="btn btn-default btn-xs" ng-click="pointChangePlusSta();">
 							<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
 						</button><br>
-						<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
+						<button type="button" class="btn btn-default btn-xs" ng-click="pointChangeMinusSta();">
 							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
 						</button>
 					</div>
@@ -33,13 +33,13 @@
 				<span class="input-group-addon input-group-addon-stats">STA</span>
 			</div>
 			<div class="input-group input-group-stats">
-				<input type="text" class="form-control form-control-stats" ng-value="10">
+				<input type="text" class="form-control form-control-stats" ng-value="attrDex">
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
+						<button type="button" class="btn btn-default btn-xs" ng-click="attrDex = attrDex + 1">
 							<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
 						</button><br>
-						<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
+						<button type="button" class="btn btn-default btn-xs" ng-click="attrDex = attrDex - 1">
 							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
 						</button>
 					</div>
@@ -47,27 +47,27 @@
 				<span class="input-group-addon input-group-addon-stats">DEX</span>
 			</div>
 			<div class="input-group input-group-stats">
-				<input type="text" class="form-control form-control-stats" ng-value="10">
+				<input type="text" class="form-control form-control-stats" ng-value="attrRef">
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
+						<button type="button" class="btn btn-default btn-xs" ng-click="attrRef = attrRef + 1">
 							<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
 						</button><br>
-						<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
+						<button type="button" class="btn btn-default btn-xs" ng-click="attrRef = attrRef - 1">
 							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
 						</button>
 					</div>
 				</span>
-				<span class="input-group-addon input-group-addon-stats">PEF</span>
+				<span class="input-group-addon input-group-addon-stats">REF</span>
 			</div>
 			<div class="input-group input-group-stats">
-				<input type="text" class="form-control form-control-stats" ng-value="10">
+				<input type="text" class="form-control form-control-stats" ng-value="attrPer">
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
+						<button type="button" class="btn btn-default btn-xs" ng-click="attrPer = attrPer + 1">
 							<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
 						</button><br>
-						<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
+						<button type="button" class="btn btn-default btn-xs" ng-click="attrPer = attrPer - 1">
 							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
 						</button>
 					</div>
@@ -75,13 +75,13 @@
 				<span class="input-group-addon input-group-addon-stats">PER</span>
 			</div>
 			<div class="input-group input-group-stats">
-				<input type="text" class="form-control form-control-stats" ng-value="10">
+				<input type="text" class="form-control form-control-stats" ng-value="attrWil">
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
+						<button type="button" class="btn btn-default btn-xs" ng-click="attrWil = attrWil + 1">
 							<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
 						</button><br>
-						<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
+						<button type="button" class="btn btn-default btn-xs" ng-click="attrWil = attrWil - 1">
 							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
 						</button>
 					</div>
