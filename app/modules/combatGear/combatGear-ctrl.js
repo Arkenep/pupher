@@ -9,44 +9,55 @@ angular.module('myApp.combatGear', ['ngRoute'])
 		$scope.attrWil = 10;
 		$scope.combatPoints = 0;
 
-		$scope.pointChangePlusStr = function (attrStr) {
+		$scope.attrMultiplierPlus = function (attr) {
+			if (attr = 9) {
+				multiplier = 1;
+				return(multiplier);
+			} else {
+				multiplier = Math.trunc(((attr - 10) / 3) + 1);
+				return(multiplier);
+			}
+		};
+		$scope.attrMultiplierMinus = function (attr) {
+			if (attr <= 10) {
+				multiplier = 1;
+				return(multiplier);
+			} else {
+				multiplier = Math.trunc((((attr - 10)-1) / 3) + 1);
+				return(multiplier);
+			}
+		};
 
-			attrMultiplier = Math.trunc((($scope.attrStr-10)/3)+1);
-			attrCost = attrMultiplier*10;
-			console.log(attrMultiplier);
+		$scope.pointChangePlusStr = function () {
+			attrCost = $scope.attrMultiplierPlus($scope.attrStr)*10;
+			console.log($scope.attrMultiplierPlus($scope.attrStr));
 			$scope.attrStr++;
 			$scope.combatPoints = $scope.combatPoints - attrCost;
 			console.log($scope.combatPoints);
 
 		};
 
-		$scope.pointChangeMinusStr = function (attrStr) {
-
-			attrMultiplier = Math.trunc(((($scope.attrStr-10)-1)/3)+1);
-			attrCost = attrMultiplier*10;
-			console.log(attrMultiplier);
+		$scope.pointChangeMinusStr = function () {
+			attrCost = $scope.attrMultiplierMinus($scope.attrStr)*10;
+			console.log($scope.attrMultiplierMinus($scope.attrStr));
 			$scope.attrStr--;
 			$scope.combatPoints = $scope.combatPoints + attrCost;
 			console.log($scope.combatPoints);
 
 		};
 
-		$scope.pointChangePlusSta = function (attrSta) {
-
-			attrMultiplier = Math.trunc((($scope.attrSta-10)/3)+1);
-			attrCost = attrMultiplier*10;
-			console.log(attrMultiplier);
+		$scope.pointChangePlusSta = function () {
+			attrCost = $scope.attrMultiplierPlus($scope.attrSta)*10;
+			console.log($scope.attrMultiplierPlus($scope.attrSta));
 			$scope.attrSta++;
 			$scope.combatPoints = $scope.combatPoints - attrCost;
 			console.log($scope.combatPoints);
 
 		};
 
-		$scope.pointChangeMinusSta = function (attrSta) {
-
-			attrMultiplier = Math.trunc(((($scope.attrSta-10)-1)/3)+1);
-			attrCost = attrMultiplier*10;
-			console.log(attrMultiplier);
+		$scope.pointChangeMinusSta = function () {
+			attrCost = $scope.attrMultiplierMinus($scope.attrSta)*10;
+			console.log($scope.attrMultiplierMinus($scope.attrSta));
 			$scope.attrSta--;
 			$scope.combatPoints = $scope.combatPoints + attrCost;
 			console.log($scope.combatPoints);

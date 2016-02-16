@@ -11,7 +11,7 @@
 						<button type="button" class="btn btn-default btn-xs" ng-click="pointChangePlusStr();">
 							<span class="glyphicon glyphicon-chevron-up"></span>
 						</button><br>
-						<button type="button" class="btn btn-default btn-xs" ng-click="pointChangeMinusStr();">
+						<button type="button" class="btn btn-default btn-xs" ng-disabled="attrStr < 10" ng-click="pointChangeMinusStr();">
 							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
 						</button>
 					</div>
