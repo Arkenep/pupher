@@ -1,74 +1,10 @@
 angular.module('myApp.combatGear', ['ngRoute'])
-	.controller('combatGearCtrl', ['$scope', function ($scope) {
-
-		$scope.attributes = {
-			STR: 10,
-			STA: 10,
-			DEX: 10,
-			REF: 10,
-			PER: 10,
-			WIL: 10
-		};
-
-		$scope.combatSkills = {
-			'Athletics': 0,
-			'Evade': 0,
-			'Close Quarters': 0,
-			'Sword': 0,
-			'Axe': 0,
-			'Spear': 0,
-			'Dagger': 0,
-			'Flail': 0,
-			'Bow': 0,
-			'Throwing': 0,
-			'Blunt': 0
-
-		};
+	.controller('combatGearCtrl', ['$scope', 'character', function ($scope, character) {
 
 		$scope.totalCombatPointsCost = 0;
-
-		$scope.weapons = [
-			{
-				name: 'Long Sword',
-				type: 'Blade',
-				thrustDamage: 4,
-				thrustDamagePiercing: 1,
-				thrustDamageEffects: [
-					{icon: '', name: ''},
-					{icon: '', name: ''},
-					{icon: '', name: ''},
-					{icon: 'Bleed.png', name: 'Bleed'},
-					{icon: 'Bleed.png', name: 'Bleed'},
-					{icon: 'Critical.png', name: 'Critical'}
-				],
-				swingDamage: 5,
-				swingDamagePiercing: 0,
-				swingDamageEffects: ['', '', 'Bleed.png', 'Bleed.png', 'Bleed.png', 'Trauma.png'],
-				STRRequired: 12,
-				attackValueBonus: 0,
-				defenceValueBonus: 0,
-				weight: 3,
-				reach: 2
-			},
-			{
-				name: 'Axe',
-				Type: 'Unbalanced',
-				thrustDamage: 0,
-				thrustDamagePiercing: 0,
-				thrustDamageEffects: '',
-				swingDamage: 3,
-				swingDamagePiercing: 1,
-				swingDamageEffects: '00TTBB',
-				STRRequired: 11,
-				attackValueBonus: 0,
-				defenceValueBonus: 0,
-				weight: 2,
-				reach: 1
-			}
-
-
-		];
-
+		$scope.attributes = character.attributes;
+		$scope.combatSkills = character.combatSkills;
+		$scope.weapons = character.weapons;
 
 		var getMultiplierForAttribute = function (num, action) {
 

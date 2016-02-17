@@ -5,7 +5,8 @@ angular.module('myApp', [
 	'ngRoute',
 	'myApp.combatGear',
 	'myApp.combat',
-	'myApp.version'
+	'myApp.version',
+	'myApp.services'
 ]).
 config(['$routeProvider', function($routeProvider) {
 	$routeProvider.otherwise({redirectTo: '/combatGear'});
