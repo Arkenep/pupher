@@ -1,6 +1,6 @@
 
 <!--Start Of Attributes and Combat Skills-->
-{{totalAttributesCost}}
+{{totalCombatPointsCost}}
 <div class="row">
 	<div class="col-md-2">
 		<div class="stat-area stat-area-stats">
@@ -9,10 +9,10 @@
 				<input type="text" class="form-control form-control-stats" ng-value="value">
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default btn-xs" ng-click="pointChange(attribute, 'plus');">
+						<button type="button" class="btn btn-default btn-xs" ng-click="attributeChange(attribute, 'plus');">
 							<span class="glyphicon glyphicon-chevron-up"></span>
 						</button><br>
-						<button type="button" class="btn btn-default btn-xs" ng-disabled="value < 2" ng-click="pointChange(attribute,'minus');">
+						<button type="button" class="btn btn-default btn-xs" ng-disabled="value < 2" ng-click="attributeChange(attribute,'minus');">
 							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
 						</button>
 					</div>
@@ -26,16 +26,16 @@
 			<span>Combat Skills</span>
 			<div class="row">
 				<div class="col-md-6">
-					<div class="input-group input-group-stats" ng-repeat="(combatSkill, level) in combatSkills">
+					<div class="input-group input-group-stats" ng-repeat="(combatSkill, value) in combatSkills">
 
 						<span class="input-group-addon input-group-addon-combat-skills">{{combatSkill}}</span>
-						<input type="text" class="form-control form-control-combat-skills" ng-value="level">
+						<input type="text" class="form-control form-control-combat-skills" ng-value="value">
 						<span class="input-group-btn">
 							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" ng-click="pointChangePlus(level);">
+								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" ng-click="combatSkillPointChange(combatSkill, 'plus');">
 									<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
 								</button><br>
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align">
+								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" ng-disabled="value < 1" ng-click="combatSkillPointChange(combatSkill, 'minus');">
 									<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
 								</button>
 							</div>

@@ -25,7 +25,7 @@ angular.module('myApp.combatGear', ['ngRoute'])
 
 		};
 
-		$scope.totalAttributesCost = 0;
+		$scope.totalCombatPointsCost = 0;
 
 		var getMultiplierForAttribute = function(num, action) {
 
@@ -44,15 +44,40 @@ angular.module('myApp.combatGear', ['ngRoute'])
 			return multiplier;
 		};
 
-		$scope.pointChange = function (attr,action) {
+		var getMultiplierForCombatSkills = function (num, action) {
+
+			var multiplier;
+
+			if (action == 'minus') {
+				multiplier = Math.trunc(((num - 1) / 3) + 1);
+			} else {
+				multiplier = Math.trunc((num / 3) + 1);
+			}
+			return multiplier;
+		};
+
+
+		$scope.attributeChange = function (attr,action) {
 			var attributeValue = $scope.attributes[attr];
 			if (action == 'minus') {
-				$scope.totalAttributesCost = $scope.totalAttributesCost + getMultiplierForAttribute(attributeValue, action) * 10;
+				$scope.totalCombatPointsCost = $scope.totalCombatPointsCost + getMultiplierForAttribute(attributeValue, action) * 10;
 				$scope.attributes[attr]--;
 			} else {
-				$scope.totalAttributesCost = $scope.totalAttributesCost - getMultiplierForAttribute(attributeValue, action) * 10;
+				$scope.totalCombatPointsCost = $scope.totalCombatPointsCost - getMultiplierForAttribute(attributeValue, action) * 10;
 				$scope.attributes[attr]++;
 			}
 		};
+
+		$scope.combatSkillPointChange = function (attr,action) {
+			var attributeValue = $scope.combatSkills[attr];
+			if (action == 'minus') {
+				$scope.totalCombatPointsCost = $scope.totalCombatPointsCost + getMultiplierForCombatSkills(attributeValue, action);
+				$scope.combatSkills[attr]--;
+			} else {
+				$scope.totalCombatPointsCost = $scope.totalCombatPointsCost - getMultiplierForCombatSkills(attributeValue, action);
+				$scope.combatSkills[attr]++;
+			}
+		};
+
 
 	}]);
