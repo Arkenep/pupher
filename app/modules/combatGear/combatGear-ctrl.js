@@ -9,6 +9,12 @@ angular.module('myApp.combatGear', ['ngRoute'])
 		$scope.attrWil = 10;
 		$scope.combatPoints = 0;
 
+		$scope.attributes = {
+			STR: 10,
+			STA: 10,
+			DEX: 10
+		}
+
 		$scope.combatSkills = {
 			'Athletics': 0,
 			'Evade': 0,
@@ -25,7 +31,7 @@ angular.module('myApp.combatGear', ['ngRoute'])
 		};
 
 		//cia reiks sukist kai padarysiu PLIUSA
-		$scope.attrMultiplierPlus = function (attr) {
+/*		$scope.attrMultiplierPlus = function (attr) {
 			if (attr <= 10) {
 				multiplier = 1;
 				return(multiplier);
@@ -38,16 +44,47 @@ angular.module('myApp.combatGear', ['ngRoute'])
 		$scope.attrMultiplierMinus = function (attr) {
 			if (attr <= 10) {
 				multiplier = 1;
-				return(multiplier);
+				return (multiplier);
 			} else {
 				multiplier = Math.trunc((((attr - 10)-1) / 3) + 1);
 				return(multiplier);
 			}
-		};
+		};*/
 		//iki cia
 
 
-		$scope.pointChangePlus = function (attr) {
+		var attrMultiplier = function (attr, mod) {
+			var multiplier;
+			mod == 1 ? (mod = 1) : (mod = 0)
+			attr <= 10 ? (multiplier = 1) : (multiplier = Math.floor((((attr - 10)+mod) / 3) + 1));
+			return multiplier;
+		};
+
+		$scope.totalAttributesCost = 0;
+
+		var getCostForAttribute = function(num) {
+			var cost = (num - 10 + Math.floor((num - 10) / 3)) * 10;
+			return cost;
+		}
+
+		getCostForAttribute();
+
+		var calculateAttributesCost = function() {
+			//suskaiciuot kiek viskas kainuoja
+			$scope.totalAttributesCost = 0;
+			angular.forEach($scope.attributes, function(attribute) {
+				$scope.totalAttributesCost += getCostForAttribute(attribute);
+				//console.log(attribute);
+			});
+		}
+
+		$scope.pointChange = function (attr, mod) {
+			$scope.attributes[attr] += mod;
+			calculateAttributesCost();
+		}
+
+		/*$scope.pointChangePlus = function (attr) {
+			console.log(attr);
 			attrMultiplierPlus = function (attr) {
 				if (attr <= 10) {
 					multiplier = 1;
@@ -65,7 +102,7 @@ angular.module('myApp.combatGear', ['ngRoute'])
 			console.log("taskai",$scope.combatPoints);
 			return($scope.attr=attr); //ka cia blem turi grazint, NESUPRANTU KAIP PASIIMTI attrSTR pvz gal kazka tokio $scope. + attr????
 
-		};
+		};*/
 
 
 
