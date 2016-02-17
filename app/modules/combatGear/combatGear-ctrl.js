@@ -27,18 +27,61 @@ angular.module('myApp.combatGear', ['ngRoute'])
 
 		$scope.totalCombatPointsCost = 0;
 
-		var getMultiplierForAttribute = function(num, action) {
+		$scope.weapons = [
+			{
+				name: 'Long Sword',
+				type: 'Blade',
+				thrustDamage: 4,
+				thrustDamagePiercing: 1,
+				thrustDamageEffects: [
+					{icon: '', name: ''},
+					{icon: '', name: ''},
+					{icon: '', name: ''},
+					{icon: 'Bleed.png', name: 'Bleed'},
+					{icon: 'Bleed.png', name: 'Bleed'},
+					{icon: 'Critical.png', name: 'Critical'}
+				],
+				swingDamage: 5,
+				swingDamagePiercing: 0,
+				swingDamageEffects: ['', '', 'Bleed.png', 'Bleed.png', 'Bleed.png', 'Trauma.png'],
+				STRRequired: 12,
+				attackValueBonus: 0,
+				defenceValueBonus: 0,
+				weight: 3,
+				reach: 2
+			},
+			{
+				name: 'Axe',
+				Type: 'Unbalanced',
+				thrustDamage: 0,
+				thrustDamagePiercing: 0,
+				thrustDamageEffects: '',
+				swingDamage: 3,
+				swingDamagePiercing: 1,
+				swingDamageEffects: '00TTBB',
+				STRRequired: 11,
+				attackValueBonus: 0,
+				defenceValueBonus: 0,
+				weight: 2,
+				reach: 1
+			}
+
+
+		];
+
+
+		var getMultiplierForAttribute = function (num, action) {
 
 			var multiplier;
 
-			if (num <=10) {
+			if (num <= 10) {
 				multiplier = 1;
 			} else {
 
 				if (action == 'minus') {
-					multiplier = Math.trunc((((num - 10) - 1) / 3)+1);
+					multiplier = Math.trunc((((num - 10) - 1) / 3) + 1);
 				} else {
-					multiplier = Math.trunc(((num - 10) / 3)+1);
+					multiplier = Math.trunc(((num - 10) / 3) + 1);
 				}
 			}
 			return multiplier;
@@ -57,7 +100,7 @@ angular.module('myApp.combatGear', ['ngRoute'])
 		};
 
 
-		$scope.attributeChange = function (attr,action) {
+		$scope.attributeChange = function (attr, action) {
 			var attributeValue = $scope.attributes[attr];
 			if (action == 'minus') {
 				$scope.totalCombatPointsCost = $scope.totalCombatPointsCost + getMultiplierForAttribute(attributeValue, action) * 10;
@@ -68,7 +111,7 @@ angular.module('myApp.combatGear', ['ngRoute'])
 			}
 		};
 
-		$scope.combatSkillPointChange = function (attr,action) {
+		$scope.combatSkillPointChange = function (attr, action) {
 			var attributeValue = $scope.combatSkills[attr];
 			if (action == 'minus') {
 				$scope.totalCombatPointsCost = $scope.totalCombatPointsCost + getMultiplierForCombatSkills(attributeValue, action);

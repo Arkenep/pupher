@@ -70,6 +70,36 @@
 					</button>
 				</span>
 			</div>
+
+			<div class="input-group input-group-stats" ng-repeat="weapon in weapons">
+				<button type="button" class="btn btn-primary form-control form-control-weapon">{{weapon.name}}</button>
+				<span title="Thrust Damage" class="input-group-addon input-group-addon-th">{{weapon.thrustDamage + ' + ' + weapon.thrustDamagePiercing}}
+					(
+					<div ng-repeat="stat in weapon.thrustDamageEffects">
+						<img src="/app/img/{{stat.icon}}" alt="{{stat.name}}" title="{{stat.name}}" ng-show="stat.icon != ''" />
+					</div>
+					)
+				</span>
+				<span title="Swing Damage" class="input-group-addon input-group-addon-sw">{{weapon.swingDamage + ' + ' + weapon.swingDamagePiercing}}(<img src="/app/img/Bleed.png" alt="Bleed" title="Bleed"><img src="/app/img/Bleed.png" alt="Bleed" title="Bleed"><img src="/app/img/Bleed.png" alt="Bleed" title="Bleed"><img src="/app/img/Trauma.png" alt="Trauma" title="Trauma">)</span>
+				<span title="Minimum STR Required" class="input-group-addon input-group-addon-min-str">{{weapon.STRRequired}}</span>
+				<span title="Attack Value Bonus" class="input-group-addon input-group-addon-av">{{weapon.attackValueBonus}}</span>
+				<span title="Defence Value Bonus" class="input-group-addon input-group-addon-dv">{{weapon.defenceValueBonus}}</span>
+				<span title="Weight" class="input-group-addon input-group-addon-weight">{{weapon.weight}}</span>
+				<span title="Reach" class="input-group-addon input-group-addon-reach">{{weapon.reach}}</span>
+				<span class="input-group-btn">
+					<div class="btn-group" role="group">
+						<button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
+							<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+						</button><br>
+						<button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
+							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+						</button>
+					</div>
+				</span>
+			</div>
+
+
+
 			<div class="input-group input-group-stats">
 				<button type="button" class="btn btn-primary form-control form-control-weapon">Long Sword</button>
 				<span title="Thrust Damage" class="input-group-addon input-group-addon-th">4 + 1(<img src="/app/img/Bleed.png" alt="Bleed" title="Bleed"><img src="/app/img/Bleed.png" alt="Bleed" title="Bleed"><img src="/app/img/Critical.png" alt="Critical" title="Critical">)</span>
