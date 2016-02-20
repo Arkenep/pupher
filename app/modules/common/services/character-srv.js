@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp.services', []).service('character', function() {
-	var profile, attributes, combatSkills, weapons;
+	var profile, attributes, combatSkills, weapons, shields;
 
 	attributes = {
 		STR: 10,
@@ -90,11 +90,40 @@ angular.module('myApp.services', []).service('character', function() {
 
 	];
 
+	shields = [
+		{
+			name: 'Large Shield',
+			type: 'largeShield',
+			damage: 5,
+			damagePiercing: 0,
+			defense: 3,
+			hp: 10,
+			breakValue: 3,
+			attackValueBonus: 0,
+			defenceValueBonus: 0
+		},
+		{
+			name: 'Buckler',
+			type: 'smallShield',
+			damage: 2,
+			damagePiercing: 0,
+			defense: 1,
+			hp: 8,
+			breakValue: 3,
+			attackValueBonus: 0,
+			defenceValueBonus: 0
+		}
+
+
+	];
+
 	profile =  {
 		attributes : attributes,
 		weapons : weapons,
+		shields: shields,
 		combatSkills : combatSkills
-	}
+
+	};
 
 	return profile;
 });

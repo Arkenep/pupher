@@ -6,7 +6,7 @@
 		<div class="stat-area stat-area-stats">
 			<span>Attributes</span>
 			<div class="input-group input-group-stats" ng-repeat="(attribute, value) in attributes">
-				<input type="text" class="form-control form-control-stats" ng-value="value">
+				<input type="text" class="form-control form-control-stats" ng-value="value" ng-disabled="true">
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
 						<button type="button" class="btn btn-default btn-xs" ng-click="attributeChange(attribute, 'plus');">
@@ -29,7 +29,7 @@
 					<div class="input-group input-group-stats" ng-repeat="(combatSkill, value) in combatSkills">
 
 						<span class="input-group-addon input-group-addon-combat-skills">{{combatSkill}}</span>
-						<input type="text" class="form-control form-control-combat-skills" ng-value="value">
+						<input type="text" class="form-control form-control-combat-skills" ng-value="value" ng-disabled="true">
 						<span class="input-group-btn">
 							<div class="btn-group" role="group">
 								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" ng-click="combatSkillPointChange(combatSkill, 'plus');">
@@ -113,33 +113,14 @@
 					</button>
 				</span>
 			</div>
-			<div class="input-group input-group-stats">
-				<button type="button" class="btn btn-primary form-control form-control-weapon">Large Shield</button>
-				<span title="Shield Damage" class="input-group-addon input-group-addon-sh-dmg">4 + 1</span>
-				<span title="Shield Defense" class="input-group-addon input-group-addon-sh-defense">3</span>
-				<span title="Shield Hit Points" class="input-group-addon input-group-addon-sh-hp">10</span>
-				<span title="Break Value" class="input-group-addon input-group-addon-break">3</span>
-				<span title="Attack Value" class="input-group-addon input-group-addon-av">16</span>
-				<span title="Defence Value" class="input-group-addon input-group-addon-dv">16</span>
-				<span class="input-group-btn">
-					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
-							<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-						</button><br>
-						<button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
-							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-						</button>
-					</div>
-				</span>
-			</div>
-			<div class="input-group input-group-stats">
-				<button type="button" class="btn btn-primary form-control form-control-weapon">Buckler</button>
-				<span title="Shield Damage" class="input-group-addon input-group-addon-sh-dmg">2 + 0</span>
-				<span title="Shield Defense" class="input-group-addon input-group-addon-sh-defense">1</span>
-				<span title="Shield Hit Points" class="input-group-addon input-group-addon-sh-hp">9</span>
-				<span title="Break Value" class="input-group-addon input-group-addon-break">3</span>
-				<span title="Attack Value" class="input-group-addon input-group-addon-av">16</span>
-				<span title="Defence Value" class="input-group-addon input-group-addon-dv">16</span>
+			<div class="input-group input-group-stats" ng-repeat="shield in shields">
+				<button type="button" class="btn btn-primary form-control form-control-weapon">{{shield.name}}</button>
+				<span title="Shield Damage" class="input-group-addon input-group-addon-sh-dmg">{{shield.damage + ' + ' + shield.damagePiercing}}</span>
+				<span title="Shield Defense" class="input-group-addon input-group-addon-sh-defense">{{shield.defense}}</span>
+				<span title="Shield Hit Points" class="input-group-addon input-group-addon-sh-hp">{{shield.hp}}</span>
+				<span title="Break Value" class="input-group-addon input-group-addon-break">{{shield.breakValue}}</span>
+				<span title="Attack Value" class="input-group-addon input-group-addon-av">{{shield.attackValueBonus}}</span>
+				<span title="Defence Value" class="input-group-addon input-group-addon-dv">{{shield.defenceValueBonus}}</span>
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
 						<button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">

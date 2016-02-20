@@ -5,6 +5,7 @@ angular.module('myApp.combatGear', ['ngRoute'])
 		$scope.attributes = character.attributes;
 		$scope.combatSkills = character.combatSkills;
 		$scope.weapons = character.weapons;
+		$scope.shields = character.shields;
 
 		var getMultiplierForAttribute = function (num, action) {
 
