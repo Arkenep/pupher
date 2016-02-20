@@ -16,7 +16,7 @@ angular.module('myApp.services', []).service('character', function() {
 		'Athletics': 0,
 		'Evade': 0,
 		'Close Quarters': 0,
-		'Sword': 0,
+		'Blade': 0,
 		'Axe': 0,
 		'Spear': 0,
 		'Dagger': 0,
