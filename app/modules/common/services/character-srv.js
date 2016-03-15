@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('myApp.services', []).service('character', function() {
-	var profile, attributes, combatSkills, weapons, shields;
+angular.module('myApp.services').service('character', function() {
+	var profile, attributes, combatSkills, weapons, shields, armor;
 
 	attributes = {
 		STR: 10,
@@ -33,6 +33,7 @@ angular.module('myApp.services', []).service('character', function() {
 			type: 'Blade',
 			thrustDamage: 4,
 			thrustDamagePiercing: 1,
+			isActive : false,
 			thrustDamageEffects: [
 				{icon: '', name: ''},
 				{icon: '', name: ''},
@@ -61,6 +62,7 @@ angular.module('myApp.services', []).service('character', function() {
 			name: 'Axe',
 			Type: 'Unbalanced',
 			thrustDamage: 0,
+			isActive : false,
 			thrustDamagePiercing: 0,
 			thrustDamageEffects: [
 				{icon: '', name: ''},
@@ -117,12 +119,40 @@ angular.module('myApp.services', []).service('character', function() {
 
 	];
 
+	armor = {
+		head : {
+			armor  : 0,
+			weight : 0
+		},
+		body : {
+			armor  : 0,
+			weight : 0
+		},
+		larm : {
+			armor  : 0,
+			weight : 0
+		},
+		rarm : {
+			armor  : 0,
+			weight : 0
+		},
+		lleg : {
+			armor  : 0,
+			weight : 0
+		},
+		rleg : {
+			armor  : 0,
+			weight : 0
+		}
+	};
+
 	profile =  {
 		attributes : attributes,
 		weapons : weapons,
 		shields: shields,
-		combatSkills : combatSkills
-
+		combatSkills : combatSkills,
+		luck : 12,
+		armor : armor
 	};
 
 	return profile;

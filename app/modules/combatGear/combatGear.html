@@ -26,7 +26,7 @@
 			<span>Combat Skills</span>
 			<div class="row">
 				<div class="col-md-6">
-					<div class="input-group input-group-stats" ng-repeat="(combatSkill, value) in combatSkills">
+					<div class="input-group input-group-stats input-group-attributes" ng-repeat="(combatSkill, value) in combatSkills">
 
 						<span class="input-group-addon input-group-addon-combat-skills">{{combatSkill}}</span>
 						<input type="text" class="form-control form-control-combat-skills" ng-value="value" ng-disabled="true">
@@ -71,6 +71,7 @@
 				</span>
 			</div>
 			<div class="input-group input-group-stats" ng-repeat="weapon in weapons">
+				<input type="checkbox" ng-model="weapon.isActive">
 				<button type="button" class="btn btn-primary form-control form-control-weapon">{{weapon.name}}</button>
 				<span title="Thrust Damage" class="input-group-addon input-group-addon-th">{{weapon.thrustDamage + ' + ' + weapon.thrustDamagePiercing}}(<span ng-repeat="thrustEffect in weapon.thrustDamageEffects"><img src="/app/img/{{thrustEffect.icon}}" alt="{{thrustEffect.name}}" title="{{thrustEffect.name}}" ng-show="thrustEffect.icon != ''"/></span>)</span>
 				<span title="Swing Damage" class="input-group-addon input-group-addon-sw">{{weapon.swingDamage + ' + ' + weapon.swingDamagePiercing}}(<span ng-repeat="swingEffect in weapon.swingDamageEffects"><img src="/app/img/{{swingEffect.icon}}" alt="{{swingEffect.name}}" title="{{swingEffect.name}}" ng-show="swingEffect.icon != ''"/></span>)</span>
