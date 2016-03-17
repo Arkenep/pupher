@@ -40,50 +40,58 @@
 		</div>
 	</div>
 </div>
+
 <div class="stat-area stat-area-weapons">
-	<span>Equipment</span>
-	<div class="row">
-		<div class="col-md-12">
-			<div class="div-table">
-				<div class="div-table-row">
-					<div type="button" title="Change Main Hand" class="div-table-col div-table-col-borderless btn btn-success weapon-change">
-						<span class="glyphicon glyphicon-retweet"></span>
-					</div>
-					<div class="div-table-col div-table-col-weapon">{{activeWeapon}}</div>
-					<div title="Thrust Effects" class="div-table-col div-table-col-2">Thrust</div>
-					<div title="Thrust Damage" class="div-table-col">4 + 1</div>
-					<div class="div-table-col">-</div>
-					<div class="div-table-col">-</div>
-					<div class="div-table-col">-</div>
-					<div class="div-table-col"><img src="/app/img/Bleed.png" alt="Bleed" title="Bleed"></div>
-					<div class="div-table-col"><img src="/app/img/Bleed.png" alt="Bleed" title="Bleed"></div>
-					<div class="div-table-col"><img src="/app/img/Critical.png" alt="Critical" title="Critical"></div>
-					<div class="div-table-col div-table-col-borderless-2">Head</div>
-					<div class="div-table-col">2</div>
-				</div>
-				<div class="div-table-row">
-					<div title="Attack Value" class="div-table-col div-table-col-borderless">AV</div>
-					<div class="div-table-col">{{mainhandAV}}</div>
-					<div title="Defense Value" class="div-table-col div-table-col-borderless">DV</div>
-					<div class="div-table-col">{{mainhandDV}}</div>
-					<div title="Weight" class="div-table-col div-table-col-borderless">W</div>
-					<div class="div-table-col">{{weight}}</div>
-					<div title="Reach" class="div-table-col div-table-col-borderless">R</div>
-					<div class="div-table-col">{{reach}}</div>
-					<div title="Swing Effects" class="div-table-col div-table-col-2">Swing</div>
-					<div title="Swing Damage" class="div-table-col">5 + 0</div>
-					<div class="div-table-col">-</div>
-					<div class="div-table-col">-</div>
-					<div class="div-table-col"><img src="/app/img/Bleed.png" alt="Bleed" title="Bleed"></div>
-					<div class="div-table-col"><img src="/app/img/Bleed.png" alt="Bleed" title="Bleed"></div>
-					<div class="div-table-col"><img src="/app/img/Bleed.png" alt="Bleed" title="Bleed"></div>
-					<div class="div-table-col"><img src="/app/img/Trauma.png" alt="Trauma" title="Trauma"></div>
-					<div class="div-table-col div-table-col-borderless-2">Body</div>
-					<div class="div-table-col">2</div>
-				</div>
+	<span style="width: 100%; float: left;">Equipment</span>
+
+	<div style="width: 85%; float: left;" ng-repeat="activeWeapon in activeWeapons">
+
+			<div type="button" title="Change Main Hand" class="div-table-col div-table-col-borderless btn btn-success weapon-change">
+				<span class="glyphicon glyphicon-retweet"></span>
 			</div>
-		</div>
+			<div class="div-table-col div-table-col-weapon">{{activeWeapon.name}}</div>
+			<div title="Thrust Effects" class="div-table-col div-table-col-2">Thrust</div>
+			<div title="Thrust Damage" class="div-table-col">{{activeWeapon.thrustDamage + ' + ' + activeWeapon.thrustDamagePiercing}}</div>
+			<div class="div-table-col">-</div>
+			<div class="div-table-col">-</div>
+			<div class="div-table-col">-</div>
+			<div class="div-table-col"><img src="/app/img/Bleed.png" alt="Bleed" title="Bleed"></div>
+			<div class="div-table-col"><img src="/app/img/Bleed.png" alt="Bleed" title="Bleed"></div>
+			<div class="div-table-col"><img src="/app/img/Critical.png" alt="Critical" title="Critical"></div>
+
+			<div title="Attack Value" class="div-table-col div-table-col-borderless">AV</div>
+			<div class="div-table-col">{{activeWeapon.attackValueBonus + activeAttributes.REF + activeCombatSkills.Blade}}</div>
+			<div title="Defense Value" class="div-table-col div-table-col-borderless">DV</div>
+			<div class="div-table-col">123</div>
+			<div title="Weight" class="div-table-col div-table-col-borderless">W</div>
+			<div class="div-table-col">123</div>
+			<div title="Reach" class="div-table-col div-table-col-borderless">R</div>
+			<div class="div-table-col">123</div>
+			<div title="Swing Effects" class="div-table-col div-table-col-2">Swing</div>
+			<div title="Swing Damage" class="div-table-col">5 + 0</div>
+			<div class="div-table-col">-</div>
+			<div class="div-table-col">-</div>
+			<div class="div-table-col"><img src="/app/img/Bleed.png" alt="Bleed" title="Bleed"></div>
+			<div class="div-table-col"><img src="/app/img/Bleed.png" alt="Bleed" title="Bleed"></div>
+			<div class="div-table-col"><img src="/app/img/Bleed.png" alt="Bleed" title="Bleed"></div>
+			<div class="div-table-col"><img src="/app/img/Trauma.png" alt="Trauma" title="Trauma"></div>
+
 	</div>
+	<div style="width: 15%; float: left;">
+		<div class="div-table-col div-table-col-borderless-2">Head</div>
+		<div class="div-table-col">2</div>
+		<div class="div-table-col div-table-col-borderless-2">Body</div>
+		<div class="div-table-col">2</div>
+		<div class="div-table-col div-table-col-borderless-2">Left Arm</div>
+		<div class="div-table-col">2</div>
+		<div class="div-table-col div-table-col-borderless-2">Right Arm</div>
+		<div class="div-table-col">2</div>
+		<div class="div-table-col div-table-col-borderless-2">Left Leg</div>
+		<div class="div-table-col">2</div>
+		<div class="div-table-col div-table-col-borderless-2">Right Leg</div>
+		<div class="div-table-col">2</div>
+	</div>
+
 
 	<div class="row">
 		<div class="col-md-12">
@@ -101,8 +109,7 @@
 					<div class="div-table-col">-</div>
 					<div class="div-table-col">-</div>
 					<div class="div-table-col">-</div>
-					<div class="div-table-col div-table-col-borderless-2">Left Arm</div>
-					<div class="div-table-col">2</div>
+
 				</div>
 				<div class="div-table-row">
 					<div title="Attack Value" class="div-table-col div-table-col-borderless">AV</div>
@@ -121,8 +128,7 @@
 					<div class="div-table-col">-</div>
 					<div class="div-table-col">-</div>
 					<div class="div-table-col">-</div>
-					<div class="div-table-col div-table-col-borderless-2">Right Arm</div>
-					<div class="div-table-col">2</div>
+
 				</div>
 			</div>
 		</div>
@@ -143,8 +149,7 @@
 					<div class="div-table-col"><img src="/app/img/Bleed.png" alt="Bleed" title="Bleed"></div>
 					<div class="div-table-col"><img src="/app/img/Bleed.png" alt="Bleed" title="Bleed"></div>
 					<div class="div-table-col"><img src="/app/img/Bleed.png" alt="Bleed" title="Bleed"></div>
-					<div class="div-table-col div-table-col-borderless-2">Left Leg</div>
-					<div class="div-table-col">2</div>
+
 				</div>
 				<div class="div-table-row">
 					<div title="Attack Value" class="div-table-col div-table-col-borderless">AV</div>
@@ -163,8 +168,7 @@
 					<div class="div-table-col div-table-col-borderless"></div>
 					<div class="div-table-col div-table-col-borderless"></div>
 					<div class="div-table-col div-table-col-borderless"></div>
-					<div class="div-table-col div-table-col-borderless-2">Right Leg</div>
-					<div class="div-table-col">2</div>
+
 				</div>
 			</div>
 		</div>

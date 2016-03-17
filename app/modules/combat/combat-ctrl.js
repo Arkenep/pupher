@@ -5,8 +5,15 @@ angular.module('myApp.combat', ['ngRoute'])
 
 		$scope.autofail = 6;
 		$scope.luck = character.luck;
+		$scope.activeAttributes = character.attributes;
+		$scope.activeCombatSkills = character.combatSkills;
 
-		$scope.activeWeapon = character.weapons[0].name;
+		function filterActiveWeapon(obj) {
+			return obj.isActive;
+		}
+		$scope.activeWeapons = character.weapons.filter(filterActiveWeapon);
+
+
 
 		$scope.history = turnsSrv.history;
 
