@@ -15,6 +15,10 @@ angular.module('myApp.combat', ['ngRoute'])
 
 
 
+
+
+
+
 		$scope.history = turnsSrv.history;
 
 		$scope.thisTurn = {
