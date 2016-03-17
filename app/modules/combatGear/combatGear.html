@@ -70,8 +70,12 @@
 				</span>
             </div>
             <div class="input-group input-group-stats" ng-repeat="weapon in weapons">
-                <input type="checkbox" ng-model="weapon.isActive">
-                <button type="button" class="btn btn-primary form-control form-control-weapon">{{weapon.name}}</button>
+                <div class="checkbox" style="float: left; width: 8%;">
+                    <label>
+                        <input type="checkbox" ng-model="weapon.isActive">
+                    </label>
+                </div>
+                <button type="button" class="btn btn-primary form-control form-control-weapon" style="float: left; width: 92%;">{{weapon.name}}</button>
                 <span title="Thrust Damage" class="input-group-addon input-group-addon-th">{{weapon.thrustDamage + ' + ' + weapon.thrustDamagePiercing}}(<span
                         ng-repeat="thrustEffect in weapon.thrustDamageEffects"><img src="/app/img/{{thrustEffect.icon}}"
                                                                                     alt="{{thrustEffect.name}}"
