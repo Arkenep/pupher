@@ -1,315 +1,333 @@
-
 <!--Start Of Attributes and Combat Skills-->
 {{totalCombatPointsCost}}
 <div class="row">
-	<div class="col-md-2">
-		<div class="stat-area stat-area-stats">
-			<span>Attributes</span>
-			<div class="input-group input-group-stats" ng-repeat="(attribute, value) in attributes">
-				<input type="text" class="form-control form-control-stats" ng-value="value" ng-disabled="true">
+    <div class="col-md-2">
+        <div class="stat-area stat-area-stats">
+            <span>Attributes</span>
+            <div class="input-group input-group-stats" ng-repeat="(attribute, value) in attributes">
+                <input type="text" class="form-control form-control-stats" ng-value="value" ng-disabled="true">
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default btn-xs" ng-click="attributeChange(attribute, 'plus');">
-							<span class="glyphicon glyphicon-chevron-up"></span>
-						</button><br>
-						<button type="button" class="btn btn-default btn-xs" ng-disabled="value < 2" ng-click="attributeChange(attribute,'minus');">
-							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-						</button>
-					</div>
+                        <button type="button" class="btn btn-default btn-xs"
+                                ng-click="attributeChange(attribute, 'plus');">
+                            <span class="glyphicon glyphicon-chevron-up"></span>
+                        </button>
+                        <br>
+                        <button type="button" class="btn btn-default btn-xs" ng-disabled="value < 2"
+                                ng-click="attributeChange(attribute,'minus');">
+                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        </button>
+                    </div>
 				</span>
-				<span class="input-group-addon input-group-addon-stats">{{attribute}}</span>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-10">
-		<div class="stat-area stat-area-combat-skills">
-			<span>Combat Skills</span>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="input-group input-group-stats input-group-attributes" ng-repeat="(combatSkill, value) in combatSkills">
-
-						<span class="input-group-addon input-group-addon-combat-skills">{{combatSkill}}</span>
-						<input type="text" class="form-control form-control-combat-skills" ng-value="value" ng-disabled="true">
-						<span class="input-group-btn">
-							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" ng-click="combatSkillPointChange(combatSkill, 'plus');">
-									<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-								</button><br>
-								<button type="button" class="btn btn-default btn-xs" aria-label="Left Align" ng-disabled="value < 1" ng-click="combatSkillPointChange(combatSkill, 'minus');">
-									<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-								</button>
-							</div>
-						</span>
-					</div>
-				</div>
-				<div class="col-md-6">
-
-				</div>
-			</div>
-		</div>
-	</div>
+                <span class="input-group-addon input-group-addon-stats">{{attribute}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div class="stat-area stat-area-combat-skills" style="float: left; width: 100%;">
+            <span style="float: left; width: 100%;">Combat Skills</span>
+            <div style="height: 44px; display: table; width: 50%; float: left; padding-bottom: 5px; padding-right: 5px;"
+                 ng-repeat="(combatSkill, value) in combatSkills">
+                <span class="input-group-addon input-group-addon-combat-skills" style="">{{combatSkill}}</span>
+                <input type="text" class="form-control form-control-combat-skills" ng-value="value" ng-disabled="true">
+                    <span class="input-group-btn">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default btn-xs" aria-label="Left Align"
+                                    ng-click="combatSkillPointChange(combatSkill, 'plus');">
+                                <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                            </button>
+                            <br>
+                            <button type="button" class="btn btn-default btn-xs" aria-label="Left Align"
+                                    ng-disabled="value < 1"
+                                    ng-click="combatSkillPointChange(combatSkill, 'minus');">
+                                <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </span>
+            </div>
+        </div>
+    </div>
 </div>
 <!--End of Attributes and Combat Skills-->
 <!--Start of Weapons-->
 <div class="row">
-	<div class="col-md-12">
-		<div class="stat-area stat-area-weapons">
-			<span>Weapons</span>
-			<div class="input-group input-group-stats">
-				<input type="text" placeholder="Search Weapon..." class="form-control form-control-weapon">
-				<span title="Thrust Damage" class="input-group-addon input-group-addon-th">Th</span>
-				<span title="Swing Damage" class="input-group-addon input-group-addon-sw">Sw</span>
-				<span title="Minimum STR Required" class="input-group-addon input-group-addon-min-str">REQ</span>
-				<span title="Attack Value" class="input-group-addon input-group-addon-av">AV</span>
-				<span title="Defence Value" class="input-group-addon input-group-addon-dv">DV</span>
-				<span title="Weight" class="input-group-addon input-group-addon-weight">W</span>
-				<span title="Reach" class="input-group-addon input-group-addon-reach">R</span>
+    <div class="col-md-12">
+        <div class="stat-area stat-area-weapons">
+            <span>Weapons</span>
+            <div class="input-group input-group-stats">
+                <input type="text" placeholder="Search Weapon..." class="form-control form-control-weapon">
+                <span title="Thrust Damage" class="input-group-addon input-group-addon-th">Th</span>
+                <span title="Swing Damage" class="input-group-addon input-group-addon-sw">Sw</span>
+                <span title="Minimum STR Required" class="input-group-addon input-group-addon-min-str">REQ</span>
+                <span title="Attack Value" class="input-group-addon input-group-addon-av">AV</span>
+                <span title="Defence Value" class="input-group-addon input-group-addon-dv">DV</span>
+                <span title="Weight" class="input-group-addon input-group-addon-weight">W</span>
+                <span title="Reach" class="input-group-addon input-group-addon-reach">R</span>
 				<span title="Add New Weapon" class="input-group-btn input-group-btn-weapon">
 					<button type="button" class="btn btn-success input-group-btn-weapon" aria-label="Left Align">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-					</button>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
 				</span>
-			</div>
-			<div class="input-group input-group-stats" ng-repeat="weapon in weapons">
-				<input type="checkbox" ng-model="weapon.isActive">
-				<button type="button" class="btn btn-primary form-control form-control-weapon">{{weapon.name}}</button>
-				<span title="Thrust Damage" class="input-group-addon input-group-addon-th">{{weapon.thrustDamage + ' + ' + weapon.thrustDamagePiercing}}(<span ng-repeat="thrustEffect in weapon.thrustDamageEffects"><img src="/app/img/{{thrustEffect.icon}}" alt="{{thrustEffect.name}}" title="{{thrustEffect.name}}" ng-show="thrustEffect.icon != ''"/></span>)</span>
-				<span title="Swing Damage" class="input-group-addon input-group-addon-sw">{{weapon.swingDamage + ' + ' + weapon.swingDamagePiercing}}(<span ng-repeat="swingEffect in weapon.swingDamageEffects"><img src="/app/img/{{swingEffect.icon}}" alt="{{swingEffect.name}}" title="{{swingEffect.name}}" ng-show="swingEffect.icon != ''"/></span>)</span>
-				<span title="Minimum STR Required" class="input-group-addon input-group-addon-min-str">{{weapon.STRRequired}}</span>
-				<span title="Attack Value Bonus" class="input-group-addon input-group-addon-av">{{weapon.attackValueBonus}}</span>
-				<span title="Defence Value Bonus" class="input-group-addon input-group-addon-dv">{{weapon.defenceValueBonus}}</span>
-				<span title="Weight" class="input-group-addon input-group-addon-weight">{{weapon.weight}}</span>
-				<span title="Reach" class="input-group-addon input-group-addon-reach">{{weapon.reach}}</span>
+            </div>
+            <div class="input-group input-group-stats" ng-repeat="weapon in weapons">
+                <input type="checkbox" ng-model="weapon.isActive">
+                <button type="button" class="btn btn-primary form-control form-control-weapon">{{weapon.name}}</button>
+                <span title="Thrust Damage" class="input-group-addon input-group-addon-th">{{weapon.thrustDamage + ' + ' + weapon.thrustDamagePiercing}}(<span
+                        ng-repeat="thrustEffect in weapon.thrustDamageEffects"><img src="/app/img/{{thrustEffect.icon}}"
+                                                                                    alt="{{thrustEffect.name}}"
+                                                                                    title="{{thrustEffect.name}}"
+                                                                                    ng-show="thrustEffect.icon != ''"/></span>)</span>
+                <span title="Swing Damage" class="input-group-addon input-group-addon-sw">{{weapon.swingDamage + ' + ' + weapon.swingDamagePiercing}}(<span
+                        ng-repeat="swingEffect in weapon.swingDamageEffects"><img src="/app/img/{{swingEffect.icon}}"
+                                                                                  alt="{{swingEffect.name}}"
+                                                                                  title="{{swingEffect.name}}"
+                                                                                  ng-show="swingEffect.icon != ''"/></span>)</span>
+                <span title="Minimum STR Required" class="input-group-addon input-group-addon-min-str">{{weapon.STRRequired}}</span>
+                <span title="Attack Value Bonus" class="input-group-addon input-group-addon-av">{{weapon.attackValueBonus}}</span>
+                <span title="Defence Value Bonus" class="input-group-addon input-group-addon-dv">{{weapon.defenceValueBonus}}</span>
+                <span title="Weight" class="input-group-addon input-group-addon-weight">{{weapon.weight}}</span>
+                <span title="Reach" class="input-group-addon input-group-addon-reach">{{weapon.reach}}</span>
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
-							<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-						</button><br>
-						<button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
-							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-						</button>
-					</div>
+                        <button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                        </button>
+                        <br>
+                        <button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        </button>
+                    </div>
 				</span>
-			</div>
-		</div>
-	</div>
+            </div>
+        </div>
+    </div>
 </div>
 <!--End of Weapons-->
 <!--Start of Shields-->
 <div class="row">
-	<div class="col-md-12">
-		<div class="stat-area stat-area-weapons">
-			<span>Shields</span>
-			<div class="input-group input-group-stats">
-				<input type="text" placeholder="Search Shield..." class="form-control form-control-weapon">
-				<span title="Shield Damage" class="input-group-addon input-group-addon-sh-dmg">Damage</span>
-				<span title="Shield Defense" class="input-group-addon input-group-addon-sh-defense">Defense</span>
-				<span title="Shield Hit Points" class="input-group-addon input-group-addon-sh-hp">HP</span>
-				<span title="Break Value" class="input-group-addon input-group-addon-break">Break</span>
-				<span title="Attack Value" class="input-group-addon input-group-addon-av">AV</span>
-				<span title="Defence Value" class="input-group-addon input-group-addon-dv">DV</span>
+    <div class="col-md-12">
+        <div class="stat-area stat-area-weapons">
+            <span>Shields</span>
+            <div class="input-group input-group-stats">
+                <input type="text" placeholder="Search Shield..." class="form-control form-control-weapon">
+                <span title="Shield Damage" class="input-group-addon input-group-addon-sh-dmg">Damage</span>
+                <span title="Shield Defense" class="input-group-addon input-group-addon-sh-defense">Defense</span>
+                <span title="Shield Hit Points" class="input-group-addon input-group-addon-sh-hp">HP</span>
+                <span title="Break Value" class="input-group-addon input-group-addon-break">Break</span>
+                <span title="Attack Value" class="input-group-addon input-group-addon-av">AV</span>
+                <span title="Defence Value" class="input-group-addon input-group-addon-dv">DV</span>
 				<span title="Add New Shield" class="input-group-btn input-group-btn-weapon">
 					<button type="button" class="btn btn-success input-group-btn-weapon" aria-label="Left Align">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-					</button>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
 				</span>
-			</div>
-			<div class="input-group input-group-stats" ng-repeat="shield in shields">
-				<button type="button" class="btn btn-primary form-control form-control-weapon">{{shield.name}}</button>
-				<span title="Shield Damage" class="input-group-addon input-group-addon-sh-dmg">{{shield.damage + ' + ' + shield.damagePiercing}}</span>
-				<span title="Shield Defense" class="input-group-addon input-group-addon-sh-defense">{{shield.defense}}</span>
-				<span title="Shield Hit Points" class="input-group-addon input-group-addon-sh-hp">{{shield.hp}}</span>
-				<span title="Break Value" class="input-group-addon input-group-addon-break">{{shield.breakValue}}</span>
-				<span title="Attack Value" class="input-group-addon input-group-addon-av">{{shield.attackValueBonus}}</span>
-				<span title="Defence Value" class="input-group-addon input-group-addon-dv">{{shield.defenceValueBonus}}</span>
+            </div>
+            <div class="input-group input-group-stats" ng-repeat="shield in shields">
+                <button type="button" class="btn btn-primary form-control form-control-weapon">{{shield.name}}</button>
+                <span title="Shield Damage" class="input-group-addon input-group-addon-sh-dmg">{{shield.damage + ' + ' + shield.damagePiercing}}</span>
+                <span title="Shield Defense"
+                      class="input-group-addon input-group-addon-sh-defense">{{shield.defense}}</span>
+                <span title="Shield Hit Points" class="input-group-addon input-group-addon-sh-hp">{{shield.hp}}</span>
+                <span title="Break Value" class="input-group-addon input-group-addon-break">{{shield.breakValue}}</span>
+                <span title="Attack Value"
+                      class="input-group-addon input-group-addon-av">{{shield.attackValueBonus}}</span>
+                <span title="Defence Value"
+                      class="input-group-addon input-group-addon-dv">{{shield.defenceValueBonus}}</span>
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
-							<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-						</button><br>
-						<button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
-							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-						</button>
-					</div>
+                        <button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                        </button>
+                        <br>
+                        <button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        </button>
+                    </div>
 				</span>
-			</div>
-		</div>
-	</div>
+            </div>
+        </div>
+    </div>
 </div>
 <!--End of Shields-->
 <!--Start of Ranged Weapons-->
 <div class="row">
-	<div class="col-md-12">
-		<div class="stat-area stat-area-weapons">
-			<span>Ranged Weapons</span>
-			<div class="input-group input-group-stats">
-				<input type="text" placeholder="Search Ranged Weapon..." class="form-control form-control-weapon">
-				<span title="Minimum STR Required" class="input-group-addon input-group-addon-min-str">REQ</span>
-				<span title="Ranged Weapon STR" class="input-group-addon input-group-addon-range-str">STR</span>
-				<span title="Base Weapon Damage" class="input-group-addon input-group-addon-range-dmg">Damage</span>
-				<span title="Maximum Range" class="input-group-addon input-group-addon-range">Range</span>
-				<span title="Range Penalty" class="input-group-addon input-group-addon-range-penalty">Penalty</span>
-				<span title="Attack Value" class="input-group-addon input-group-addon-av">AV</span>
+    <div class="col-md-12">
+        <div class="stat-area stat-area-weapons">
+            <span>Ranged Weapons</span>
+            <div class="input-group input-group-stats">
+                <input type="text" placeholder="Search Ranged Weapon..." class="form-control form-control-weapon">
+                <span title="Minimum STR Required" class="input-group-addon input-group-addon-min-str">REQ</span>
+                <span title="Ranged Weapon STR" class="input-group-addon input-group-addon-range-str">STR</span>
+                <span title="Base Weapon Damage" class="input-group-addon input-group-addon-range-dmg">Damage</span>
+                <span title="Maximum Range" class="input-group-addon input-group-addon-range">Range</span>
+                <span title="Range Penalty" class="input-group-addon input-group-addon-range-penalty">Penalty</span>
+                <span title="Attack Value" class="input-group-addon input-group-addon-av">AV</span>
 
 				<span title="Add New Weapon" class="input-group-btn input-group-btn-weapon">
 					<button type="button" class="btn btn-success input-group-btn-weapon" aria-label="Left Align">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-					</button>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
 				</span>
-			</div>
-			<div class="input-group input-group-stats">
-				<button type="button" class="btn btn-primary form-control form-control-weapon">Long Bow</button>
-				<span title="Minimum STR Required" class="input-group-addon input-group-addon-min-str">12</span>
-				<span title="Ranged Weapon STR" class="input-group-addon input-group-addon-range-str">12</span>
-				<span title="Base Weapon Damage" class="input-group-addon input-group-addon-range-dmg">2 + 0</span>
-				<span title="Maximum Range" class="input-group-addon input-group-addon-range">300</span>
-				<span title="Range Penalty" class="input-group-addon input-group-addon-range-penalty">100</span>
-				<span title="Attack Value" class="input-group-addon input-group-addon-av">17</span>
+            </div>
+            <div class="input-group input-group-stats">
+                <button type="button" class="btn btn-primary form-control form-control-weapon">Long Bow</button>
+                <span title="Minimum STR Required" class="input-group-addon input-group-addon-min-str">12</span>
+                <span title="Ranged Weapon STR" class="input-group-addon input-group-addon-range-str">12</span>
+                <span title="Base Weapon Damage" class="input-group-addon input-group-addon-range-dmg">2 + 0</span>
+                <span title="Maximum Range" class="input-group-addon input-group-addon-range">300</span>
+                <span title="Range Penalty" class="input-group-addon input-group-addon-range-penalty">100</span>
+                <span title="Attack Value" class="input-group-addon input-group-addon-av">17</span>
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
-							<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-						</button><br>
-						<button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
-							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-						</button>
-					</div>
+                        <button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                        </button>
+                        <br>
+                        <button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        </button>
+                    </div>
 				</span>
-			</div>
-			<div class="input-group input-group-stats">
-				<button type="button" class="btn btn-primary form-control form-control-weapon">Long Bow</button>
-				<span title="Minimum STR Required" class="input-group-addon input-group-addon-min-str">12</span>
-				<span title="Ranged Weapon STR" class="input-group-addon input-group-addon-range-str">12</span>
-				<span title="Base Weapon Damage" class="input-group-addon input-group-addon-range-dmg">2 + 0</span>
-				<span title="Maximum Range" class="input-group-addon input-group-addon-range">300</span>
-				<span title="Range Penalty" class="input-group-addon input-group-addon-range-penalty">100</span>
-				<span title="Attack Value" class="input-group-addon input-group-addon-av">17</span>
+            </div>
+            <div class="input-group input-group-stats">
+                <button type="button" class="btn btn-primary form-control form-control-weapon">Long Bow</button>
+                <span title="Minimum STR Required" class="input-group-addon input-group-addon-min-str">12</span>
+                <span title="Ranged Weapon STR" class="input-group-addon input-group-addon-range-str">12</span>
+                <span title="Base Weapon Damage" class="input-group-addon input-group-addon-range-dmg">2 + 0</span>
+                <span title="Maximum Range" class="input-group-addon input-group-addon-range">300</span>
+                <span title="Range Penalty" class="input-group-addon input-group-addon-range-penalty">100</span>
+                <span title="Attack Value" class="input-group-addon input-group-addon-av">17</span>
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
-							<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-						</button><br>
-						<button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
-							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-						</button>
-					</div>
+                        <button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                        </button>
+                        <br>
+                        <button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        </button>
+                    </div>
 				</span>
-			</div>
-		</div>
-	</div>
+            </div>
+        </div>
+    </div>
 </div>
 <!--End of Ranged Weapons-->
 <!--Start of Ammo-->
 <div class="row">
-	<div class="col-md-12">
-		<div class="stat-area stat-area-weapons">
-			<span>Ammo</span>
-			<div class="input-group input-group-stats">
-				<input type="text" placeholder="Search Ammo..." class="form-control form-control-weapon">
-				<span title="Ammo Damage" class="input-group-addon input-group-addon-ammo-dmg">Damage</span>
-				<span title="Weapon Minimum STR" class="input-group-addon input-group-addon-ammo-min-str">REQ</span>
-				<span title="Quantity" class="input-group-addon input-group-addon-ammo-quantity">Q</span>
+    <div class="col-md-12">
+        <div class="stat-area stat-area-weapons">
+            <span>Ammo</span>
+            <div class="input-group input-group-stats">
+                <input type="text" placeholder="Search Ammo..." class="form-control form-control-weapon">
+                <span title="Ammo Damage" class="input-group-addon input-group-addon-ammo-dmg">Damage</span>
+                <span title="Weapon Minimum STR" class="input-group-addon input-group-addon-ammo-min-str">REQ</span>
+                <span title="Quantity" class="input-group-addon input-group-addon-ammo-quantity">Q</span>
 				<span title="Add New Ammo" class="input-group-btn input-group-btn-weapon">
 					<button type="button" class="btn btn-success input-group-btn-weapon" aria-label="Left Align">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-					</button>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
 				</span>
-			</div>
-			<div class="input-group input-group-stats">
-				<button type="button" class="btn btn-primary form-control form-control-weapon">Arrow</button>
-				<span title="Ammo Damage" class="input-group-addon input-group-addon-ammo-dmg">2 + 2</span>
-				<span title="Weapon Minimum STR" class="input-group-addon input-group-addon-ammo-min-str">10</span>
-				<span title="Quantity" class="input-group-addon input-group-addon-ammo-quantity">200</span>
+            </div>
+            <div class="input-group input-group-stats">
+                <button type="button" class="btn btn-primary form-control form-control-weapon">Arrow</button>
+                <span title="Ammo Damage" class="input-group-addon input-group-addon-ammo-dmg">2 + 2</span>
+                <span title="Weapon Minimum STR" class="input-group-addon input-group-addon-ammo-min-str">10</span>
+                <span title="Quantity" class="input-group-addon input-group-addon-ammo-quantity">200</span>
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
-							<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-						</button><br>
-						<button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
-							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-						</button>
-					</div>
+                        <button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                        </button>
+                        <br>
+                        <button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        </button>
+                    </div>
 				</span>
-			</div>
-			<div class="input-group input-group-stats">
-				<button type="button" class="btn btn-primary form-control form-control-weapon">Arrow</button>
-				<span title="Ammo Damage" class="input-group-addon input-group-addon-ammo-dmg">2 + 2</span>
-				<span title="Weapon Minimum STR" class="input-group-addon input-group-addon-ammo-min-str">10</span>
-				<span title="Quantity" class="input-group-addon input-group-addon-ammo-quantity">200</span>
+            </div>
+            <div class="input-group input-group-stats">
+                <button type="button" class="btn btn-primary form-control form-control-weapon">Arrow</button>
+                <span title="Ammo Damage" class="input-group-addon input-group-addon-ammo-dmg">2 + 2</span>
+                <span title="Weapon Minimum STR" class="input-group-addon input-group-addon-ammo-min-str">10</span>
+                <span title="Quantity" class="input-group-addon input-group-addon-ammo-quantity">200</span>
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
-							<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-						</button><br>
-						<button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
-							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-						</button>
-					</div>
+                        <button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                        </button>
+                        <br>
+                        <button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        </button>
+                    </div>
 				</span>
-			</div>
-		</div>
-	</div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!--End of Ammo-->
 <!--Start of Armor-->
 <div class="row">
-	<div class="col-md-12">
-		<div class="stat-area stat-area-weapons">
-			<span>Armor</span>
-			<div class="input-group input-group-stats">
-				<input type="text" placeholder="Search Armor..." class="form-control form-control-weapon">
-				<span title="Head" class="input-group-addon input-group-addon-armor">Head</span>
-				<span title="Body" class="input-group-addon input-group-addon-armor">Body</span>
-				<span title="Left Arm" class="input-group-addon input-group-addon-armor">L. Arm</span>
-				<span title="Right Arm" class="input-group-addon input-group-addon-armor">R. Arm</span>
-				<span title="Left Leg" class="input-group-addon input-group-addon-armor">L. Leg</span>
-				<span title="Right Leg" class="input-group-addon input-group-addon-armor">R. Leg</span>
+    <div class="col-md-12">
+        <div class="stat-area stat-area-weapons">
+            <span>Armor</span>
+            <div class="input-group input-group-stats">
+                <input type="text" placeholder="Search Armor..." class="form-control form-control-weapon">
+                <span title="Head" class="input-group-addon input-group-addon-armor">Head</span>
+                <span title="Body" class="input-group-addon input-group-addon-armor">Body</span>
+                <span title="Left Arm" class="input-group-addon input-group-addon-armor">L. Arm</span>
+                <span title="Right Arm" class="input-group-addon input-group-addon-armor">R. Arm</span>
+                <span title="Left Leg" class="input-group-addon input-group-addon-armor">L. Leg</span>
+                <span title="Right Leg" class="input-group-addon input-group-addon-armor">R. Leg</span>
 				<span title="Add New Armor" class="input-group-btn input-group-btn-weapon">
 					<button type="button" class="btn btn-success input-group-btn-weapon" aria-label="Left Align">
-						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-					</button>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
 				</span>
-			</div>
-			<div class="input-group input-group-stats">
-				<button type="button" class="btn btn-primary form-control form-control-weapon">Chain Armor</button>
-				<span title="Head" class="input-group-addon input-group-addon-armor">2</span>
-				<span title="Body" class="input-group-addon input-group-addon-armor">2</span>
-				<span title="Left Arm" class="input-group-addon input-group-addon-armor">2</span>
-				<span title="Right Arm" class="input-group-addon input-group-addon-armor">2</span>
-				<span title="Left Leg" class="input-group-addon input-group-addon-armor">2</span>
-				<span title="Right Leg" class="input-group-addon input-group-addon-armor">2</span>
+            </div>
+            <div class="input-group input-group-stats">
+                <button type="button" class="btn btn-primary form-control form-control-weapon">Chain Armor</button>
+                <span title="Head" class="input-group-addon input-group-addon-armor">2</span>
+                <span title="Body" class="input-group-addon input-group-addon-armor">2</span>
+                <span title="Left Arm" class="input-group-addon input-group-addon-armor">2</span>
+                <span title="Right Arm" class="input-group-addon input-group-addon-armor">2</span>
+                <span title="Left Leg" class="input-group-addon input-group-addon-armor">2</span>
+                <span title="Right Leg" class="input-group-addon input-group-addon-armor">2</span>
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
-							<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-						</button><br>
-						<button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
-							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-						</button>
-					</div>
+                        <button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                        </button>
+                        <br>
+                        <button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        </button>
+                    </div>
 				</span>
-			</div>
-			<div class="input-group input-group-stats">
-				<button type="button" class="btn btn-primary form-control form-control-weapon">Leather Armor</button>
-				<span title="Head" class="input-group-addon input-group-addon-armor">1</span>
-				<span title="Body" class="input-group-addon input-group-addon-armor">1</span>
-				<span title="Left Arm" class="input-group-addon input-group-addon-armor">1</span>
-				<span title="Right Arm" class="input-group-addon input-group-addon-armor">1</span>
-				<span title="Left Leg" class="input-group-addon input-group-addon-armor">1</span>
-				<span title="Right Leg" class="input-group-addon input-group-addon-armor">1</span>
+            </div>
+            <div class="input-group input-group-stats">
+                <button type="button" class="btn btn-primary form-control form-control-weapon">Leather Armor</button>
+                <span title="Head" class="input-group-addon input-group-addon-armor">1</span>
+                <span title="Body" class="input-group-addon input-group-addon-armor">1</span>
+                <span title="Left Arm" class="input-group-addon input-group-addon-armor">1</span>
+                <span title="Right Arm" class="input-group-addon input-group-addon-armor">1</span>
+                <span title="Left Leg" class="input-group-addon input-group-addon-armor">1</span>
+                <span title="Right Leg" class="input-group-addon input-group-addon-armor">1</span>
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
-							<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-						</button><br>
-						<button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
-							<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-						</button>
-					</div>
+                        <button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                        </button>
+                        <br>
+                        <button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                        </button>
+                    </div>
 				</span>
-			</div>
-		</div>
-	</div>
+            </div>
+        </div>
+    </div>
 </div>
 <!--End of Armor-->
