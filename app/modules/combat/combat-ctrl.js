@@ -9,7 +9,7 @@ angular.module('myApp.combat', ['ngRoute'])
 
 		$scope.weapons = character.weapons;
 		$scope.mainHandWeapon = {
-			name: 'Not Selected',
+			name: 'Empty',
 			type: '',
 			thrustDamage: 0,
 			thrustDamagePiercing: 0,
@@ -39,7 +39,7 @@ angular.module('myApp.combat', ['ngRoute'])
 			reach: 0
 		};
 		$scope.offHandWeapon = {
-			name: 'Not Selected',
+			name: 'Empty',
 			type: '',
 			thrustDamage: 0,
 			thrustDamagePiercing: 0,
