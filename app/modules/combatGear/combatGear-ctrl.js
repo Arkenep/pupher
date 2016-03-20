@@ -7,6 +7,21 @@ angular.module('myApp.combatGear', ['ngRoute'])
 		$scope.weapons = character.weapons;
 		$scope.shields = character.shields;
 
+		$scope.moveWeaponDown = function (index) {
+			if(index > -1 && index < $scope.weapons.length - 1) {
+				var tmp = $scope.weapons[index + 1];
+				$scope.weapons[index + 1] = $scope.weapons[index];
+				$scope.weapons[index] = tmp;
+			}
+		};
+
+		$scope.moveWeaponUp = function (index) {
+			if(index > 0 && index < $scope.weapons.length - 1) {
+				var tmp = $scope.weapons[index - 1];
+				$scope.weapons[index - 1] = $scope.weapons[index];
+				$scope.weapons[index] = tmp;
+			}
+		};
 		var getMultiplierForAttribute = function (num, action) {
 
 			var multiplier;

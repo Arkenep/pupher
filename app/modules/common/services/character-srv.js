@@ -13,20 +13,20 @@ angular.module('myApp.services').service('character', function() {
 	};
 
 	combatSkills = {
-		'Athletics': 0,
-		'Evade': 0,
-		'Close Quarters': 0,
-		'Blade': 0,
-		'Axe': 0,
-		'Spear': 0,
-		'Dagger': 0,
-		'Flail': 0,
-		'Bow': 0,
-		'Throwing': 0,
-		'Blunt': 0
-
+		Athletics: 0,
+		Evade: 0,
+		CloseQuarters: 0,
+		Blade: 0,
+		Unbalanced: 0,
+		Spear: 0,
+		Dagger: 0,
+		Flail: 0,
+		Bow: 0,
+		Throwing: 0
 	};
 
+	
+	
 	weapons = [
 		{
 			name: 'Long Sword',
@@ -57,6 +57,96 @@ angular.module('myApp.services').service('character', function() {
 			defenceValueBonus: 0,
 			weight: 3,
 			reach: 2
+		},
+		{
+			name: 'Short Sword',
+			type: 'Blade',
+			thrustDamage: 2,
+			thrustDamagePiercing: 1,
+			isActive : false,
+			thrustDamageEffects: [
+				{icon: '', name: ''},
+				{icon: '', name: ''},
+				{icon: '', name: ''},
+				{icon: 'Bleed.png', name: 'Bleed'},
+				{icon: 'Bleed.png', name: 'Bleed'},
+				{icon: 'Critical.png', name: 'Critical'}
+			],
+			swingDamage: 2,
+			swingDamagePiercing: -1,
+			swingDamageEffects: [
+				{icon: '', name: ''},
+				{icon: '', name: ''},
+				{icon: '', name: ''},
+				{icon: 'Bleed.png', name: 'Bleed'},
+				{icon: 'Bleed.png', name: 'Bleed'},
+				{icon: 'Trauma.png', name: 'Trauma'}
+			],
+			STRRequired: 9,
+			attackValueBonus: 0,
+			defenceValueBonus: 0,
+			weight: 1,
+			reach: 1
+		},
+		{
+			name: 'Spear',
+			type: 'Spear',
+			thrustDamage: 3,
+			thrustDamagePiercing: 1,
+			isActive : false,
+			thrustDamageEffects: [
+				{icon: '', name: ''},
+				{icon: '', name: ''},
+				{icon: '', name: ''},
+				{icon: 'Bleed.png', name: 'Bleed'},
+				{icon: 'Bleed.png', name: 'Bleed'},
+				{icon: 'Critical.png', name: 'Critical'}
+			],
+			swingDamage: 0,
+			swingDamagePiercing: 0,
+			swingDamageEffects: [
+				{icon: '', name: ''},
+				{icon: '', name: ''},
+				{icon: '', name: ''},
+				{icon: '', name: ''},
+				{icon: '', name: ''},
+				{icon: '', name: ''}
+			],
+			STRRequired: 10,
+			attackValueBonus: 0,
+			defenceValueBonus: 0,
+			weight: 2,
+			reach: 2
+		},
+		{
+			name: 'Mace',
+			type: 'Unbalanced',
+			thrustDamage: 0,
+			thrustDamagePiercing: 0,
+			isActive : false,
+			thrustDamageEffects: [
+				{icon: '', name: ''},
+				{icon: '', name: ''},
+				{icon: '', name: ''},
+				{icon: '', name: ''},
+				{icon: '', name: ''},
+				{icon: '', name: ''}
+			],
+			swingDamage: 4,
+			swingDamagePiercing: 0,
+			swingDamageEffects: [
+				{icon: '', name: ''},
+				{icon: '', name: ''},
+				{icon: 'Trauma.png', name: 'Trauma'},
+				{icon: 'Trauma.png', name: 'Trauma'},
+				{icon: 'Trauma.png', name: 'Trauma'},
+				{icon: 'Critical.png', name: 'Critical'}
+			],
+			STRRequired: 11,
+			attackValueBonus: 0,
+			defenceValueBonus: 0,
+			weight: 2,
+			reach: 1
 		},
 		{
 			name: 'Axe',

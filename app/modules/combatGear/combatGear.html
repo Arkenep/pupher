@@ -93,11 +93,11 @@
                 <span title="Reach" class="input-group-addon input-group-addon-reach">{{weapon.reach}}</span>
 				<span class="input-group-btn">
 					<div class="btn-group" role="group">
-                        <button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
+                        <button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align" ng-click="moveWeaponUp($index)">
                             <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
                         </button>
                         <br>
-                        <button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align">
+                        <button type="button" class="btn btn-default btn-xs weapon-move" aria-label="Left Align" ng-click="moveWeaponDown($index)">
                             <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
                         </button>
                     </div>
