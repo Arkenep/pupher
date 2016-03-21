@@ -5,8 +5,8 @@ angular.module('myApp.combat', ['ngRoute'])
 		$scope.autofail = 6;
 		$scope.luck = character.luck;
 
-		$scope.currentMainHandSkill = 'Not Selected';
-		$scope.currentOffHandSkill = 'Not Selected';
+		$scope.currentMainHandSkill = character.currentMainHandSkill;
+		$scope.currentOffHandSkill = character.currentOffHandSkill;
 		
 		$scope.activeSkills = character.combatSkills;
 		$scope.weapons = character.weapons;
@@ -52,12 +52,14 @@ angular.module('myApp.combat', ['ngRoute'])
 
 		$scope.setMHActiveSkill = function(skill) {
 			$scope.currentMainHandSkill = skill;
+			character.currentMainHandSkill = skill;
 			$scope.characterMHAV = character.combatSkills[skill] + character.attributes.REF + $scope.mainHandWeapon.attackValueBonus;
 			$scope.characterMHDV = character.combatSkills[skill] + character.attributes.REF + $scope.mainHandWeapon.defenceValueBonus;
 		};
 
 		$scope.setOHActiveSkill = function(skill) {
 			$scope.currentOffHandSkill = skill;
+			character.currentOffHandSkill = skill;
 			$scope.characterOHAV = character.combatSkills[skill] + character.attributes.REF + $scope.offHandWeapon.attackValueBonus;
 			$scope.characterOHDV = character.combatSkills[skill] + character.attributes.REF + $scope.offHandWeapon.defenceValueBonus;
 		};
@@ -105,7 +107,7 @@ angular.module('myApp.combat', ['ngRoute'])
 
 		$scope.initiative = 0;
 		$scope.bonusCombatAV = 0;
-		
+
 
 
 

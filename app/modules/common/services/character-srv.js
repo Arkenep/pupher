@@ -234,13 +234,18 @@ angular.module('myApp.services').service('character', function() {
 		}
 	};
 
+	var currentMainHandSkill = 'Not Selected';
+	var currentOffHandSkill = 'Not Selected';
+
 	profile =  {
 		attributes : attributes,
 		weapons : weapons,
 		shields: shields,
 		combatSkills : combatSkills,
 		luck : 12,
-		armor : armor
+		armor : armor,
+		currentMainHandSkill : currentMainHandSkill,
+		currentOffHandSkill : currentOffHandSkill
 	};
 
 	return profile;
