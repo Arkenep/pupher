@@ -6,7 +6,7 @@ angular.module('myApp.combat', ['ngRoute'])
 		$scope.luck = character.luck;
 
 		
-
+		$scope.activeSkills = character.combatSkills;
 		$scope.weapons = character.weapons;
 		$scope.mainHandWeapon = {
 			name: 'Empty',
@@ -76,8 +76,11 @@ angular.module('myApp.combat', ['ngRoute'])
 		$scope.setOffHandWeapon = function(weapon) {
 			$scope.offHandWeapon = weapon;
 		}
-
-
+		
+		$scope.setActiveSkill = function(skill) {
+			$scope.currentSkill = skill;
+			
+		}
 		
 /*
 		function weaponSkill(obj) {
