@@ -43,7 +43,7 @@
 
 <div class="stat-area stat-area-weapons">
 	<span style="width: 100%; float: left;">Equipment</span>
-	<div style="width: 95%; float: left;">
+	<div style="width: 100%; float: left;">
 		<div>
 			<div type="button" title="Change Main Hand" class="div-table-col div-table-col-borderless btn btn-success weapon-change">
 				<span class="glyphicon glyphicon-retweet"></span>
@@ -61,18 +61,18 @@
 			<div class="div-table-col" ng-repeat="thEff in mainHandWeapon.thrustDamageEffects"><img src="/app/img/{{thEff.icon}}" alt="{{thEff.name}}" title="{{thEff.name}}" ng-if="thEff.icon"></div>
 
 			<div title="Attack Value" class="div-table-col div-table-col-borderless">Skill</div>
-			<div class="btn-group" uib-dropdown style="width: 86px; display: table-column;height: 44px;text-align: center;line-height: 44px;vertical-align: middle;float: left;">
-				<button id="btn-append-to-single-button-skill" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 86px;height: 44px;">{{currentSkill}}<span class="caret"></span>
+			<div class="btn-group" uib-dropdown style="width: 132px; display: table-column;height: 44px;text-align: center;line-height: 44px;vertical-align: middle;float: left;">
+				<button id="btn-append-to-single-button-mainHandSkill" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 132px;height: 44px;">{{currentMainHandSkill}}<span class="caret"></span>
 					</button>
 				<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
-					<li ng-repeat="(activeSkill, value) in activeSkills" role="menuitem"><a ng-click="setActiveSkill(activeSkill)">{{activeSkill}}</a></li>
+					<li ng-repeat="(activeSkill, value) in activeSkills" role="menuitem"><a ng-click="setMHActiveSkill(activeSkill)">{{activeSkill}}</a></li>
 				</ul>
 			</div>
 
 			<div title="Attack Value" class="div-table-col div-table-col-borderless">AV</div>
-			<div class="div-table-col">{{mainHandAV}}</div>
+			<div class="div-table-col">{{characterMHAV}}</div>
 			<div title="Defense Value" class="div-table-col div-table-col-borderless">DV</div>
-			<div class="div-table-col">{{mainHandAV}}</div>
+			<div class="div-table-col">{{characterMHDV}}</div>
 			<div title="Weight" class="div-table-col div-table-col-borderless">W</div>
 			<div class="div-table-col">{{mainHandWeapon.weight}}</div>
 			<div title="Reach" class="div-table-col div-table-col-borderless">R</div>
@@ -80,6 +80,7 @@
 			<div title="Swing Effects" class="div-table-col div-table-col-2">Swing</div>
 			<div title="Swing Damage" class="div-table-col">{{mainHandWeapon.swingDamage + ' + ' + mainHandWeapon.swingDamagePiercing}}</div>
 			<div class="div-table-col" ng-repeat="swEff in mainHandWeapon.swingDamageEffects"><img src="/app/img/{{swEff.icon}}" alt="{{swEff.name}}" title="{{swEff.name}}" ng-if="swEff.icon"></div>
+			<div title="Attack Value" class="div-table-col div-table-col-borderless"></div>
 			<div title="Attack Value" class="div-table-col div-table-col-borderless"></div>
 			<div title="Attack Value" class="div-table-col div-table-col-borderless"></div>
 			<div title="Attack Value" class="div-table-col div-table-col-borderless"></div>
@@ -104,14 +105,19 @@
 			<div title="Thrust Damage" class="div-table-col">{{offHandWeapon.thrustDamage + ' + ' + offHandWeapon.thrustDamagePiercing}}</div>
 			<div class="div-table-col" ng-repeat="thEff in offHandWeapon.thrustDamageEffects"><img src="/app/img/{{thEff.icon}}" alt="{{thEff.name}}" title="{{thEff.name}}" ng-if="thEff.icon"></div>
 
-			<div title="Attack Value" class="div-table-col div-table-col-borderless"></div>
-			<div title="Attack Value" class="div-table-col div-table-col-borderless"></div>
-			<div title="Attack Value" class="div-table-col div-table-col-borderless"></div>
+			<div title="Attack Value" class="div-table-col div-table-col-borderless">Skill</div>
+			<div class="btn-group" uib-dropdown style="width: 132px; display: table-column;height: 44px;text-align: center;line-height: 44px;vertical-align: middle;float: left;">
+				<button id="btn-append-to-single-button-offHandSkill" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 132px;height: 44px;">{{currentOffHandSkill}}<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
+					<li ng-repeat="(activeSkill, value) in activeSkills" role="menuitem"><a ng-click="setOHActiveSkill(activeSkill)">{{activeSkill}}</a></li>
+				</ul>
+			</div>
 
 			<div title="Attack Value" class="div-table-col div-table-col-borderless">AV</div>
-			<div class="div-table-col">-</div>
+			<div class="div-table-col">{{characterOHAV}}</div>
 			<div title="Defense Value" class="div-table-col div-table-col-borderless">DV</div>
-			<div class="div-table-col">-</div>
+			<div class="div-table-col">{{characterOHDV}}</div>
 			<div title="Weight" class="div-table-col div-table-col-borderless">W</div>
 			<div class="div-table-col">{{offHandWeapon.weight}}</div>
 			<div title="Reach" class="div-table-col div-table-col-borderless">R</div>
@@ -122,12 +128,14 @@
 			<div title="Attack Value" class="div-table-col div-table-col-borderless"></div>
 			<div title="Attack Value" class="div-table-col div-table-col-borderless"></div>
 			<div title="Attack Value" class="div-table-col div-table-col-borderless"></div>
+			<div title="Attack Value" class="div-table-col div-table-col-borderless"></div>
+			<div title="Attack Value" class="div-table-col div-table-col-borderless"></div>
 		</div>
 
 
 
 	</div>
-	<div style="width: 85%;">
+	<div style="width: 100%;">
 		<div class="div-table-col div-table-col-borderless-2">Head</div>
 		<div class="div-table-col">2</div>
 		<div class="div-table-col div-table-col-borderless-2">Body</div>

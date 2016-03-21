@@ -25,19 +25,6 @@ angular.module('myApp.services').service('character', function() {
 		Throwing: 0
 	};
 	
-	/*combatSkills = [
-		{name: 'Athletics', level: 0},
-		{name: 'Evade', level: 0},
-		{name: 'Close Quarters', level: 0},
-		{name: 'Blade', level: 0},
-		{name: 'Unbalanced', level: 0},
-		{name: 'Spear', level: 0},
-		{name: 'Dagger', level: 0},
-		{name: 'Flail', level: 0},
-		{name: 'Bow', level: 0},
-		{name: 'Throwing', level: 0}
-	];*/
-	
 	weapons = [
 		{
 			name: 'Long Sword',
