@@ -105,7 +105,7 @@ angular.module('myApp.combat', ['ngRoute'])
 
 		$scope.initiative = 0;
 		$scope.bonusCombatAV = 0;
-		console.log($scope.bonusCombatAV);
+		
 
 
 
