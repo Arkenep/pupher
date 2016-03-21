@@ -103,4 +103,15 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.history.splice(turnsSrv.history.length - 1, 1);
 		}
 
+		$scope.initiative = 0;
+		$scope.bonusCombatAV = 0;
+		console.log($scope.bonusCombatAV);
+
+
+
+
+
+
+
+
 	}]);
