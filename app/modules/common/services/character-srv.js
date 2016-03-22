@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp.services').service('character', function() {
-	var profile, attributes, combatSkills, weapons, shields, armor;
+	var profile, attributes, combatSkills, weapons, shields, armor, turn;
 
 	attributes = {
 		STR: 10,
@@ -148,7 +148,7 @@ angular.module('myApp.services').service('character', function() {
 		},
 		{
 			name: 'Axe',
-			Type: 'Unbalanced',
+			type: 'Unbalanced',
 			thrustDamage: 0,
 			isActive : false,
 			thrustDamagePiercing: 0,
@@ -234,9 +234,56 @@ angular.module('myApp.services').service('character', function() {
 		}
 	};
 
+	//reikia sukurti turno objekta kad visa turna saugotume viename objekte ir pasibaikus kazkur nukeltume.
+
+
+
+
+
+
+
 	var currentMainHandSkill = 'Not Selected';
 	var currentOffHandSkill = 'Not Selected';
+	var mainHandWeapon = {
+		name: 'None',
+		type: '',
+		thrustDamage: 0,
+		isActive : false,
+		thrustDamagePiercing: 0,
+		thrustDamageEffects: [
+			{icon: '', name: ''},
+			{icon: '', name: ''},
+			{icon: '', name: ''},
+			{icon: '', name: ''},
+			{icon: '', name: ''},
+			{icon: '', name: ''}
+		],
+		swingDamage: 3,
+		swingDamagePiercing: 1,
+		swingDamageEffects: [
+			{icon: '', name: ''},
+			{icon: '', name: ''},
+			{icon: '', name: ''},
+			{icon: '', name: ''},
+			{icon: '', name: ''},
+			{icon: '', name: ''}
+		],
+		STRRequired: 0,
+		attackValueBonus: 0,
+		defenceValueBonus: 0,
+		weight: 0,
+		reach: 0};
+	var offHandWeapon = mainHandWeapon;
+	
+	var characterMHAV = 0;
+	var characterMHDV = 0;
+	var characterOHAV = 0;
+	var characterOHDV = 0;
 
+
+
+	
+	
 	profile =  {
 		attributes : attributes,
 		weapons : weapons,
@@ -245,7 +292,13 @@ angular.module('myApp.services').service('character', function() {
 		luck : 12,
 		armor : armor,
 		currentMainHandSkill : currentMainHandSkill,
-		currentOffHandSkill : currentOffHandSkill
+		currentOffHandSkill : currentOffHandSkill,
+		mainHandWeapon: mainHandWeapon,
+		offHandWeapon: offHandWeapon,
+		characterMHAV: characterMHAV,
+		characterMHDV: characterMHDV,
+		characterOHAV: characterOHAV,
+		characterOHDV: characterOHDV,
 	};
 
 	return profile;

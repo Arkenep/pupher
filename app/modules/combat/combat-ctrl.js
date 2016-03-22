@@ -7,46 +7,26 @@ angular.module('myApp.combat', ['ngRoute'])
 
 		$scope.currentMainHandSkill = character.currentMainHandSkill;
 		$scope.currentOffHandSkill = character.currentOffHandSkill;
-		
+
+		$scope.characterMHAV = character.characterMHAV;
+		$scope.characterMHDV = character.characterMHDV;
+		$scope.characterOHAV = character.characterOHAV;
+		$scope.characterOHDV = character.characterOHDV;
+
+
+
 		$scope.activeSkills = character.combatSkills;
 		$scope.weapons = character.weapons;
-		$scope.mainHandWeapon = character.weapons[0];
-		$scope.offHandWeapon = {
-			name: 'Empty',
-			type: '',
-			thrustDamage: 0,
-			thrustDamagePiercing: 0,
-			isActive : false,
-			thrustDamageEffects: [
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''}
-			],
-			swingDamage: 0,
-			swingDamagePiercing: 0,
-			swingDamageEffects: [
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''}
-			],
-			STRRequired: 0,
-			attackValueBonus: 0,
-			defenceValueBonus: 0,
-			weight: 0,
-			reach: 0
-		};
+		$scope.mainHandWeapon = character.mainHandWeapon;
+		$scope.offHandWeapon = character.offHandWeapon;
 
 		$scope.setMainHandWeapon = function(weapon) {
+			character.mainHandWeapon = weapon;
 			$scope.mainHandWeapon = weapon;
 		};
 
 		$scope.setOffHandWeapon = function(weapon) {
+			character.offHandWeapon = weapon;
 			$scope.offHandWeapon = weapon;
 		};
 
@@ -55,13 +35,17 @@ angular.module('myApp.combat', ['ngRoute'])
 			character.currentMainHandSkill = skill;
 			$scope.characterMHAV = character.combatSkills[skill] + character.attributes.REF + $scope.mainHandWeapon.attackValueBonus;
 			$scope.characterMHDV = character.combatSkills[skill] + character.attributes.REF + $scope.mainHandWeapon.defenceValueBonus;
+			character.characterMHAV = $scope.characterMHAV;
+			character.characterMHDV = $scope.characterMHDV;
 		};
-
+		
 		$scope.setOHActiveSkill = function(skill) {
 			$scope.currentOffHandSkill = skill;
 			character.currentOffHandSkill = skill;
 			$scope.characterOHAV = character.combatSkills[skill] + character.attributes.REF + $scope.offHandWeapon.attackValueBonus;
 			$scope.characterOHDV = character.combatSkills[skill] + character.attributes.REF + $scope.offHandWeapon.defenceValueBonus;
+			character.characterOHAV = $scope.characterOHAV;
+			character.characterOHDV = $scope.characterOHDV;
 		};
 	
 		$scope.history = turnsSrv.history;
