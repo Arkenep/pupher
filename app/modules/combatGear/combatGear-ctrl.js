@@ -1,5 +1,5 @@
 angular.module('myApp.combatGear', ['ngRoute'])
-	.controller('combatGearCtrl', ['$scope', 'character', function ($scope, character) {
+	.controller('combatGearCtrl', ['$scope', 'character','turnsSrv', function ($scope, character, turnsSrv) {
 
 		$scope.totalCombatPointsCost = 0;
 		$scope.attributes = character.attributes;

@@ -49,32 +49,238 @@ angular.module('myApp.combat', ['ngRoute'])
 		};
 	
 		$scope.history = turnsSrv.history;
-
+		
 		$scope.thisTurn = {
+			initiative : 0,
+			bonusAV : 0,
+			equipment : {
+				mainHandWeaponSkill : {
+					name: '',
+					level: 0
+				},
+				offHandWeaponSkill : {
+					name: '',
+					level: 0
+				},
+				mainHandWeaponAV : 0,
+				mainHandWeaponDV : 0,
+				offHandWeaponAV : 0,
+				offHandWeaponDV : 0
+			},
 			action : [
 				{
-					type : 'thrust',
-					item : 'Axe',
-					vigor : 3
-				},{
-					type : 'swing',
-					item : 'Axe',
-					vigor : 4
+					type: '',
+					attackType: '',
+					bonusAVUsed: 0,
+					location: {
+						name: '',
+						vigorCost: 0
+					},
+					specials: {
+						name: '',
+						vigorCost: 0
+					},
+					effects: {
+						name: '',
+						vigorCost: 0
+					},
+					roll: 0,
+					finalAV: 0,
+					vigor: 0,
+					luck: 0,
+					sublocation: '',
+					damageDone: 0,
+					successfulEffects: ''
+				},
+				{
+					type: '',
+					attackType: '',
+					bonusAVUsed: 0,
+					location: {
+						name: '',
+						vigorCost: 0
+					},
+					specials: {
+						name: '',
+						vigorCost: 0
+					},
+					effects: {
+						name: '',
+						vigorCost: 0
+					},
+					roll: 0,
+					finalAV: 0,
+					vigor: 0,
+					luck: 0,
+					sublocation: '',
+					damageDone: 0,
+					successfulEffects: ''
+				},
+				{
+					type: '',
+					attackType: '',
+					bonusAVUsed: 0,
+					location: {
+						name: '',
+						vigorCost: 0
+					},
+					specials: {
+						name: '',
+						vigorCost: 0
+					},
+					effects: {
+						name: '',
+						vigorCost: 0
+					},
+					roll: 0,
+					finalAV: 0,
+					vigor: 0,
+					luck: 0,
+					sublocation: '',
+					damageDone: 0,
+					successfulEffects: ''
+				},
+				{
+					type: '',
+					attackType: '',
+					bonusAVUsed: 0,
+					location: {
+						name: '',
+						vigorCost: 0
+					},
+					specials: {
+						name: '',
+						vigorCost: 0
+					},
+					effects: {
+						name: '',
+						vigorCost: 0
+					},
+					roll: 0,
+					finalAV: 0,
+					vigor: 0,
+					luck: 0,
+					sublocation: '',
+					damageDone: 0,
+					successfulEffects: ''
 				}
 			]
 		};
 
 		$scope.resetTurn = function() {
 			$scope.thisTurn = {
+				initiative : 0,
+				bonusAV : 0,
+				equipment : {
+					mainHandWeaponSkill : {
+						name: '',
+						level: 0
+					},
+					offHandWeaponSkill : {
+						name: '',
+						level: 0
+					},
+					mainHandWeaponAV : 0,
+					mainHandWeaponDV : 0,
+					offHandWeaponAV : 0,
+					offHandWeaponDV : 0
+				},
 				action : [
 					{
-						type : '',
-						item : '',
-						vigor : 0
-					},{
-						type : '',
-						item : '',
-						vigor : 0
+						type: '',
+						attackType: '',
+						bonusAVUsed: 0,
+						location: {
+							name: '',
+							vigorCost: 0
+						},
+						specials: {
+							name: '',
+							vigorCost: 0
+						},
+						effects: {
+							name: '',
+							vigorCost: 0
+						},
+						roll: 0,
+						finalAV: 0,
+						vigor: 0,
+						luck: 0,
+						sublocation: '',
+						damageDone: 0,
+						successfulEffects: ''
+					},
+					{
+						type: '',
+						attackType: '',
+						bonusAVUsed: 0,
+						location: {
+							name: '',
+							vigorCost: 0
+						},
+						specials: {
+							name: '',
+							vigorCost: 0
+						},
+						effects: {
+							name: '',
+							vigorCost: 0
+						},
+						roll: 0,
+						finalAV: 0,
+						vigor: 0,
+						luck: 0,
+						sublocation: '',
+						damageDone: 0,
+						successfulEffects: ''
+					},
+					{
+						type: '',
+						attackType: '',
+						bonusAVUsed: 0,
+						location: {
+							name: '',
+							vigorCost: 0
+						},
+						specials: {
+							name: '',
+							vigorCost: 0
+						},
+						effects: {
+							name: '',
+							vigorCost: 0
+						},
+						roll: 0,
+						finalAV: 0,
+						vigor: 0,
+						luck: 0,
+						sublocation: '',
+						damageDone: 0,
+						successfulEffects: ''
+					},
+					{
+						type: '',
+						attackType: '',
+						bonusAVUsed: 0,
+						location: {
+							name: '',
+							vigorCost: 0
+						},
+						specials: {
+							name: '',
+							vigorCost: 0
+						},
+						effects: {
+							name: '',
+							vigorCost: 0
+						},
+						roll: 0,
+						finalAV: 0,
+						vigor: 0,
+						luck: 0,
+						sublocation: '',
+						damageDone: 0,
+						successfulEffects: ''
 					}
 				]
 			};
@@ -88,16 +294,5 @@ angular.module('myApp.combat', ['ngRoute'])
 		$scope.undoTurn = function() {
 			turnsSrv.history.splice(turnsSrv.history.length - 1, 1);
 		}
-
-		$scope.initiative = 0;
-		$scope.bonusCombatAV = 0;
-
-
-
-
-
-
-
-
 
 	}]);

@@ -234,53 +234,7 @@ angular.module('myApp.services').service('character', function() {
 		}
 	};
 
-	//jei turnas yra objektas tai reikia sukurti COMBAT array? ar kaip vyksta?
-	combat = {
-		initiative: 0,
-		bonusAV: 0,
-		turn: {
-			mainHandWeaponAV : 0,
-			mainHandWeaponDV : 0,
-			offHandWeaponAV : 0,
-			offHandWeaponDV : 0,
-			mainHandWeaponSkill : {
-				name: '',
-				level: 0
-			},
-			offHandWeaponSkill : {
-				name: '',
-				level: 0
-			},
-			attack: [ //array reikia gal daryt? nes bus max 4 atakos
-				{
-					action: '',
-					attackType: '',
-					bonusAVUsed: 0,
-					location: {
-						name: '',
-						vigorCost: 0
-					},
-					specials: {
-						name: '',
-						vigorCost: 0
-					},
-					effects: {
-						name: '',
-						vigorCost: 0
-					},
-					roll: 0,
-					finalAV: 0,
-					vigor: 0,
-					luck: 0,
-					sublocation: '',
-					damageDone: 0,
-					successfulEffects: ''
-				}
-			]
-		}
-	};
-
-
+	
 	var currentMainHandSkill = 'Not Selected';
 	var currentOffHandSkill = 'Not Selected';
 	var mainHandWeapon = {
@@ -337,7 +291,7 @@ angular.module('myApp.services').service('character', function() {
 		characterMHAV: characterMHAV,
 		characterMHDV: characterMHDV,
 		characterOHAV: characterOHAV,
-		characterOHDV: characterOHDV,
+		characterOHDV: characterOHDV
 	};
 
 	return profile;
