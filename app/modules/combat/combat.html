@@ -175,7 +175,7 @@
 </br>
 
 <div class="stat-area stat-area-weapons">
-	<span>Turns</span>
+	<span>Combat</span>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="div-table">
@@ -194,6 +194,14 @@
 					<div class="div-table-col">11</div>
 					<div class="div-table-col">12</div>
 					<div class="div-table-col">13</div>
+					<div class="div-table-col div-table-col-borderless-2">Initiative</div>
+					<div class="div-table-col"><input type="number" class="form-control form-control-stats" ng-value=turns.thisTurn.initiative style="padding: 0px;"></div>
+					<div class="div-table-col div-table-col-borderless-2">Bonus</div>
+					<div class="div-table-col" ng-hide="showThis">{{turns.thisTurn.currentBonus}}</div>
+					<div class="div-table-col" ng-hide="hideThis"><input type="number" class="form-control form-control-stats" ng-model="turns.thisTurn.bonus" style="padding: 0px;"></div>
+					<div type="button" title="Start Combat" class="div-table-col div-table-col-borderless btn btn-success weapon-change" ng-click="startCombat()">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -207,23 +215,14 @@
 		<div class="col-md-12">
 			<div class="div-table">
 				<div class="div-table-row">
-					<div class="div-table-col div-table-col-borderless-2">Initiative</div>
-					<div class="div-table-col"><input type="number" class="form-control form-control-stats" ng-model="initiative" ng-value=initiative style="padding: 0px;"></div>
-					<div class="div-table-col div-table-col-borderless-2">Bonus</div>
-					<div class="div-table-col"><input type="number" class="form-control form-control-stats" ng-model="bonusCombatAV" ng-value=bonusCombatAV style="padding: 0px;"></div>
-					<div class="div-table-col div-table-col-borderless">
-						<div class="input-group input-group-stats">
-							<span class="input-group-btn">
-								<div class="btn-group btn-group-move-item" role="group">
-									<button type="button" class="btn btn-default btn-xs btn-move-item" aria-label="Left Align">
-										<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-									</button><br>
-									<button type="button" class="btn btn-default btn-xs btn-move-item" aria-label="Left Align">
-										<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-									</button>
-								</div>
-							</span></div>
-					</div>
+					<div class="div-table-col div-table-col-borderless"></div>
+					<div class="div-table-col div-table-col-borderless"></div>
+					<div class="div-table-col div-table-col-borderless"></div>
+					<div class="div-table-col div-table-col-borderless"></div>
+					<div class="div-table-col div-table-col-borderless"></div>
+					<div class="div-table-col div-table-col-borderless"></div>
+					<div class="div-table-col div-table-col-borderless"></div>
+
 					<div class="div-table-col div-table-col-borderless"></div>
 					<div class="div-table-col div-table-col-borderless">Luck</div>
 					<div class="div-table-col">-</div>
@@ -251,7 +250,7 @@
 				<div class="div-table-row">
 					<div class="div-table-col div-table-col-2">Action</div>
 					<div class="div-table-col div-table-col-2">Attack Type</div>
-					<div class="div-table-col div-table-col-2">Init Bonus</div>
+					<div class="div-table-col">Bonus</div>
 					<div class="div-table-col">Loc</div>
 					<div class="div-table-col div-table-col-2">Specials</div>
 					<div class="div-table-col div-table-col-2">Effects</div>
@@ -267,24 +266,32 @@
 				</div>
 
 				<div class="div-table-row">
-					<div class="div-table-col div-table-col-2">Main Hand</div>
-					<div title="Thrust Effects" class="div-table-col div-table-col-2">Thrust</div>
-					<div class="div-table-col">2</div>
-					<div class="div-table-col div-table-col-borderless">
-						<div class="input-group input-group-stats">
-							<span class="input-group-btn">
-								<div class="btn-group btn-group-move-item" role="group">
-									<button type="button" class="btn btn-default btn-xs btn-move-item" aria-label="Left Align">
-										<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-									</button><br>
-									<button type="button" class="btn btn-default btn-xs btn-move-item" aria-label="Left Align">
-										<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-									</button>
-								</div>
-							</span>
-						</div>
+
+					<div class="btn-group" uib-dropdown style="width: 88px; display: table-column;height: 44px;text-align: center;line-height: 44px;vertical-align: middle;float: left;">
+						<button id="btn-append-to-single-button-action-type" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 88px;height: 44px;">{{turns.currentActionType}}
+						</button>
+						<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
+							<li ng-repeat="(activeAction, value) in turns.actionType" role="menuitem"><a ng-click="setActionType(activeAction)">{{activeAction}}</a></li>
+						</ul>
 					</div>
-					<div class="div-table-col">Head</div>
+					<div class="btn-group" uib-dropdown style="width: 88px; display: table-column;height: 44px;text-align: center;line-height: 44px;vertical-align: middle;float: left;">
+						<button id="btn-append-to-single-button-attack-type" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 88px;height: 44px;">{{turns.currentAttackType}}
+						</button>
+						<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
+							<li ng-repeat="(activeAttack, value) in turns.attackType" role="menuitem"><a ng-click="setAttackType(activeAttack)">{{activeAttack}}</a></li>
+						</ul>
+					</div>
+					<div class="div-table-col"><input type="number" class="form-control form-control-stats" ng-model="turns.thisTurn.bonusUsed" ng-disabled="turns.thisTurn.currentBonus <= 0" ng-change="bonusUsed()" style="padding: 0px;"></div>
+
+
+
+					<div class="btn-group" uib-dropdown style="width: 44px; display: table-column;height: 44px;text-align: center;line-height: 44px;vertical-align: middle;float: left;">
+						<button id="btn-append-to-single-button-location" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 44px;height: 44px;padding-left: 5px; padding-right: 5px;">{{turns.currentLocation}}
+						</button>
+						<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
+							<li ng-repeat="(activeLocation, value) in turns.location" role="menuitem"><a ng-click="setLocation(activeLocation)">{{activeLocation}}</a></li>
+						</ul>
+					</div>
 					<div class="div-table-col div-table-col-2">Hard Attack</div>
 					<div class="div-table-col div-table-col-2"><img src="/app/img/Critical.png" alt="Critical" title="Critical"></div>
 					<div class="div-table-col">13</div>
@@ -326,20 +333,6 @@
 					<div class="div-table-col div-table-col-2">Main Hand</div>
 					<div title="Thrust Effects" class="div-table-col div-table-col-2">Thrust</div>
 					<div class="div-table-col">1</div>
-					<div class="div-table-col div-table-col-borderless">
-						<div class="input-group input-group-stats">
-							<span class="input-group-btn">
-								<div class="btn-group btn-group-move-item" role="group">
-									<button type="button" class="btn btn-default btn-xs btn-move-item" aria-label="Left Align">
-										<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-									</button><br>
-									<button type="button" class="btn btn-default btn-xs btn-move-item" aria-label="Left Align">
-										<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-									</button>
-								</div>
-							</span>
-						</div>
-					</div>
 					<div class="div-table-col">Head</div>
 					<div class="div-table-col div-table-col-2">-</div>
 					<div class="div-table-col div-table-col-2">-</div>
@@ -382,20 +375,6 @@
 					<div class="div-table-col div-table-col-2">-</div>
 					<div title="Thrust Effects" class="div-table-col div-table-col-2">-</div>
 					<div class="div-table-col">-</div>
-					<div class="div-table-col div-table-col-borderless">
-						<div class="input-group input-group-stats">
-							<span class="input-group-btn">
-								<div class="btn-group btn-group-move-item" role="group">
-									<button type="button" class="btn btn-default btn-xs btn-move-item" aria-label="Left Align">
-										<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-									</button><br>
-									<button type="button" class="btn btn-default btn-xs btn-move-item" aria-label="Left Align">
-										<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-									</button>
-								</div>
-							</span>
-						</div>
-					</div>
 					<div class="div-table-col">-</div>
 					<div class="div-table-col div-table-col-2">-</div>
 					<div class="div-table-col div-table-col-2">-</div>
@@ -438,20 +417,6 @@
 					<div class="div-table-col div-table-col-2">-</div>
 					<div title="Thrust Effects" class="div-table-col div-table-col-2">-</div>
 					<div class="div-table-col">-</div>
-					<div class="div-table-col div-table-col-borderless">
-						<div class="input-group input-group-stats">
-							<span class="input-group-btn">
-								<div class="btn-group btn-group-move-item" role="group">
-									<button type="button" class="btn btn-default btn-xs btn-move-item" aria-label="Left Align">
-										<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-									</button><br>
-									<button type="button" class="btn btn-default btn-xs btn-move-item" aria-label="Left Align">
-										<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-									</button>
-								</div>
-							</span>
-						</div>
-					</div>
 					<div class="div-table-col">-</div>
 					<div class="div-table-col div-table-col-2">-</div>
 					<div class="div-table-col div-table-col-2">-</div>

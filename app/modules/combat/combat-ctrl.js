@@ -13,9 +13,10 @@ angular.module('myApp.combat', ['ngRoute'])
 			}
 		};
 
-		$scope.character = character;
+		$scope.turns = turnsSrv;
 		
-		$scope.autofail = 6;
+		$scope.character = character;
+		$scope.autofail = 6; //needs to be added through input.
 		
 		$scope.setMainHandWeapon = function(weapon) {
 			character.mainHandWeapon = weapon;
@@ -36,7 +37,35 @@ angular.module('myApp.combat', ['ngRoute'])
 			character.characterOHAV = character.combatSkills[skill] + character.attributes.REF + character.offHandWeapon.attackValueBonus;
 			character.characterOHDV = character.combatSkills[skill] + character.attributes.REF + character.offHandWeapon.defenceValueBonus;
 		};
+		
+		$scope.setActionType = function(action) {
+			turnsSrv.currentActionType = action;
+		};
+
+		$scope.setAttackType = function(attack) {
+			turnsSrv.currentAttackType = attack;
+		};
+		
+		$scope.setLocation = function(location) {
+			turnsSrv.currentLocation = location;
+		};
+
+		$scope.bonusUsed = function () {
+			turnsSrv.thisTurn.currentBonus = turnsSrv.thisTurn.bonus - turnsSrv.thisTurn.bonusUsed;
+		};
+
+		$scope.showThis = true;
+
+		$scope.startCombat = function () {
+			turnsSrv.thisTurn.currentBonus = turnsSrv.thisTurn.bonus;
+			$scope.hideThis = true;
+			$scope.showThis = false;
+
+		};
+
 
 		$scope.setMHActiveSkill(character.currentMainHandSkill);
-		$scope.setOHActiveSkill(character.currentOffHandSkill);
+		$scope.setMHActiveSkill(character.currentMainHandSkill);
+		$scope.setActionType(turnsSrv.currentActionType);
+		$scope.setAttackType(turnsSrv.currentAttackType);
 	}]);
