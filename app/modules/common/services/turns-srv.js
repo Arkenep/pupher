@@ -35,6 +35,7 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 	
 	turns.currentAttackType = 'Pick';
 	turns.currentLocation = 'Pick';
+	turns.currentDamageEffects = 'Pick';
 	turns.attackType = {
 		thrust: 0,
 		swing: 0
@@ -48,6 +49,12 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 		rLeg: 0,
 		lLeg: 0
 	};
+	
+	turns.buyDamageEffects = {
+		Bleed: 'Bleed.png',
+		Trauma: 'Trauma.png',
+		Critical: 'Critical.png'
+	}
 	
 	
 	turns.thisTurn = {

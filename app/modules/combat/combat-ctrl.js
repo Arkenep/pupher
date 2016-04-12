@@ -46,6 +46,10 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.currentAttackType = attack;
 		};
 		
+		$scope.setDamageEffects = function(effect) {
+			turnsSrv.currentDamageEffects = effect;
+		};
+
 		$scope.setLocation = function(location) {
 			turnsSrv.currentLocation = location;
 		};
