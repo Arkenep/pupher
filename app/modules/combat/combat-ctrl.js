@@ -38,8 +38,12 @@ angular.module('myApp.combat', ['ngRoute'])
 			character.characterOHDV = character.combatSkills[skill] + character.attributes.REF + character.offHandWeapon.defenceValueBonus;
 		};
 		
-		$scope.setActionType = function(action) {
+		$scope.setActionType = function(action, options) {
 			turnsSrv.currentActionType = action;
+			turnsSrv.finalAVElement[4] = options.bonus;
+			addToFinalAV();
+			turnsSrv.vigorEffectsCost[4] = options.cost;
+			vigorCost();
 		};
 
 		$scope.setAttackType = function(attack) {
@@ -52,23 +56,27 @@ angular.module('myApp.combat', ['ngRoute'])
 
 		$scope.setLocation = function(location, value) {
 			turnsSrv.currentLocation = location;
-			$scope.finalAVElement[2] = value;
+			turnsSrv.finalAVElement[2] = value;
 			addToFinalAV();
+		};
+		$scope.setSpecial = function(special, options) {
+			turnsSrv.currentSpecial = special;
+			turnsSrv.finalAVElement[3] = options.bonus;
+			addToFinalAV();
+			turnsSrv.vigorEffectsCost[3] = options.cost;
+			vigorCost();
 		};
 
 		$scope.bonusUsed = function () {
 			turnsSrv.thisTurn.currentBonus = turnsSrv.thisTurn.bonus - turnsSrv.thisTurn.bonusUsed;
-			$scope.finalAVElement[0] = turnsSrv.thisTurn.bonusUsed;
+			turnsSrv.finalAVElement[0] = turnsSrv.thisTurn.bonusUsed;
 			addToFinalAV();
 		};
 
 		$scope.setCombatRoll = function() {
-			$scope.finalAVElement[1] = turnsSrv.combatRoll;
+			turnsSrv.finalAVElement[1] = turnsSrv.combatRoll;
 			addToFinalAV();
 		};
-
-
-
 
 		$scope.showThis = true;
 
@@ -77,24 +85,21 @@ angular.module('myApp.combat', ['ngRoute'])
 			$scope.hideThis = true;
 			$scope.showThis = false;
 		};
-		
-		$scope.finalAVElement = [0,0,0,0];
-		function addToFinalAV() {
-			turnsSrv.thisTurn.finalAV = $scope.finalAVElement[0] + $scope.finalAVElement[1] + $scope.finalAVElement[2] + $scope.finalAVElement[3];
-		};
 
-		$scope.vigorEffectsCost = [0, 0, 0, 0];
+		function addToFinalAV() {
+			turnsSrv.thisTurn.finalAV = turnsSrv.finalAVElement[0] + turnsSrv.finalAVElement[1] + turnsSrv.finalAVElement[2] + turnsSrv.finalAVElement[3] + turnsSrv.finalAVElement[4];
+		}
+
 		function vigorCost() {
-			turnsSrv.thisTurn.vigor = $scope.vigorEffectsCost[0] + $scope.vigorEffectsCost[1] + $scope.vigorEffectsCost[2] + $scope.vigorEffectsCost[3];
+			turnsSrv.thisTurn.vigor = turnsSrv.vigorEffectsCost[0] + turnsSrv.vigorEffectsCost[1] + turnsSrv.vigorEffectsCost[2] + turnsSrv.vigorEffectsCost[3] + turnsSrv.vigorEffectsCost[4];
 		}
 
 		$scope.vigorDamageEffectsCost = function (effect, index) {
-			$scope.vigorEffectsCost[index] = effect.value * effect.vigorCost;
+			turnsSrv.vigorEffectsCost[index] = effect.value * effect.vigorCost;
 			vigorCost();
 		};
 
 		$scope.setMHActiveSkill(character.currentMainHandSkill);
 		$scope.setMHActiveSkill(character.currentMainHandSkill);
-		$scope.setActionType(turnsSrv.currentActionType);
 		$scope.setAttackType(turnsSrv.currentAttackType);
 	}]);

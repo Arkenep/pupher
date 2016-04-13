@@ -23,18 +23,15 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 		}
 	}
 
-	turns.currentActionType = 'Pick';
-	turns.actionType = {
-		mainHand: character.mainHandWeapon.weight,
-		offHand: character.offHandWeapon.weight,
-		light: 1,
-		medium: 2,
-		heavy: 3,
-		superHeavy: 4
-	};
+
 	
 	turns.currentAttackType = 'Pick';
 	turns.currentLocation = 'Pick';
+	turns.currentSpecial = 'Pick';
+	
+	turns.finalAVElement = [0, 0, 0, 0, 0];
+	turns.vigorEffectsCost = [0, 0, 0, 0, 0];
+	
 	
 	turns.attackType = {
 		thrust: 0,
@@ -42,12 +39,21 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 	};
 	
 	turns.location = {
+		Rnd: 0,
 		head: -3,
 		body: -2,
 		rArm: -1,
 		lArm: -1,
 		rLeg: -1,
 		lLeg: -1
+	};
+
+	turns.specials = {
+		normal: {bonus: 0, cost: 0},
+		hardAttack: {bonus: 2, cost: 2},
+		kneel: {bonus: 3, cost: 0},
+		fall: {bonus: 5, cost: 0},
+		stand: {bonus: -5, cost: 0}
 	};
 	
 	turns.buyDamageEffects = {
@@ -68,7 +74,15 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 		vigor: 0
 	};
 	
-	
+	turns.currentActionType = 'Pick';
+	turns.actionType = {
+		mainHand: {cost: character.mainHandWeapon.weight, bonus: character.characterMHAV},
+		offHand: {cost: 0, bonus: 0},
+		light: {cost: 1, bonus: 0},
+		medium: {cost: 2, bonus: 0},
+		heavy: {cost: 3, bonus: 0},
+		superHeavy: {cost: 4, bonus: 0}
+	};
 	
 	return turns;
 }]);
