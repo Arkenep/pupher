@@ -281,7 +281,7 @@
 							<li ng-repeat="(activeAttack, value) in turns.attackType" role="menuitem"><a ng-click="setAttackType(activeAttack)">{{activeAttack}}</a></li>
 						</ul>
 					</div>
-					<div class="div-table-col"><input type="number" class="form-control form-control-stats" ng-model="turns.thisTurn.bonusUsed" ng-disabled="turns.thisTurn.currentBonus <= 0" ng-change="bonusUsed()" style="padding: 0px;"></div>
+					<div class="div-table-col"><input type="number" class="form-control form-control-stats" ng-model="turns.thisTurn.bonusUsed" ng-change="bonusUsed()" style="padding: 0px;"></div>
 
 
 
@@ -305,15 +305,15 @@
 								<div>
 									<a>
 										<div style="float: left; padding-left: 5px; padding-right: 5px;"><img src="/app/img/{{options.icon}}" alt="{{activeDamageEffect}}" title="{{activeDamageEffect}}"></div>
-										<input type="number" class="form-control form-control-stats" ng-model="options.value" style="float: left; width: 88px; height: 44px; padding: 0px;">
+										<input type="number" class="form-control form-control-stats" ng-model="options.value" ng-change="vigorDamageEffectsCost(options, $index)" style="float: left; width: 88px; height: 44px; padding: 0px;">
 									</a>
 								</div>
 							</li>
 						</ul>
 					</div>
-					<div class="div-table-col"><input type="number" class="form-control form-control-stats" style="padding: 0px;"></div>
-					<div class="div-table-col">30</div>
-					<div class="div-table-col">7</div>
+					<div class="div-table-col"><input type="number" class="form-control form-control-stats" ng-model="turns.combatRoll" style="padding: 0px;"></div>
+					<div class="div-table-col"></div>
+					<div class="div-table-col">{{turns.thisTurn.vigor}}</div>
 					<div class="div-table-col div-table-col-2">Eye</div>
 					<div class="div-table-col">3</div>
 					<div class="div-table-col div-table-col-2"><img src="/app/img/Bleed.png" alt="Bleed" title="Bleed"><img src="/app/img/Critical.png" alt="Critical" title="Critical"></div>

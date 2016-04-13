@@ -51,131 +51,24 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 	};
 	
 	turns.buyDamageEffects = {
-		Bleed: {icon: 'Bleed.png', value: 0},
-		Trauma: {icon: 'Trauma.png', value: 0},
-		Critical: {icon: 'Critical.png', value: 0}
-	}
-	
-	
+		Bleed: {icon: 'Bleed.png', value: 0, vigorCost: 1},
+		Trauma: {icon: 'Trauma.png', value: 0, vigorCost: 2},
+		Critical: {icon: 'Critical.png', value: 0, vigorCost: 3}
+	};
+
+	turns.combatRoll = 0;
+
 	turns.thisTurn = {
 		index : 0,
 		initiative : 0,
 		bonus : 0,
 		bonusUsed: 0,
-		//may be unnecessary
-		/*equipment : {
-			mainHandWeaponSkill : {
-				name: '',
-				level: 0
-			},
-			offHandWeaponSkill : {
-				name: '',
-				level: 0
-			},
-			mainHandWeaponAV : 0,
-			mainHandWeaponDV : 0,
-			offHandWeaponAV : 0,
-			offHandWeaponDV : 0
-		},*/
-		action : [
-			{
-				type: '',
-				attackType: '',
-				bonusAVUsed: 0,
-				location: {
-					name: '',
-					vigorCost: 0
-				},
-				specials: {
-					name: '',
-					vigorCost: 0
-				},
-				effects: {
-					name: '',
-					vigorCost: 0
-				},
-				roll: 0,
-				finalAV: 0,
-				vigor: 0,
-				luck: 0,
-				sublocation: '',
-				damageDone: 0,
-				successfulEffects: ''
-			},
-			{
-				type: '',
-				attackType: '',
-				bonusAVUsed: 0,
-				location: {
-					name: '',
-					vigorCost: 0
-				},
-				specials: {
-					name: '',
-					vigorCost: 0
-				},
-				effects: {
-					name: '',
-					vigorCost: 0
-				},
-				roll: 0,
-				finalAV: 0,
-				vigor: 0,
-				luck: 0,
-				sublocation: '',
-				damageDone: 0,
-				successfulEffects: ''
-			},
-			{
-				type: '',
-				attackType: '',
-				bonusAVUsed: 0,
-				location: {
-					name: '',
-					vigorCost: 0
-				},
-				specials: {
-					name: '',
-					vigorCost: 0
-				},
-				effects: {
-					name: '',
-					vigorCost: 0
-				},
-				roll: 0,
-				finalAV: 0,
-				vigor: 0,
-				luck: 0,
-				sublocation: '',
-				damageDone: 0,
-				successfulEffects: ''
-			},
-			{
-				type: '',
-				attackType: '',
-				bonusAVUsed: 0,
-				location: {
-					name: '',
-					vigorCost: 0
-				},
-				specials: {
-					name: '',
-					vigorCost: 0
-				},
-				effects: {
-					name: '',
-					vigorCost: 0
-				},
-				roll: 0,
-				finalAV: 0,
-				vigor: 0,
-				luck: 0,
-				sublocation: '',
-				damageDone: 0,
-				successfulEffects: ''
-			}
-		]
+		currentBonus: 0,
+		finalAV: 0,
+		vigor: 0
 	};
-
+	
+	
+	
 	return turns;
 }]);

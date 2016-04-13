@@ -57,16 +57,20 @@ angular.module('myApp.combat', ['ngRoute'])
 		$scope.bonusUsed = function () {
 			turnsSrv.thisTurn.currentBonus = turnsSrv.thisTurn.bonus - turnsSrv.thisTurn.bonusUsed;
 		};
-
+		
 		$scope.showThis = true;
 
 		$scope.startCombat = function () {
 			turnsSrv.thisTurn.currentBonus = turnsSrv.thisTurn.bonus;
 			$scope.hideThis = true;
 			$scope.showThis = false;
-
 		};
-
+		
+		$scope.vigorEffectsCost = [0, 0, 0];
+		$scope.vigorDamageEffectsCost = function (effect, index) {
+			$scope.vigorEffectsCost[index] = effect.value * effect.vigorCost;
+			turnsSrv.thisTurn.vigor = $scope.vigorEffectsCost[0] + $scope.vigorEffectsCost[1] + $scope.vigorEffectsCost[2];
+		};
 
 		$scope.setMHActiveSkill(character.currentMainHandSkill);
 		$scope.setMHActiveSkill(character.currentMainHandSkill);
