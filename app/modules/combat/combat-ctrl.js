@@ -67,21 +67,28 @@ angular.module('myApp.combat', ['ngRoute'])
 		$scope.setOHActiveSkill(character.offHandWeapon.type.name, character.offHandWeapon.type.value);
 
 		// not yet setup.
-		function mainHandDV() {
+		/*function mainHandDV() {
 			character.characterMHDV = character.combatSkills[skill] + character.attributes.REF + character.mainHandWeapon.defenceValueBonus;
-		}
+		}*/
 
-		
-		
-		
-		
-		
 		$scope.setActionType = function(action, options) {
 			turnsSrv.currentActionType = action;
-			turnsSrv.finalAVElement[4] = options.bonus;
-			addToFinalAV();
-			turnsSrv.vigorEffectsCost[4] = 0;
-			vigorCost();
+			if (action == 'mainHand') {
+				turnsSrv.finalAVElement[4] = character.characterMHAV;
+				turnsSrv.vigorEffectsCost[4] = character.mainHandWeapon.weight;
+				addToFinalAV();
+				vigorCost();
+			} else if (action == 'offHand') {
+				turnsSrv.finalAVElement[4] = character.characterOHAV;
+				turnsSrv.vigorEffectsCost[4] = character.offHandWeapon.weight;
+				addToFinalAV();
+				vigorCost();
+			} else {
+				turnsSrv.finalAVElement[4] = options.bonus;
+				turnsSrv.vigorEffectsCost[4] = options.cost;
+				addToFinalAV();
+				vigorCost();
+			}
 		};
 
 		$scope.setAttackType = function(attack) {
@@ -137,7 +144,5 @@ angular.module('myApp.combat', ['ngRoute'])
 			vigorCost();
 		};
 
-		//$scope.setMHActiveSkill(character.currentMainHandSkill);
-		//$scope.setMHActiveSkill(character.currentMainHandSkill);
 		$scope.setAttackType(turnsSrv.currentAttackType);
 	}]);

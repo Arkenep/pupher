@@ -176,8 +176,6 @@ angular.module('myApp.services').service('character', function() {
 			weight: 2,
 			reach: 1
 		}
-
-
 	];
 
 	shields = [
@@ -203,8 +201,6 @@ angular.module('myApp.services').service('character', function() {
 			attackValueBonus: 0,
 			defenceValueBonus: 0
 		}
-
-
 	];
 
 	armor = {
@@ -234,7 +230,6 @@ angular.module('myApp.services').service('character', function() {
 		}
 	};
 
-
 	var currentMainHandSkill = 'Not Selected';
 	var currentOffHandSkill = 'Not Selected';
 	var mainHandWeapon = {
@@ -251,8 +246,8 @@ angular.module('myApp.services').service('character', function() {
 			{icon: '', name: ''},
 			{icon: '', name: ''}
 		],
-		swingDamage: 3,
-		swingDamagePiercing: 1,
+		swingDamage: 0,
+		swingDamagePiercing: 0,
 		swingDamageEffects: [
 			{icon: '', name: ''},
 			{icon: '', name: ''},
@@ -265,7 +260,8 @@ angular.module('myApp.services').service('character', function() {
 		attackValueBonus: 0,
 		defenceValueBonus: 0,
 		weight: 0,
-		reach: 0};
+		reach: 0
+	};
 
 	var offHandWeapon = {
 		name: 'None',
@@ -281,8 +277,8 @@ angular.module('myApp.services').service('character', function() {
 			{icon: '', name: ''},
 			{icon: '', name: ''}
 		],
-		swingDamage: 3,
-		swingDamagePiercing: 1,
+		swingDamage: 0,
+		swingDamagePiercing: 0,
 		swingDamageEffects: [
 			{icon: '', name: ''},
 			{icon: '', name: ''},
@@ -295,16 +291,13 @@ angular.module('myApp.services').service('character', function() {
 		attackValueBonus: 0,
 		defenceValueBonus: 0,
 		weight: 0,
-		reach: 0};
+		reach: 0
+	};
 	
 	var characterMHAV = 0;
 	var characterMHDV = 0;
 	var characterOHAV = 0;
 	var characterOHDV = 0;
-
-
-
-	
 	
 	profile =  {
 		attributes : attributes,

@@ -21,9 +21,7 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 		} else {
 			return false;
 		}
-	}
-
-
+	};
 	
 	turns.currentAttackType = 'Pick';
 	turns.currentLocation = 'Pick';
@@ -76,7 +74,7 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 
 	turns.currentActionType = 'Pick';
 	turns.actionType = {
-		mainHand: {cost: character.mainHandWeapon.weight, bonus: character.mainHandWeapon.type.value},
+		mainHand: {cost: 0, bonus: 0},
 		offHand: {cost: 0, bonus: 0},
 		light: {cost: 1, bonus: 0},
 		medium: {cost: 2, bonus: 0},
