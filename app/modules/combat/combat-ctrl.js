@@ -20,24 +20,58 @@ angular.module('myApp.combat', ['ngRoute'])
 		
 		$scope.setMainHandWeapon = function(weapon) {
 			character.mainHandWeapon = weapon;
+			for (var i=0; i<Object.keys(character.combatSkills).length; i++) {
+				skill = Object.keys(character.combatSkills)[i];
+				if (character.mainHandWeapon.type.name == skill) {
+					character.mainHandWeapon.type.value = character.combatSkills[skill];
+				}
+			}
+			mainHandAV();
 		};
+		$scope.setMainHandWeapon(character.mainHandWeapon);
+
+		function mainHandAV() {
+			character.characterMHAV = character.mainHandWeapon.type.value + character.attributes.REF + character.mainHandWeapon.attackValueBonus;
+		}
+		mainHandAV();
 
 		$scope.setOffHandWeapon = function(weapon) {
 			character.offHandWeapon = weapon;
+			for (var i=0; i<Object.keys(character.combatSkills).length; i++) {
+				skill = Object.keys(character.combatSkills)[i];
+				if (character.offHandWeapon.type.name == skill) {
+					character.offHandWeapon.type.value = character.combatSkills[skill];
+				}
+			}
+			offHandAV();
 		};
+		$scope.setMainHandWeapon(character.offHandWeapon);
 
-		$scope.setMHActiveSkill = function(skill) {
-			character.currentMainHandSkill = skill;
-			character.characterMHAV = character.combatSkills[skill] + character.attributes.REF + character.mainHandWeapon.attackValueBonus;
-			character.characterMHDV = character.combatSkills[skill] + character.attributes.REF + character.mainHandWeapon.defenceValueBonus;
-		};
-
-		$scope.setOHActiveSkill = function(skill) {
-			character.currentOffHandSkill = skill;
-			character.characterOHAV = character.combatSkills[skill] + character.attributes.REF + character.offHandWeapon.attackValueBonus;
-			character.characterOHDV = character.combatSkills[skill] + character.attributes.REF + character.offHandWeapon.defenceValueBonus;
-		};
+		function offHandAV() {
+			character.characterOHAV = character.offHandWeapon.type.value + character.attributes.REF + character.offHandWeapon.attackValueBonus;
+		}
+		offHandAV();
 		
+		$scope.setMHActiveSkill = function(skill, value) {
+			character.mainHandWeapon.type.name = skill;
+			character.mainHandWeapon.type.value = value;
+			mainHandAV();
+		};
+		$scope.setMHActiveSkill(character.mainHandWeapon.type.name, character.mainHandWeapon.type.value);
+
+		$scope.setOHActiveSkill = function(skill, value) {
+			character.offHandWeapon.type.name = skill;
+			character.offHandWeapon.type.value = value;
+			offHandAV();
+		};
+		$scope.setOHActiveSkill(character.offHandWeapon.type.name, character.offHandWeapon.type.value);
+
+		// not yet setup.
+		function mainHandDV() {
+			character.characterMHDV = character.combatSkills[skill] + character.attributes.REF + character.mainHandWeapon.defenceValueBonus;
+		}
+
+
 		$scope.setActionType = function(action, options) {
 			turnsSrv.currentActionType = action;
 			turnsSrv.finalAVElement[4] = options.bonus;
@@ -99,7 +133,7 @@ angular.module('myApp.combat', ['ngRoute'])
 			vigorCost();
 		};
 
-		$scope.setMHActiveSkill(character.currentMainHandSkill);
-		$scope.setMHActiveSkill(character.currentMainHandSkill);
+		//$scope.setMHActiveSkill(character.currentMainHandSkill);
+		//$scope.setMHActiveSkill(character.currentMainHandSkill);
 		$scope.setAttackType(turnsSrv.currentAttackType);
 	}]);

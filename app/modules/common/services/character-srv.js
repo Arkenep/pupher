@@ -28,7 +28,7 @@ angular.module('myApp.services').service('character', function() {
 	weapons = [
 		{
 			name: 'Long Sword',
-			type: 'Blade',
+			type: {name: 'Blade', value: 0},
 			thrustDamage: 4,
 			thrustDamagePiercing: 1,
 			isActive : false,
@@ -58,7 +58,7 @@ angular.module('myApp.services').service('character', function() {
 		},
 		{
 			name: 'Short Sword',
-			type: 'Blade',
+			type: {name: 'Blade', value: 0},
 			thrustDamage: 2,
 			thrustDamagePiercing: 1,
 			isActive : false,
@@ -88,7 +88,7 @@ angular.module('myApp.services').service('character', function() {
 		},
 		{
 			name: 'Spear',
-			type: 'Spear',
+			type: {name: 'Spear', value: 0},
 			thrustDamage: 3,
 			thrustDamagePiercing: 1,
 			isActive : false,
@@ -118,7 +118,7 @@ angular.module('myApp.services').service('character', function() {
 		},
 		{
 			name: 'Mace',
-			type: 'Unbalanced',
+			type: {name: 'Unbalanced', value: 0},
 			thrustDamage: 0,
 			thrustDamagePiercing: 0,
 			isActive : false,
@@ -148,7 +148,7 @@ angular.module('myApp.services').service('character', function() {
 		},
 		{
 			name: 'Axe',
-			type: 'Unbalanced',
+			type: {name: 'Unbalanced', value: 0},
 			thrustDamage: 0,
 			isActive : false,
 			thrustDamagePiercing: 0,
@@ -239,7 +239,7 @@ angular.module('myApp.services').service('character', function() {
 	var currentOffHandSkill = 'Not Selected';
 	var mainHandWeapon = {
 		name: 'None',
-		type: '',
+		type: {name: 'None', value: 0},
 		thrustDamage: 0,
 		isActive : false,
 		thrustDamagePiercing: 0,

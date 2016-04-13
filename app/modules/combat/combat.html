@@ -37,10 +37,10 @@
 
 			<div title="Attack Value" class="div-table-col div-table-col-borderless">Skill</div>
 			<div class="btn-group" uib-dropdown style="width: 132px; display: table-column;height: 44px;text-align: center;line-height: 44px;vertical-align: middle;float: left;">
-				<button id="btn-append-to-single-button-mainHandSkill" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 132px;height: 44px;">{{character.currentMainHandSkill}}<span class="caret"></span>
+				<button id="btn-append-to-single-button-mainHandSkill" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 132px;height: 44px;">{{character.mainHandWeapon.type.name}}<span class="caret"></span>
 					</button>
 				<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
-					<li ng-repeat="(activeSkill, value) in character.combatSkills" role="menuitem"><a ng-click="setMHActiveSkill(activeSkill)">{{activeSkill}}</a></li>
+					<li ng-repeat="(activeSkill, value) in character.combatSkills" role="menuitem"><a ng-click="setMHActiveSkill(activeSkill, value)">{{activeSkill}}</a></li>
 				</ul>
 			</div>
 
@@ -82,10 +82,10 @@
 
 			<div title="Attack Value" class="div-table-col div-table-col-borderless">Skill</div>
 			<div class="btn-group" uib-dropdown style="width: 132px; display: table-column;height: 44px;text-align: center;line-height: 44px;vertical-align: middle;float: left;">
-				<button id="btn-append-to-single-button-offHandSkill" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 132px;height: 44px;">{{character.currentOffHandSkill}}<span class="caret"></span>
+				<button id="btn-append-to-single-button-offHandSkill" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 132px;height: 44px;">{{character.offHandWeapon.type.name}}<span class="caret"></span>
 				</button>
 				<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
-					<li ng-repeat="(activeSkill, value) in character.combatSkills" role="menuitem"><a ng-click="setOHActiveSkill(activeSkill)">{{activeSkill}}</a></li>
+					<li ng-repeat="(activeSkill, value) in character.combatSkills" role="menuitem"><a ng-click="setOHActiveSkill(activeSkill, value)">{{activeSkill}}</a></li>
 				</ul>
 			</div>
 
