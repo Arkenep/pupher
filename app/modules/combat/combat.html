@@ -294,14 +294,14 @@
 					</div>
 					<div class="div-table-col div-table-col-2">Hard Attack</div>
 
-					<div class="btn-group" uib-dropdown style="width: 88px; display: table-column; height: 44px; text-align: center;line-height: 44px;vertical-align: middle;float: left;">
-						<button id="btn-append-to-single-button-effects" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 88px; height: 44px;">{{turns.currentLocation}}
+					<div class="btn-group" uib-dropdown auto-close="disabled"  style="width: 88px; display: table-column; height: 44px; text-align: center;line-height: 44px;vertical-align: middle;float: left;">
+						<button id="btn-append-to-single-button-effects" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 88px; height: 44px;">{{turns.currentDamageEffects}}
 						</button>
 						<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button" style="min-width: 88px;">
 							<li ng-repeat="(activeDamageEffect, value) in turns.buyDamageEffects" role="menuitem" auto-close="disabled">
 								<a ng-click="setDamageEffects(activeDamageEffect)"></a>
 									<div >
-										<div style="float: left; width: 20%;"><img src="/app/img/{{value}}" alt="{{activeDamageEffect}}" title="{{activeDamageEffect}}"></div>
+										<div style="float: left; padding-left: 5px; padding-right: 5px;"><img src="/app/img/{{value}}" alt="{{activeDamageEffect}}" title="{{activeDamageEffect}}"></div>
 										<input type="number" class="form-control form-control-stats" style="float: left; width: 44px; height: 44px; padding: 0px;">
 									</div>
 
