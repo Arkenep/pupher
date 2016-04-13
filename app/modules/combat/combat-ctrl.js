@@ -50,14 +50,26 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.currentDamageEffects = effect;
 		};
 
-		$scope.setLocation = function(location) {
+		$scope.setLocation = function(location, value) {
 			turnsSrv.currentLocation = location;
+			$scope.finalAVElement[2] = value;
+			addToFinalAV();
 		};
 
 		$scope.bonusUsed = function () {
 			turnsSrv.thisTurn.currentBonus = turnsSrv.thisTurn.bonus - turnsSrv.thisTurn.bonusUsed;
+			$scope.finalAVElement[0] = turnsSrv.thisTurn.bonusUsed;
+			addToFinalAV();
 		};
-		
+
+		$scope.setCombatRoll = function() {
+			$scope.finalAVElement[1] = turnsSrv.combatRoll;
+			addToFinalAV();
+		};
+
+
+
+
 		$scope.showThis = true;
 
 		$scope.startCombat = function () {
@@ -66,10 +78,19 @@ angular.module('myApp.combat', ['ngRoute'])
 			$scope.showThis = false;
 		};
 		
-		$scope.vigorEffectsCost = [0, 0, 0];
+		$scope.finalAVElement = [0,0,0,0];
+		function addToFinalAV() {
+			turnsSrv.thisTurn.finalAV = $scope.finalAVElement[0] + $scope.finalAVElement[1] + $scope.finalAVElement[2] + $scope.finalAVElement[3];
+		};
+
+		$scope.vigorEffectsCost = [0, 0, 0, 0];
+		function vigorCost() {
+			turnsSrv.thisTurn.vigor = $scope.vigorEffectsCost[0] + $scope.vigorEffectsCost[1] + $scope.vigorEffectsCost[2] + $scope.vigorEffectsCost[3];
+		}
+
 		$scope.vigorDamageEffectsCost = function (effect, index) {
 			$scope.vigorEffectsCost[index] = effect.value * effect.vigorCost;
-			turnsSrv.thisTurn.vigor = $scope.vigorEffectsCost[0] + $scope.vigorEffectsCost[1] + $scope.vigorEffectsCost[2];
+			vigorCost();
 		};
 
 		$scope.setMHActiveSkill(character.currentMainHandSkill);

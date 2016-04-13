@@ -42,12 +42,12 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 	};
 	
 	turns.location = {
-		head: 0,
-		body: 0,
-		rArm: 0,
-		lArm: 0,
-		rLeg: 0,
-		lLeg: 0
+		head: -3,
+		body: -2,
+		rArm: -1,
+		lArm: -1,
+		rLeg: -1,
+		lLeg: -1
 	};
 	
 	turns.buyDamageEffects = {
