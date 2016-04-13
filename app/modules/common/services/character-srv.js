@@ -234,7 +234,7 @@ angular.module('myApp.services').service('character', function() {
 		}
 	};
 
-	
+
 	var currentMainHandSkill = 'Not Selected';
 	var currentOffHandSkill = 'Not Selected';
 	var mainHandWeapon = {
@@ -266,7 +266,36 @@ angular.module('myApp.services').service('character', function() {
 		defenceValueBonus: 0,
 		weight: 0,
 		reach: 0};
-	var offHandWeapon = mainHandWeapon;
+
+	var offHandWeapon = {
+		name: 'None',
+		type: {name: 'None', value: 0},
+		thrustDamage: 0,
+		isActive : false,
+		thrustDamagePiercing: 0,
+		thrustDamageEffects: [
+			{icon: '', name: ''},
+			{icon: '', name: ''},
+			{icon: '', name: ''},
+			{icon: '', name: ''},
+			{icon: '', name: ''},
+			{icon: '', name: ''}
+		],
+		swingDamage: 3,
+		swingDamagePiercing: 1,
+		swingDamageEffects: [
+			{icon: '', name: ''},
+			{icon: '', name: ''},
+			{icon: '', name: ''},
+			{icon: '', name: ''},
+			{icon: '', name: ''},
+			{icon: '', name: ''}
+		],
+		STRRequired: 0,
+		attackValueBonus: 0,
+		defenceValueBonus: 0,
+		weight: 0,
+		reach: 0};
 	
 	var characterMHAV = 0;
 	var characterMHDV = 0;

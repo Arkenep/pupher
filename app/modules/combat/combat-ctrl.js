@@ -45,13 +45,13 @@ angular.module('myApp.combat', ['ngRoute'])
 			}
 			offHandAV();
 		};
-		$scope.setMainHandWeapon(character.offHandWeapon);
+		$scope.setOffHandWeapon(character.offHandWeapon);
 
 		function offHandAV() {
 			character.characterOHAV = character.offHandWeapon.type.value + character.attributes.REF + character.offHandWeapon.attackValueBonus;
 		}
 		offHandAV();
-		
+
 		$scope.setMHActiveSkill = function(skill, value) {
 			character.mainHandWeapon.type.name = skill;
 			character.mainHandWeapon.type.value = value;
@@ -71,12 +71,16 @@ angular.module('myApp.combat', ['ngRoute'])
 			character.characterMHDV = character.combatSkills[skill] + character.attributes.REF + character.mainHandWeapon.defenceValueBonus;
 		}
 
-
+		
+		
+		
+		
+		
 		$scope.setActionType = function(action, options) {
 			turnsSrv.currentActionType = action;
 			turnsSrv.finalAVElement[4] = options.bonus;
 			addToFinalAV();
-			turnsSrv.vigorEffectsCost[4] = options.cost;
+			turnsSrv.vigorEffectsCost[4] = 0;
 			vigorCost();
 		};
 

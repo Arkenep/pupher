@@ -73,10 +73,10 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 		finalAV: 0,
 		vigor: 0
 	};
-	
+
 	turns.currentActionType = 'Pick';
 	turns.actionType = {
-		mainHand: {cost: character.mainHandWeapon.weight, bonus: character.characterMHAV},
+		mainHand: {cost: character.mainHandWeapon.weight, bonus: character.mainHandWeapon.type.value},
 		offHand: {cost: 0, bonus: 0},
 		light: {cost: 1, bonus: 0},
 		medium: {cost: 2, bonus: 0},
