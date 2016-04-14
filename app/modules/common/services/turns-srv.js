@@ -65,6 +65,7 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 	turns.thisTurn = {
 		index : 0,
 		initiative : 0,
+		initiativeRoll : 0,
 		bonus : 0,
 		bonusUsed: 0,
 		currentBonus: 0,

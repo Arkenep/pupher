@@ -27,6 +27,7 @@ angular.module('myApp.combat', ['ngRoute'])
 				}
 			}
 			mainHandAV();
+			initiativeCalc();
 		};
 		$scope.setMainHandWeapon(character.mainHandWeapon);
 
@@ -48,7 +49,7 @@ angular.module('myApp.combat', ['ngRoute'])
 		$scope.setOffHandWeapon(character.offHandWeapon);
 
 		function offHandAV() {
-			character.characterOHAV = character.offHandWeapon.type.value + character.attributes.REF + character.offHandWeapon.attackValueBonus;
+			character.characterOHAV = character.offHandWeapon.type.value + character.attributes.REF + character.offHandWeapon.attackValueBonus -3;
 		}
 		offHandAV();
 
@@ -56,6 +57,7 @@ angular.module('myApp.combat', ['ngRoute'])
 			character.mainHandWeapon.type.name = skill;
 			character.mainHandWeapon.type.value = value;
 			mainHandAV();
+			initiativeCalc();
 		};
 		$scope.setMHActiveSkill(character.mainHandWeapon.type.name, character.mainHandWeapon.type.value);
 
@@ -115,22 +117,24 @@ angular.module('myApp.combat', ['ngRoute'])
 		};
 
 		$scope.bonusUsed = function () {
+
 			turnsSrv.thisTurn.currentBonus = turnsSrv.thisTurn.bonus - turnsSrv.thisTurn.bonusUsed;
 			turnsSrv.finalAVElement[0] = turnsSrv.thisTurn.bonusUsed;
 			addToFinalAV();
+			$scope.maxbBonusValue = turnsSrv.thisTurn.bonus;
 		};
+
+		$scope.initBonus = function () {
+			turnsSrv.thisTurn.currentBonus = turnsSrv.thisTurn.bonus - turnsSrv.thisTurn.bonusUsed;
+		}
 
 		$scope.setCombatRoll = function() {
 			turnsSrv.finalAVElement[1] = turnsSrv.combatRoll;
 			addToFinalAV();
 		};
-
-		$scope.showThis = true;
-
+		
 		$scope.startCombat = function () {
 			turnsSrv.thisTurn.currentBonus = turnsSrv.thisTurn.bonus;
-			$scope.hideThis = true;
-			$scope.showThis = false;
 		};
 
 		function addToFinalAV() {
@@ -146,5 +150,14 @@ angular.module('myApp.combat', ['ngRoute'])
 			vigorCost();
 		};
 
+		$scope.calcInit = function() {
+			initiativeCalc();
+		}
+
+		function initiativeCalc() {
+			turnsSrv.thisTurn.initiative = turnsSrv.thisTurn.initiativeRoll + Math.ceil(character.mainHandWeapon.type.value/2) + character.mainHandWeapon.reach + character.attributes.PER;
+		}
+		initiativeCalc();
+		
 		$scope.setAttackType(turnsSrv.currentAttackType);
 	}]);

@@ -194,11 +194,10 @@
 					<div class="div-table-col">11</div>
 					<div class="div-table-col">12</div>
 					<div class="div-table-col">13</div>
-					<div class="div-table-col div-table-col-borderless-2">Initiative</div>
-					<div class="div-table-col"><input type="number" class="form-control form-control-stats" ng-value=turns.thisTurn.initiative style="padding: 0px;"></div>
+					<div class="div-table-col div-table-col-borderless-2">Init Roll</div>
+					<div class="div-table-col"><input type="number" min="1" max="6" class="form-control form-control-stats" ng-model="turns.thisTurn.initiativeRoll" ng-value=turns.thisTurn.initiativeRoll ng-change="calcInit()" style="padding: 0px;"></div>
 					<div class="div-table-col div-table-col-borderless-2">Bonus</div>
-					<div class="div-table-col" ng-hide="showThis">{{turns.thisTurn.currentBonus}}</div>
-					<div class="div-table-col" ng-hide="hideThis"><input type="number" class="form-control form-control-stats" ng-model="turns.thisTurn.bonus" style="padding: 0px;"></div>
+					<div class="div-table-col"><input type="number" min="0" class="form-control form-control-stats" ng-model="turns.thisTurn.bonus" ng-change="initBonus()" style="padding: 0px;"></div>
 					<div type="button" title="Start Combat" class="div-table-col div-table-col-borderless btn btn-success weapon-change" ng-click="startCombat()">
 						<span class="glyphicon glyphicon-chevron-right"></span>
 					</div>
@@ -217,28 +216,14 @@
 				<div class="div-table-row">
 					<div class="div-table-col div-table-col-borderless"></div>
 					<div class="div-table-col div-table-col-borderless"></div>
-					<div class="div-table-col div-table-col-borderless"></div>
-					<div class="div-table-col div-table-col-borderless"></div>
-					<div class="div-table-col div-table-col-borderless"></div>
-					<div class="div-table-col div-table-col-borderless"></div>
-					<div class="div-table-col div-table-col-borderless"></div>
+					<div class="div-table-col div-table-col-borderless">Init</div>
+					<div class="div-table-col" ng-model="turns.thisTurn.initiativeRoll">{{turns.thisTurn.initiative}}</div>
+					<div class="div-table-col div-table-col-borderless">Bonus</div>
+					<div class="div-table-col div-table-col-borderless">{{turns.thisTurn.currentBonus}}</div>
 
-					<div class="div-table-col div-table-col-borderless"></div>
 					<div class="div-table-col div-table-col-borderless">Luck</div>
 					<div class="div-table-col">-</div>
-					<div class="div-table-col div-table-col-borderless">
-						<div class="input-group input-group-stats">
-							<span class="input-group-btn">
-								<div class="btn-group btn-group-move-item" role="group">
-									<button type="button" class="btn btn-default btn-xs btn-move-item" aria-label="Left Align">
-										<span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-									</button><br>
-									<button type="button" class="btn btn-default btn-xs btn-move-item" aria-label="Left Align">
-										<span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-									</button>
-								</div>
-							</span></div>
-					</div>
+
 					<div class="div-table-col div-table-col-3">Complete Attack</div>
 					<div type="button" title="Complete Attack" class="div-table-col div-table-col-borderless btn btn-primary weapon-change">
 						<span class="glyphicon glyphicon-chevron-right"></span>
@@ -281,7 +266,7 @@
 							<li ng-repeat="(activeAttack, value) in turns.attackType" role="menuitem"><a ng-click="setAttackType(activeAttack)">{{activeAttack}}</a></li>
 						</ul>
 					</div>
-					<div class="div-table-col"><input type="number" min="0" class="form-control form-control-stats" ng-model="turns.thisTurn.bonusUsed" ng-change="bonusUsed()" style="padding: 0px;"></div>
+					<div class="div-table-col"><input type="number" min="0" max="{{turns.thisTurn.bonus}}" class="form-control form-control-stats" ng-model="turns.thisTurn.bonusUsed" ng-change="bonusUsed()" style="padding: 0px;"></div>
 
 
 
