@@ -117,24 +117,19 @@ angular.module('myApp.combat', ['ngRoute'])
 		};
 
 		$scope.bonusUsed = function () {
-
 			turnsSrv.thisTurn.currentBonus = turnsSrv.thisTurn.bonus - turnsSrv.thisTurn.bonusUsed;
 			turnsSrv.finalAVElement[0] = turnsSrv.thisTurn.bonusUsed;
-			addToFinalAV();
 			$scope.maxbBonusValue = turnsSrv.thisTurn.bonus;
+			addToFinalAV();
 		};
 
 		$scope.initBonus = function () {
 			turnsSrv.thisTurn.currentBonus = turnsSrv.thisTurn.bonus - turnsSrv.thisTurn.bonusUsed;
-		}
+		};
 
 		$scope.setCombatRoll = function() {
 			turnsSrv.finalAVElement[1] = turnsSrv.combatRoll;
 			addToFinalAV();
-		};
-		
-		$scope.startCombat = function () {
-			turnsSrv.thisTurn.currentBonus = turnsSrv.thisTurn.bonus;
 		};
 
 		function addToFinalAV() {
@@ -152,7 +147,7 @@ angular.module('myApp.combat', ['ngRoute'])
 
 		$scope.calcInit = function() {
 			initiativeCalc();
-		}
+		};
 
 		function initiativeCalc() {
 			turnsSrv.thisTurn.initiative = turnsSrv.thisTurn.initiativeRoll + Math.ceil(character.mainHandWeapon.type.value/2) + character.mainHandWeapon.reach + character.attributes.PER;
