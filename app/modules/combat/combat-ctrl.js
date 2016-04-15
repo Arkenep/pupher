@@ -100,11 +100,11 @@ angular.module('myApp.combat', ['ngRoute'])
 			if (attack == 'thrust') {
 				turnsSrv.thisTurn.damage = turnsSrv.attackWeapon.thrustDamage;
 				turnsSrv.thisTurn.piercing = turnsSrv.attackWeapon.thrustDamagePiercing;
-				//turnsSrv.thisTurn.effects = turnsSrv.attackWeapon.thrustDamageEffects;
+				turnsSrv.thisTurn.effects = turnsSrv.attackWeapon.thrustDamageEffects;
 			} else {
 				turnsSrv.thisTurn.damage = turnsSrv.attackWeapon.swingDamage;
 				turnsSrv.thisTurn.piercing = turnsSrv.attackWeapon.swingDamagePiercing;
-				//turnsSrv.thisTurn.effects = turnsSrv.attackWeapon.swingDamageEffects;
+				turnsSrv.thisTurn.effects = turnsSrv.attackWeapon.swingDamageEffects;
 			}
 		};
 
@@ -124,24 +124,23 @@ angular.module('myApp.combat', ['ngRoute'])
 			var roll = turnsSrv.activeWeaponEffectRoll;
 
 
-			var value = turnsSrv.thisTurn.effects[roll].name;
-
-			console.log(turnsSrv.thisTurn.effects);
+			var value = turnsSrv.thisTurn.effects[roll-1].name;
+			//reikia pries tai suspaudyt daug sh kad pasirodytu real effectai... dar darau
+			//console.log(turnsSrv.thisTurn.effects);
 			console.log(value);
 
 		};
 		
 		$scope.setSublocation = function(location, value) {
 			turnsSrv.sublocationPick = location;
-			calcEffects();
 		};
 
-		function calcEffects() {
+		/*function calcEffects() {
 			turnsSrv.thisTurn.effects.Bleed.value = turnsSrv.thisTurn.effects.Bleed.value + turnsSrv.buyDamageEffects.Bleed.value;
 			turnsSrv.thisTurn.effects.Trauma.value = turnsSrv.thisTurn.effects.Trauma.value + turnsSrv.buyDamageEffects.Trauma.value;
 			turnsSrv.thisTurn.effects.Critical.value = turnsSrv.thisTurn.effects.Critical.value + turnsSrv.buyDamageEffects.Critical.value;
 		}
-		
+		*/
 		
 		
 		$scope.setSpecial = function(special, options) {
