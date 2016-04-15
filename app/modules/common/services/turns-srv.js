@@ -153,11 +153,13 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 		damage: 0,
 		piercing: 0,
 		effects: {
-			bleed: 0,
-			trauma: 0,
-			critical: 0
+			Bleed: {icon: 'Bleed.png', value: 0},
+			Trauma: {icon: 'Trauma.png', value: 0},
+			Critical: {icon: 'Critical.png', value: 0}
 		}
 	};
+
+	turns.activeWeaponEffectRoll = 0;
 	turns.attackWeapon = {};
 	turns.currentActionType = 'Pick';
 	turns.actionType = {
