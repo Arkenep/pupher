@@ -73,22 +73,20 @@ angular.module('myApp.combat', ['ngRoute'])
 			character.characterMHDV = character.combatSkills[skill] + character.attributes.REF + character.mainHandWeapon.defenceValueBonus;
 		}*/
 
-
-
 		function setActionTypeOptions(action) {
-			if (action == 'mainHand') {
-				turnsSrv.finalAVElement[4] = character.characterMHAV;
-				turnsSrv.vigorEffectsCost[4] = character.mainHandWeapon.weight;
-				addToFinalAV();
-				vigorCost();
-			} else {
+			if (action == 'offHand') {
 				turnsSrv.finalAVElement[4] = character.characterOHAV;
 				turnsSrv.vigorEffectsCost[4] = character.offHandWeapon.weight;
 				addToFinalAV();
 				vigorCost();
+			} else {
+				turnsSrv.finalAVElement[4] = character.characterMHAV;
+				turnsSrv.vigorEffectsCost[4] = character.mainHandWeapon.weight;
+				addToFinalAV();
+				vigorCost();
 			}
 		}
-		setActionTypeOptions(turnsSrv.currentActionType);
+		setActionTypeOptions();
 
 		$scope.setActionType = function (action, options) {
 			turnsSrv.currentActionType = action;
@@ -98,16 +96,23 @@ angular.module('myApp.combat', ['ngRoute'])
 		$scope.setAttackType = function(attack) {
 			turnsSrv.currentAttackType = attack;
 		};
-		
+
+
 		$scope.setDamageEffects = function(effect) {
 			turnsSrv.currentDamageEffects = effect;
 		};
 
 		$scope.setLocation = function(location, value) {
-			turnsSrv.currentLocation = location;
-			turnsSrv.finalAVElement[2] = value;
+			turnsSrv.currentLocation = value.name;
+			turnsSrv.sublocation = value.sublocation;
+			turnsSrv.finalAVElement[2] = value.bonusAV;
 			addToFinalAV();
 		};
+
+		$scope.setSublocation = function(location, value) {
+			turnsSrv.sublocationPick = location;
+		};
+
 		$scope.setSpecial = function(special, options) {
 			turnsSrv.currentSpecial = special;
 			turnsSrv.finalAVElement[3] = options.bonus;
@@ -153,6 +158,7 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.thisTurn.initiative = turnsSrv.thisTurn.initiativeRoll + Math.ceil(character.mainHandWeapon.type.value/2) + character.mainHandWeapon.reach + character.attributes.PER;
 		}
 		initiativeCalc();
-		
+
+
 		$scope.setAttackType(turnsSrv.currentAttackType);
 	}]);

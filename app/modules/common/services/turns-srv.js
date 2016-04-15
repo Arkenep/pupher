@@ -36,14 +36,93 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 		swing: 0
 	};
 	
+	turns.sublocation = 'Pick';
+	turns.sublocationPick = 'Pick';
 	turns.location = {
-		Rnd: 0,
-		head: -3,
-		body: -2,
-		rArm: -1,
-		lArm: -1,
-		rLeg: -1,
-		lLeg: -1
+		rnd: {
+			name: 'Random',
+			bonusAV : 0,
+			sublocation: {
+				'Head': 0,
+				'Body': 0,
+				'Right Arm': 0,
+				'Left Arm': 0,
+				'Right Leg': 0,
+				'Left Leg': 0
+			}
+		},
+		head: {
+			name: 'Head',
+			bonusAV : -3, 
+			sublocation: {
+				vieta1: 0,
+				vieta2: 0,
+				vieta3: 0,
+				vieta4: 0,
+				vieta5: 0,
+				vieta6: 0
+			}
+		},
+		body: {
+			name: 'Body',
+			bonusAV : -2,
+			sublocation: {
+				vieta1: 0,
+				vieta2: 0,
+				vieta3: 0,
+				vieta4: 0,
+				vieta5: 0,
+				vieta6: 0
+			}
+		},
+		rArm: {
+			name: 'Right Arm',
+			bonusAV : -1,
+			sublocation: {
+				vieta1: 0,
+				vieta2: 0,
+				vieta3: 0,
+				vieta4: 0,
+				vieta5: 0,
+				vieta6: 0
+			}
+		},
+		lArm: {
+			name: 'Left Arm',
+			bonusAV : -1,
+			sublocation: {
+				vieta1: 0,
+				vieta2: 0,
+				vieta3: 0,
+				vieta4: 0,
+				vieta5: 0,
+				vieta6: 0
+			}
+		},
+		rLeg: {
+			name: 'Right Leg',
+			bonusAV : -1,
+			sublocation: {
+				vieta1: 0,
+				vieta2: 0,
+				vieta3: 0,
+				vieta4: 0,
+				vieta5: 0,
+				vieta6: 0
+			}
+		},
+		lLeg: {
+			name: 'Left Leg',
+			bonusAV : -1,
+			sublocation: {
+				vieta1: 0,
+				vieta2: 0,
+				vieta3: 0,
+				vieta4: 0,
+				vieta5: 0,
+				vieta6: 0
+			}
+		}
 	};
 
 	turns.specials = {
