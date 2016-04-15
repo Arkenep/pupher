@@ -244,7 +244,7 @@
 					<div class="div-table-col ">Vigor</div>
 					<div class="div-table-col div-table-col-2">Sublocation</div>
 					<div class="div-table-col">Dmg</div>
-					<div class="div-table-col div-table-col-2">Effects</div>
+					<div class="div-table-col div-table-col-3">Effects</div>
 					<!--<div type="button" title="Add Attack" class="div-table-col div-table-col-borderless btn btn-success weapon-change">
 						<span class="glyphicon glyphicon-plus"></span>
 					</div>-->
@@ -313,8 +313,12 @@
 							<li ng-repeat="(activeSublocation, options) in turns.sublocation" role="menuitem"><a ng-click="setSublocation(activeSublocation, options)">{{activeSublocation}}</a></li>
 						</ul>
 					</div>
-					<div class="div-table-col">3</div>
-					<div class="div-table-col div-table-col-2"><img src="/app/img/Bleed.png" alt="Bleed" title="Bleed"><img src="/app/img/Critical.png" alt="Critical" title="Critical"></div>
+					<div class="div-table-col">{{turns.thisTurn.damage + ' + ' + turns.thisTurn.piercing}}</div>
+					<div class="div-table-col div-table-col-3">
+						<img src="/app/img/{{turns.buyDamageEffects.Bleed.icon}}"> {{turns.buyDamageEffects.Bleed.value + turns.attackWeapon.}}
+						<img src="/app/img/{{turns.buyDamageEffects.Trauma.icon}}"> {{turns.buyDamageEffects.Trauma.value}}
+						<img src="/app/img/{{turns.buyDamageEffects.Critical.icon}}"> {{turns.buyDamageEffects.Critical.value}}
+					</div>
 				</div>
 
 				<div class="div-table-row">

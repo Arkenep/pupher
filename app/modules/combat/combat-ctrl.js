@@ -77,11 +77,13 @@ angular.module('myApp.combat', ['ngRoute'])
 			if (action == 'offHand') {
 				turnsSrv.finalAVElement[4] = character.characterOHAV;
 				turnsSrv.vigorEffectsCost[4] = character.offHandWeapon.weight;
+				turnsSrv.attackWeapon = character.offHandWeapon;
 				addToFinalAV();
 				vigorCost();
 			} else {
 				turnsSrv.finalAVElement[4] = character.characterMHAV;
 				turnsSrv.vigorEffectsCost[4] = character.mainHandWeapon.weight;
+				turnsSrv.attackWeapon = character.mainHandWeapon;
 				addToFinalAV();
 				vigorCost();
 			}
@@ -95,6 +97,15 @@ angular.module('myApp.combat', ['ngRoute'])
 
 		$scope.setAttackType = function(attack) {
 			turnsSrv.currentAttackType = attack;
+			if (attack == 'thrust') {
+				turnsSrv.thisTurn.damage = turnsSrv.attackWeapon.thrustDamage;
+				turnsSrv.thisTurn.piercing = turnsSrv.attackWeapon.thrustDamagePiercing;
+				turnsSrv.thisTurn.effects = turnsSrv.attackWeapon.thrustDamageEffects;
+			} else {
+				turnsSrv.thisTurn.damage = turnsSrv.attackWeapon.swingDamage;
+				turnsSrv.thisTurn.piercing = turnsSrv.attackWeapon.swingDamagePiercing;
+				turnsSrv.thisTurn.effects = turnsSrv.attackWeapon.swingDamageEffects;
+			}
 		};
 
 

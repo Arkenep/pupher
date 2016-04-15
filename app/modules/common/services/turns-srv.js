@@ -149,9 +149,16 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 		bonusUsed: 0,
 		currentBonus: 0,
 		finalAV: 0,
-		vigor: 0
+		vigor: 0,
+		damage: 0,
+		piercing: 0,
+		effects: {
+			bleed: 0,
+			trauma: 0,
+			critical: 0
+		}
 	};
-
+	turns.attackWeapon = {};
 	turns.currentActionType = 'Pick';
 	turns.actionType = {
 		mainHand: {cost: 0, bonus: 0},
