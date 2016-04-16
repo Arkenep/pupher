@@ -100,11 +100,11 @@ angular.module('myApp.combat', ['ngRoute'])
 			if (attack == 'thrust') {
 				turnsSrv.thisTurn.damage = turnsSrv.attackWeapon.thrustDamage;
 				turnsSrv.thisTurn.piercing = turnsSrv.attackWeapon.thrustDamagePiercing;
-				turnsSrv.thisTurn.effects = turnsSrv.attackWeapon.thrustDamageEffects;
+				turnsSrv.thisTurn.weaponEffects = turnsSrv.attackWeapon.thrustDamageEffects;
 			} else {
 				turnsSrv.thisTurn.damage = turnsSrv.attackWeapon.swingDamage;
 				turnsSrv.thisTurn.piercing = turnsSrv.attackWeapon.swingDamagePiercing;
-				turnsSrv.thisTurn.effects = turnsSrv.attackWeapon.swingDamageEffects;
+				turnsSrv.thisTurn.weaponEffects = turnsSrv.attackWeapon.swingDamageEffects;
 			}
 		};
 
@@ -122,25 +122,32 @@ angular.module('myApp.combat', ['ngRoute'])
 		
 		$scope.setActiveWeaponEffectRoll = function () {
 			var roll = turnsSrv.activeWeaponEffectRoll;
-
-
-			var value = turnsSrv.thisTurn.effects[roll-1].name;
-			//reikia pries tai suspaudyt daug sh kad pasirodytu real effectai... dar darau
-			//console.log(turnsSrv.thisTurn.effects);
+			var value = turnsSrv.thisTurn.weaponEffects[roll-1].name;
 			console.log(value);
-
+			//console.log(Object.keys(turnsSrv.thisTurn.effects)[roll]);
+			if (value == "Bleed") {
+				turnsSrv.activeWeaponEffect = [1,0,0];
+			} else if (value == "Trauma") {
+				turnsSrv.activeWeaponEffect = [0,1,0];
+			}else if (value == "Critical") {
+				turnsSrv.activeWeaponEffect = [0,0,1];
+			} else {
+				turnsSrv.activeWeaponEffect = [0,0,0];
+			}
+			calcEffects();
 		};
 		
 		$scope.setSublocation = function(location, value) {
 			turnsSrv.sublocationPick = location;
+			calcEffects();
 		};
 
-		/*function calcEffects() {
-			turnsSrv.thisTurn.effects.Bleed.value = turnsSrv.thisTurn.effects.Bleed.value + turnsSrv.buyDamageEffects.Bleed.value;
-			turnsSrv.thisTurn.effects.Trauma.value = turnsSrv.thisTurn.effects.Trauma.value + turnsSrv.buyDamageEffects.Trauma.value;
-			turnsSrv.thisTurn.effects.Critical.value = turnsSrv.thisTurn.effects.Critical.value + turnsSrv.buyDamageEffects.Critical.value;
+		function calcEffects() {
+			turnsSrv.thisTurn.effects.Bleed.value = turnsSrv.buyDamageEffects.Bleed.value + turnsSrv.activeWeaponEffect[0];
+			turnsSrv.thisTurn.effects.Trauma.value = turnsSrv.buyDamageEffects.Trauma.value + turnsSrv.activeWeaponEffect[1];
+			turnsSrv.thisTurn.effects.Critical.value = turnsSrv.buyDamageEffects.Critical.value + turnsSrv.activeWeaponEffect[2];
 		}
-		*/
+
 		
 		
 		$scope.setSpecial = function(special, options) {
@@ -178,6 +185,7 @@ angular.module('myApp.combat', ['ngRoute'])
 		$scope.vigorDamageEffectsCost = function (effect, index) {
 			turnsSrv.vigorEffectsCost[index] = effect.value * effect.vigorCost;
 			vigorCost();
+			calcEffects();
 		};
 
 		$scope.calcInit = function() {

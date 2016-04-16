@@ -152,6 +152,7 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 		vigor: 0,
 		damage: 0,
 		piercing: 0,
+		weaponEffects: {},
 		effects: {
 			Bleed: {icon: 'Bleed.png', value: 0},
 			Trauma: {icon: 'Trauma.png', value: 0},
@@ -160,6 +161,7 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 	};
 
 	turns.activeWeaponEffectRoll = 0;
+	turns.activeWeaponEffect = [0,0,0];
 	turns.attackWeapon = {};
 	turns.currentActionType = 'Pick';
 	turns.actionType = {

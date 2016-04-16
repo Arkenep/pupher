@@ -242,8 +242,9 @@
 					<div class="div-table-col">Roll</div>
 					<div class="div-table-col">AV</div>
 					<div class="div-table-col ">Vigor</div>
-					<div class="div-table-col div-table-col-2">Sublocation</div>
+					<div class="div-table-col div-table-col-2">Hit Location</div>
 					<div class="div-table-col">Dmg</div>
+					<div class="div-table-col">W Eff</div>
 					<div class="div-table-col div-table-col-3">Effects</div>
 					<!--<div type="button" title="Add Attack" class="div-table-col div-table-col-borderless btn btn-success weapon-change">
 						<span class="glyphicon glyphicon-plus"></span>
@@ -315,6 +316,8 @@
 					</div>
 					<div class="div-table-col">{{turns.thisTurn.damage + ' + ' + turns.thisTurn.piercing}}</div>
 					<div class="div-table-col"><input type="number" min="1" max="6" class="form-control form-control-stats" ng-model="turns.activeWeaponEffectRoll" ng-change="setActiveWeaponEffectRoll()" style="padding: 0px;"></div>
+
+
 					<div class="btn-group" uib-dropdown auto-close="outsideClick"  style="width: 132px; display: table-column; height: 44px; text-align: center;line-height: 44px;vertical-align: middle;float: left;">
 						<button id="btn-append-to-single-button-effects-done" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 132px; height: 44px;">
 							<img src="/app/img/{{turns.thisTurn.effects.Bleed.icon}}"> {{turns.thisTurn.effects.Bleed.value}}
