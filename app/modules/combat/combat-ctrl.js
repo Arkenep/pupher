@@ -1,6 +1,6 @@
 angular.module('myApp.combat', ['ngRoute'])
 	.controller('combatCtrl', ['$scope', 'character', 'turnsSrv', function ($scope, character, turnsSrv) {
-
+/* SARO STUFF KOL KAS NEPANAUDOTAS
 		$scope.endTurn = function() {
 			turnsSrv.endTurn();
 		};
@@ -11,13 +11,12 @@ angular.module('myApp.combat', ['ngRoute'])
 			} else {
 				console.log(n + " no luck pal");
 			}
-		};
-
+		};*/
 		$scope.turns = turnsSrv;
-		
 		$scope.character = character;
+
 		$scope.autofail = 6; //needs to be added through input.
-		
+
 		$scope.setMainHandWeapon = function(weapon) {
 			character.mainHandWeapon = weapon;
 			for (var i=0; i<Object.keys(character.combatSkills).length; i++) {
@@ -78,24 +77,43 @@ angular.module('myApp.combat', ['ngRoute'])
 				turnsSrv.finalAVElement[4] = character.characterOHAV;
 				turnsSrv.vigorEffectsCost[4] = character.offHandWeapon.weight;
 				turnsSrv.attackWeapon = character.offHandWeapon;
+				selectAttackTypes();
 				addToFinalAV();
 				vigorCost();
 			} else {
 				turnsSrv.finalAVElement[4] = character.characterMHAV;
 				turnsSrv.vigorEffectsCost[4] = character.mainHandWeapon.weight;
 				turnsSrv.attackWeapon = character.mainHandWeapon;
+				selectAttackTypes();
 				addToFinalAV();
 				vigorCost();
 			}
 		}
 		setActionTypeOptions();
 
+		function selectAttackTypes() {
+			if (turnsSrv.attackWeapon.thrust) {
+				turnsSrv.attackType.thrust = true;
+			} else {
+				turnsSrv.attackType.thrust = false;
+			}
+			if (turnsSrv.attackWeapon.swing) {
+				turnsSrv.attackType.swing = true;
+			}else {
+				turnsSrv.attackType.swing = false;
+			}
+		}
+		
 		$scope.setActionType = function (action, options) {
 			turnsSrv.currentActionType = action;
 			setActionTypeOptions(action);
 		};
 
 		$scope.setAttackType = function(attack) {
+			selectAttackType(attack);
+		};
+
+		function selectAttackType(attack) {
 			turnsSrv.currentAttackType = attack;
 			if (attack == 'thrust') {
 				turnsSrv.thisTurn.damage = turnsSrv.attackWeapon.thrustDamage;
@@ -106,8 +124,7 @@ angular.module('myApp.combat', ['ngRoute'])
 				turnsSrv.thisTurn.piercing = turnsSrv.attackWeapon.swingDamagePiercing;
 				turnsSrv.thisTurn.weaponEffects = turnsSrv.attackWeapon.swingDamageEffects;
 			}
-		};
-
+		}
 
 		$scope.setDamageEffects = function(effect) {
 			turnsSrv.currentDamageEffects = effect;
@@ -119,7 +136,7 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.finalAVElement[2] = value.bonusAV;
 			addToFinalAV();
 		};
-		
+
 		$scope.setActiveWeaponEffectRoll = function () {
 			var roll = turnsSrv.activeWeaponEffectRoll;
 			var value = turnsSrv.thisTurn.weaponEffects[roll-1].name;
@@ -136,20 +153,18 @@ angular.module('myApp.combat', ['ngRoute'])
 			}
 			calcEffects();
 		};
-		
+
 		$scope.setSublocation = function(location, value) {
 			turnsSrv.sublocationPick = location;
 			calcEffects();
 		};
-
+		//EFFEKTU GALIMA PIRKTI TIK 1+PER-10. TIK TOKIU KOKIUS WEAPONAS TURI.
 		function calcEffects() {
 			turnsSrv.thisTurn.effects.Bleed.value = turnsSrv.buyDamageEffects.Bleed.value + turnsSrv.activeWeaponEffect[0];
 			turnsSrv.thisTurn.effects.Trauma.value = turnsSrv.buyDamageEffects.Trauma.value + turnsSrv.activeWeaponEffect[1];
 			turnsSrv.thisTurn.effects.Critical.value = turnsSrv.buyDamageEffects.Critical.value + turnsSrv.activeWeaponEffect[2];
 		}
 
-		
-		
 		$scope.setSpecial = function(special, options) {
 			turnsSrv.currentSpecial = special;
 			turnsSrv.finalAVElement[3] = options.bonus;

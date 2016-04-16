@@ -29,6 +29,8 @@ angular.module('myApp.services').service('character', function() {
 		{
 			name: 'Long Sword',
 			type: {name: 'Blade', value: 0},
+			thrust: true,
+			swing: true,
 			thrustDamage: 4,
 			thrustDamagePiercing: 1,
 			isActive : false,
@@ -59,6 +61,8 @@ angular.module('myApp.services').service('character', function() {
 		{
 			name: 'Short Sword',
 			type: {name: 'Blade', value: 0},
+			thrust: true,
+			swing: true,
 			thrustDamage: 2,
 			thrustDamagePiercing: 1,
 			isActive : false,
@@ -89,6 +93,8 @@ angular.module('myApp.services').service('character', function() {
 		{
 			name: 'Spear',
 			type: {name: 'Spear', value: 0},
+			thrust: true,
+			swing: false,
 			thrustDamage: 3,
 			thrustDamagePiercing: 1,
 			isActive : false,
@@ -119,6 +125,8 @@ angular.module('myApp.services').service('character', function() {
 		{
 			name: 'Mace',
 			type: {name: 'Unbalanced', value: 0},
+			thrust: false,
+			swing: true,
 			thrustDamage: 0,
 			thrustDamagePiercing: 0,
 			isActive : false,
@@ -149,6 +157,8 @@ angular.module('myApp.services').service('character', function() {
 		{
 			name: 'Axe',
 			type: {name: 'Unbalanced', value: 0},
+			thrust: false,
+			swing: true,
 			thrustDamage: 0,
 			isActive : false,
 			thrustDamagePiercing: 0,

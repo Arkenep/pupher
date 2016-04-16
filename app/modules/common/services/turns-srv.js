@@ -32,8 +32,8 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 	
 	
 	turns.attackType = {
-		thrust: 0,
-		swing: 0
+		thrust: false,
+		swing: false
 	};
 	
 	turns.sublocation = 'Pick';
