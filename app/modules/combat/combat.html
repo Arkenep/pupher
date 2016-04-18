@@ -269,13 +269,17 @@
 							<li ng-repeat="(activeAction, options) in turns.actionType" role="menuitem"><a ng-click="setActionType(activeAction, options)">{{activeAction}}</a></li>
 						</ul>
 					</div>
+
+
 					<div class="btn-group" uib-dropdown style="width: 88px; display: table-column;height: 44px;text-align: center;line-height: 44px;vertical-align: middle;float: left;">
 						<button id="btn-append-to-single-button-attack-type" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 88px;height: 44px;">{{turns.currentAttackType}}
 						</button>
 						<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
-							<li ng-repeat="(activeAttack, value) in turns.attackType" role="menuitem"><a ng-click="setAttackType(activeAttack)">{{activeAttack}}</a></li>
+							<li ng-repeat="activeAttack in turns.attackType | filter : true : activeAttack.value" role="menuitem"><a ng-click="setAttackType(activeAttack)">{{activeAttack.name}}</a></li>
 						</ul>
 					</div>
+
+
 					<div class="div-table-col"><input type="number" min="0" max="{{turns.thisTurn.bonus}}" class="form-control form-control-stats" ng-model="turns.thisTurn.bonusUsed" ng-change="bonusUsed()" style="padding: 0px;"></div>
 
 

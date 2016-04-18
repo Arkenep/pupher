@@ -31,10 +31,10 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 	turns.vigorEffectsCost = [0, 0, 0, 0, 0];
 	
 	
-	turns.attackType = {
-		thrust: false,
-		swing: false
-	};
+	turns.attackType = [
+		{name: 'Thrust', value: false},
+		{name: 'Swing', value: false}
+	];
 	
 	turns.sublocation = 'Pick';
 	turns.sublocationPick = 'Pick';

@@ -27,6 +27,7 @@ angular.module('myApp.combat', ['ngRoute'])
 			}
 			mainHandAV();
 			initiativeCalc();
+			setActionTypeOptions();
 		};
 		$scope.setMainHandWeapon(character.mainHandWeapon);
 
@@ -44,6 +45,7 @@ angular.module('myApp.combat', ['ngRoute'])
 				}
 			}
 			offHandAV();
+			setActionTypeOptions();
 		};
 		$scope.setOffHandWeapon(character.offHandWeapon);
 
@@ -77,45 +79,48 @@ angular.module('myApp.combat', ['ngRoute'])
 				turnsSrv.finalAVElement[4] = character.characterOHAV;
 				turnsSrv.vigorEffectsCost[4] = character.offHandWeapon.weight;
 				turnsSrv.attackWeapon = character.offHandWeapon;
-				selectAttackTypes();
+				turnsSrv.attackType[0].value = turnsSrv.attackWeapon.thrust;
+				turnsSrv.attackType[1].value = turnsSrv.attackWeapon.swing;
+				if(turnsSrv.attackType[0].value){
+					turnsSrv.currentAttackType = turnsSrv.attackType[0].name;
+					selectAttackType(turnsSrv.attackType[0])
+				} else {
+					turnsSrv.currentAttackType = turnsSrv.attackType[1].name;
+					selectAttackType(turnsSrv.attackType[1])
+				}
 				addToFinalAV();
 				vigorCost();
 			} else {
 				turnsSrv.finalAVElement[4] = character.characterMHAV;
 				turnsSrv.vigorEffectsCost[4] = character.mainHandWeapon.weight;
 				turnsSrv.attackWeapon = character.mainHandWeapon;
-				selectAttackTypes();
+				turnsSrv.attackType[0].value = turnsSrv.attackWeapon.thrust;
+				turnsSrv.attackType[1].value = turnsSrv.attackWeapon.swing;
+				if(turnsSrv.attackType[0].value){
+					turnsSrv.currentAttackType = turnsSrv.attackType[0].name;
+					selectAttackType(turnsSrv.attackType[0])
+				} else {
+					turnsSrv.currentAttackType = turnsSrv.attackType[1].name;
+					selectAttackType(turnsSrv.attackType[1])
+				}
 				addToFinalAV();
 				vigorCost();
 			}
 		}
 		setActionTypeOptions();
 
-		function selectAttackTypes() {
-			if (turnsSrv.attackWeapon.thrust) {
-				turnsSrv.attackType.thrust = true;
-			} else {
-				turnsSrv.attackType.thrust = false;
-			}
-			if (turnsSrv.attackWeapon.swing) {
-				turnsSrv.attackType.swing = true;
-			}else {
-				turnsSrv.attackType.swing = false;
-			}
-		}
-		
 		$scope.setActionType = function (action, options) {
 			turnsSrv.currentActionType = action;
 			setActionTypeOptions(action);
 		};
 
-		$scope.setAttackType = function(attack) {
-			selectAttackType(attack);
+		$scope.setAttackType = function(type) {
+			turnsSrv.currentAttackType = type.name;
+			selectAttackType(type);
 		};
 
-		function selectAttackType(attack) {
-			turnsSrv.currentAttackType = attack;
-			if (attack == 'thrust') {
+		function selectAttackType(type) {
+			if (type.name == 'Thrust') {
 				turnsSrv.thisTurn.damage = turnsSrv.attackWeapon.thrustDamage;
 				turnsSrv.thisTurn.piercing = turnsSrv.attackWeapon.thrustDamagePiercing;
 				turnsSrv.thisTurn.weaponEffects = turnsSrv.attackWeapon.thrustDamageEffects;
