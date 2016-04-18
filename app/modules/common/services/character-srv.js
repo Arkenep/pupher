@@ -31,6 +31,7 @@ angular.module('myApp.services').service('character', function() {
 			type: {name: 'Blade', value: 0},
 			thrust: true,
 			swing: true,
+			defaultHands: 2,
 			thrustDamage: 4,
 			thrustDamagePiercing: 1,
 			isActive : false,
@@ -63,6 +64,7 @@ angular.module('myApp.services').service('character', function() {
 			type: {name: 'Blade', value: 0},
 			thrust: true,
 			swing: true,
+			defaultHands: 1,
 			thrustDamage: 2,
 			thrustDamagePiercing: 1,
 			isActive : false,
@@ -95,6 +97,7 @@ angular.module('myApp.services').service('character', function() {
 			type: {name: 'Spear', value: 0},
 			thrust: true,
 			swing: false,
+			defaultHands: 1,
 			thrustDamage: 3,
 			thrustDamagePiercing: 1,
 			isActive : false,
@@ -127,6 +130,7 @@ angular.module('myApp.services').service('character', function() {
 			type: {name: 'Unbalanced', value: 0},
 			thrust: false,
 			swing: true,
+			defaultHands: 1,
 			thrustDamage: 0,
 			thrustDamagePiercing: 0,
 			isActive : false,
@@ -159,6 +163,7 @@ angular.module('myApp.services').service('character', function() {
 			type: {name: 'Unbalanced', value: 0},
 			thrust: false,
 			swing: true,
+			defaultHands: 1,
 			thrustDamage: 0,
 			isActive : false,
 			thrustDamagePiercing: 0,
@@ -303,7 +308,7 @@ angular.module('myApp.services').service('character', function() {
 		weight: 0,
 		reach: 0
 	};
-	
+	var resetWeapon = mainHandWeapon;
 	var characterMHAV = 0;
 	var characterMHDV = 0;
 	var characterOHAV = 0;
@@ -320,6 +325,7 @@ angular.module('myApp.services').service('character', function() {
 		currentOffHandSkill : currentOffHandSkill,
 		mainHandWeapon: mainHandWeapon,
 		offHandWeapon: offHandWeapon,
+		resetWeapon: resetWeapon,
 		characterMHAV: characterMHAV,
 		characterMHDV: characterMHDV,
 		characterOHAV: characterOHAV,

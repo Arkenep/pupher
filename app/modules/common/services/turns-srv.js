@@ -35,7 +35,9 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 		{name: 'Thrust', value: false},
 		{name: 'Swing', value: false}
 	];
-	
+
+	turns.weaponHands = 1;
+
 	turns.sublocation = 'Pick';
 	turns.sublocationPick = 'Pick';
 	turns.location = {

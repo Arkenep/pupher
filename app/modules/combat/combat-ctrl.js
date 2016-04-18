@@ -25,6 +25,7 @@ angular.module('myApp.combat', ['ngRoute'])
 					character.mainHandWeapon.type.value = character.combatSkills[skill];
 				}
 			}
+			turnsSrv.weaponHands = character.mainHandWeapon.defaultHands;
 			mainHandAV();
 			initiativeCalc();
 			setActionTypeOptions();
@@ -46,6 +47,7 @@ angular.module('myApp.combat', ['ngRoute'])
 			}
 			offHandAV();
 			setActionTypeOptions();
+
 		};
 		$scope.setOffHandWeapon(character.offHandWeapon);
 
@@ -69,6 +71,21 @@ angular.module('myApp.combat', ['ngRoute'])
 		};
 		$scope.setOHActiveSkill(character.offHandWeapon.type.name, character.offHandWeapon.type.value);
 
+		turnsSrv.weaponHands = 0;
+		$scope.hands = function () {
+			if ( turnsSrv.weaponHands == 1) {
+				turnsSrv.weaponHands = 2;
+				turnsSrv.currentActionType = Object.keys(turnsSrv.actionType)[0];
+				setActionTypeOptions();
+			} else {
+				turnsSrv.weaponHands = 1;
+				turnsSrv.currentActionType = 'Pick';
+				
+			}
+		};
+
+	
+
 		// not yet setup.
 		/*function mainHandDV() {
 			character.characterMHDV = character.combatSkills[skill] + character.attributes.REF + character.mainHandWeapon.defenceValueBonus;
@@ -76,38 +93,47 @@ angular.module('myApp.combat', ['ngRoute'])
 
 		function setActionTypeOptions(action) {
 			if (action == 'offHand') {
-				turnsSrv.finalAVElement[4] = character.characterOHAV;
-				turnsSrv.vigorEffectsCost[4] = character.offHandWeapon.weight;
-				turnsSrv.attackWeapon = character.offHandWeapon;
-				turnsSrv.attackType[0].value = turnsSrv.attackWeapon.thrust;
-				turnsSrv.attackType[1].value = turnsSrv.attackWeapon.swing;
-				if(turnsSrv.attackType[0].value){
-					turnsSrv.currentAttackType = turnsSrv.attackType[0].name;
-					selectAttackType(turnsSrv.attackType[0])
-				} else {
-					turnsSrv.currentAttackType = turnsSrv.attackType[1].name;
-					selectAttackType(turnsSrv.attackType[1])
-				}
-				addToFinalAV();
-				vigorCost();
+				offHandWeaponPick();
 			} else {
-				turnsSrv.finalAVElement[4] = character.characterMHAV;
-				turnsSrv.vigorEffectsCost[4] = character.mainHandWeapon.weight;
-				turnsSrv.attackWeapon = character.mainHandWeapon;
-				turnsSrv.attackType[0].value = turnsSrv.attackWeapon.thrust;
-				turnsSrv.attackType[1].value = turnsSrv.attackWeapon.swing;
-				if(turnsSrv.attackType[0].value){
-					turnsSrv.currentAttackType = turnsSrv.attackType[0].name;
-					selectAttackType(turnsSrv.attackType[0])
-				} else {
-					turnsSrv.currentAttackType = turnsSrv.attackType[1].name;
-					selectAttackType(turnsSrv.attackType[1])
-				}
-				addToFinalAV();
-				vigorCost();
+				mainHandWeaponPick();
 			}
 		}
 		setActionTypeOptions();
+
+		function offHandWeaponPick() {
+			turnsSrv.finalAVElement[4] = character.characterOHAV;
+			turnsSrv.vigorEffectsCost[4] = character.offHandWeapon.weight;
+			turnsSrv.attackWeapon = character.offHandWeapon;
+			turnsSrv.attackType[0].value = turnsSrv.attackWeapon.thrust;
+			turnsSrv.attackType[1].value = turnsSrv.attackWeapon.swing;
+			if(turnsSrv.attackType[0].value){
+				turnsSrv.currentAttackType = turnsSrv.attackType[0].name;
+				selectAttackType(turnsSrv.attackType[0])
+			} else {
+				turnsSrv.currentAttackType = turnsSrv.attackType[1].name;
+				selectAttackType(turnsSrv.attackType[1])
+			}
+			addToFinalAV();
+			vigorCost();
+		}
+
+		function mainHandWeaponPick() {
+			turnsSrv.finalAVElement[4] = character.characterMHAV;
+			turnsSrv.vigorEffectsCost[4] = character.mainHandWeapon.weight;
+			turnsSrv.attackWeapon = character.mainHandWeapon;
+			turnsSrv.attackType[0].value = turnsSrv.attackWeapon.thrust;
+			turnsSrv.attackType[1].value = turnsSrv.attackWeapon.swing;
+			if(turnsSrv.attackType[0].value){
+				turnsSrv.currentAttackType = turnsSrv.attackType[0].name;
+				selectAttackType(turnsSrv.attackType[0])
+			} else {
+				turnsSrv.currentAttackType = turnsSrv.attackType[1].name;
+				selectAttackType(turnsSrv.attackType[1])
+			}
+			addToFinalAV();
+			vigorCost();
+		}
+
 
 		$scope.setActionType = function (action, options) {
 			turnsSrv.currentActionType = action;
