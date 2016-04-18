@@ -26,6 +26,9 @@ angular.module('myApp.combat', ['ngRoute'])
 				}
 			}
 			turnsSrv.weaponHands = character.mainHandWeapon.defaultHands;
+			if (turnsSrv.weaponHands == 2) {
+				turnsSrv.currentActionType = Object.keys(turnsSrv.actionType)[0];
+			}
 			mainHandAV();
 			initiativeCalc();
 			setActionTypeOptions();
