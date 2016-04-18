@@ -155,13 +155,16 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 		damage: 0,
 		piercing: 0,
 		weaponEffects: {},
+		maxEffects: 0,
+		finalEffects: 1,
+		currentEffects: [0,0,0],
 		effects: {
 			Bleed: {icon: 'Bleed.png', value: 0},
 			Trauma: {icon: 'Trauma.png', value: 0},
 			Critical: {icon: 'Critical.png', value: 0}
 		}
 	};
-
+	
 	turns.activeWeaponEffectRoll = 0;
 	turns.activeWeaponEffect = [0,0,0];
 	turns.attackWeapon = {};

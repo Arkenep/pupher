@@ -14,7 +14,7 @@ angular.module('myApp.combat', ['ngRoute'])
 		};*/
 		$scope.turns = turnsSrv;
 		$scope.character = character;
-
+		
 		$scope.autofail = 6; //needs to be added through input.
 
 		$scope.setMainHandWeapon = function(weapon) {
@@ -160,10 +160,6 @@ angular.module('myApp.combat', ['ngRoute'])
 			}
 		}
 
-		$scope.setDamageEffects = function(effect) {
-			turnsSrv.currentDamageEffects = effect;
-		};
-
 		$scope.setLocation = function(location, value) {
 			turnsSrv.currentLocation = value.name;
 			turnsSrv.sublocation = value.sublocation;
@@ -187,6 +183,8 @@ angular.module('myApp.combat', ['ngRoute'])
 			}
 			calcEffects();
 		};
+
+
 
 		$scope.setSublocation = function(location, value) {
 			turnsSrv.sublocationPick = location;
@@ -229,13 +227,31 @@ angular.module('myApp.combat', ['ngRoute'])
 
 		function vigorCost() {
 			turnsSrv.thisTurn.vigor = turnsSrv.vigorEffectsCost[0] + turnsSrv.vigorEffectsCost[1] + turnsSrv.vigorEffectsCost[2] + turnsSrv.vigorEffectsCost[3] + turnsSrv.vigorEffectsCost[4];
+			turnsSrv.thisTurn.finalEffects = turnsSrv.thisTurn.currentEffects[0] + turnsSrv.thisTurn.currentEffects[1] + turnsSrv.thisTurn.currentEffects[2];
 		}
 
 		$scope.vigorDamageEffectsCost = function (effect, index) {
 			turnsSrv.vigorEffectsCost[index] = effect.value * effect.vigorCost;
+			turnsSrv.thisTurn.currentEffects[index] = effect.value;
+
 			vigorCost();
 			calcEffects();
+			$scope.disableEffects = function() {
+				if (turnsSrv.thisTurn.finalEffects >= turnsSrv.thisTurn.maxEffects) {
+					return true;
+				}
+			};
 		};
+
+		$scope.resetEffects = function () {
+			turnsSrv.thisTurn.currentEffects = [0,0,0];
+			turnsSrv.thisTurn.finalEffects = 0;
+			turnsSrv.buyDamageEffects.Bleed.value = 0;
+			turnsSrv.buyDamageEffects.Trauma.value = 0;
+			turnsSrv.buyDamageEffects.Critical.value = 0;
+		};
+
+		turnsSrv.thisTurn.maxEffects = 1 + character.attributes.PER - 10;
 
 		$scope.calcInit = function() {
 			initiativeCalc();
