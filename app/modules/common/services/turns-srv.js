@@ -127,13 +127,13 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 		}
 	};
 
-	turns.specials = {
-		normal: {bonus: 0, cost: 0},
-		hardAttack: {bonus: 2, cost: 2},
-		kneel: {bonus: 3, cost: 0},
-		fall: {bonus: 5, cost: 0},
-		stand: {bonus: -5, cost: 0}
-	};
+	turns.specials = [
+		{name: 'Normal', bonus: 0, cost: 0},
+		{name: 'Hard Attack', bonus: 2, cost: 2},
+		{name: 'Kneel', bonus: 3, cost: 0},
+		{name: 'Fall', bonus: 5, cost: 0},
+		{name: 'Stand', bonus: -5, cost: 0}
+	];
 	
 	turns.buyDamageEffects = [
 		{name: 'Bleed', icon: 'Bleed.png', value: 0, vigorCost: 1},

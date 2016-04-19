@@ -225,11 +225,11 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.thisTurn.effects[2].value = turnsSrv.buyDamageEffects[2].value + turnsSrv.activeWeaponEffect[2];
 		}
 
-		$scope.setSpecial = function(special, options) {
-			turnsSrv.currentSpecial = special;
-			turnsSrv.finalAVElement[3] = options.bonus;
+		$scope.setSpecial = function(special) {
+			turnsSrv.currentSpecial = special.name;
+			turnsSrv.finalAVElement[3] = special.bonus;
 			addToFinalAV();
-			turnsSrv.vigorEffectsCost[3] = options.cost;
+			turnsSrv.vigorEffectsCost[3] = special.cost;
 			vigorCost();
 		};
 
