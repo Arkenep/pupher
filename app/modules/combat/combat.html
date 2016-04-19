@@ -300,16 +300,16 @@
 
 					<div class="btn-group" uib-dropdown auto-close="outsideClick"  style="width: 132px; display: table-column; height: 44px; text-align: center;line-height: 44px;vertical-align: middle;float: left;">
 						<button id="btn-append-to-single-button-effects" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 132px; height: 44px;">
-							<img src="/app/img/{{turns.buyDamageEffects.Bleed.icon}}"> {{turns.buyDamageEffects.Bleed.value}}
-							<img src="/app/img/{{turns.buyDamageEffects.Trauma.icon}}"> {{turns.buyDamageEffects.Trauma.value}}
-							<img src="/app/img/{{turns.buyDamageEffects.Critical.icon}}"> {{turns.buyDamageEffects.Critical.value}}
+							<span ng-repeat="effects in turns.buyDamageEffects">
+								<img src="/app/img/{{effects.icon}}"> {{effects.value}}
+							</span>
 						</button>
 						<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button" style="min-width: 132px;">
-							<li ng-repeat="(activeDamageEffect, options) in turns.buyDamageEffects" role="menuitem" auto-close="disabled">
+							<li ng-repeat="activeDamageEffect in turns.buyDamageEffects" role="menuitem" auto-close="disabled">
 								<div>
 									<a>
-										<div style="float: left; padding-left: 5px; padding-right: 5px;"><img src="/app/img/{{options.icon}}" alt="{{activeDamageEffect}}" title="{{activeDamageEffect}}"></div>
-										<input type="number" min="0" max="{{turns.thisTurn.maxEffects}}" ng-disabled="disableEffects()" class="form-control form-control-stats" ng-model="options.value" ng-change="vigorDamageEffectsCost(options, $index)" style="float: left; width: 88px; height: 44px; padding: 0px;">
+										<div style="float: left; padding-left: 5px; padding-right: 5px;"><img src="/app/img/{{activeDamageEffect.icon}}" alt="{{activeDamageEffect.name}}" title="{{activeDamageEffect.name}}"></div>
+										<input type="number" min="0" max="{{turns.thisTurn.maxEffects}}" ng-disabled="disableEffects()" class="form-control form-control-stats" ng-model="activeDamageEffect.value" ng-change="vigorDamageEffectsCost(activeDamageEffect, $index)" style="float: left; width: 88px; height: 44px; padding: 0px;">
 									</a>
 								</div>
 							</li>
@@ -339,16 +339,16 @@
 
 					<div class="btn-group" uib-dropdown auto-close="outsideClick"  style="width: 132px; display: table-column; height: 44px; text-align: center;line-height: 44px;vertical-align: middle;float: left;">
 						<button id="btn-append-to-single-button-effects-done" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 132px; height: 44px;">
-							<img src="/app/img/{{turns.thisTurn.effects.Bleed.icon}}"> {{turns.thisTurn.effects.Bleed.value}}
-							<img src="/app/img/{{turns.thisTurn.effects.Trauma.icon}}"> {{turns.thisTurn.effects.Trauma.value}}
-							<img src="/app/img/{{turns.thisTurn.effects.Critical.icon}}"> {{turns.thisTurn.effects.Critical.value}}
+							<span ng-repeat="effects in turns.thisTurn.effects">
+								<img src="/app/img/{{effects.icon}}"> {{effects.value}}
+							</span>
 						</button>
 						<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button" style="min-width: 132px;">
-							<li ng-repeat="(activeDamageEffect, options) in turns.thisTurn.effects" role="menuitem" auto-close="disabled">
+							<li ng-repeat="activeDamageEffect in turns.thisTurn.effects" role="menuitem" auto-close="disabled">
 								<div>
 									<a>
-										<div style="float: left; padding-left: 5px; padding-right: 5px;"><img src="/app/img/{{options.icon}}" alt="{{activeDamageEffect}}" title="{{activeDamageEffect}}"></div>
-										<input type="number" min="0" class="form-control form-control-stats" ng-model="options.value" style="float: left; width: 88px; height: 44px; padding: 0px;">
+										<div style="float: left; padding-left: 5px; padding-right: 5px;"><img src="/app/img/{{activeDamageEffect.icon}}" alt="{{activeDamageEffect.name}}" title="{{activeDamageEffect.name}}"></div>
+										<input type="number" min="0" class="form-control form-control-stats" ng-model="activeDamageEffect.value" style="float: left; width: 88px; height: 44px; padding: 0px;">
 									</a>
 								</div>
 							</li>

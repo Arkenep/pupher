@@ -178,10 +178,7 @@ angular.module('myApp.combat', ['ngRoute'])
 			}
 
 			//reik cia tvarkyt
-			/*turnsSrv.buyDamageEffects.Bleed.value = 0;
-			turnsSrv.buyDamageEffects.Trauma.value = 0;
-			turnsSrv.buyDamageEffects.Critical.value = 0;
-			$scope.removeUnusedEffects = function () {
+			/*$scope.removeUnusedEffects = function () {
 				for (i=0; i < turnsSrv.thisTurn.availableEffects.length; i++ ) {
 					if (turnsSrv.thisTurn.availableEffects[i] == 0) {
 						return false;
@@ -223,9 +220,9 @@ angular.module('myApp.combat', ['ngRoute'])
 		};
 		//EFFEKTU GALIMA PIRKTI TIK 1+PER-10. TIK TOKIU KOKIUS WEAPONAS TURI.
 		function calcEffects() {
-			turnsSrv.thisTurn.effects.Bleed.value = turnsSrv.buyDamageEffects.Bleed.value + turnsSrv.activeWeaponEffect[0];
-			turnsSrv.thisTurn.effects.Trauma.value = turnsSrv.buyDamageEffects.Trauma.value + turnsSrv.activeWeaponEffect[1];
-			turnsSrv.thisTurn.effects.Critical.value = turnsSrv.buyDamageEffects.Critical.value + turnsSrv.activeWeaponEffect[2];
+			turnsSrv.thisTurn.effects[0].value = turnsSrv.buyDamageEffects[0].value + turnsSrv.activeWeaponEffect[0];
+			turnsSrv.thisTurn.effects[1].value = turnsSrv.buyDamageEffects[1].value + turnsSrv.activeWeaponEffect[1];
+			turnsSrv.thisTurn.effects[2].value = turnsSrv.buyDamageEffects[2].value + turnsSrv.activeWeaponEffect[2];
 		}
 
 		$scope.setSpecial = function(special, options) {
@@ -277,9 +274,9 @@ angular.module('myApp.combat', ['ngRoute'])
 		$scope.resetEffects = function () {
 			turnsSrv.thisTurn.currentEffects = [0,0,0];
 			turnsSrv.thisTurn.finalEffects = 0;
-			turnsSrv.buyDamageEffects.Bleed.value = 0;
-			turnsSrv.buyDamageEffects.Trauma.value = 0;
-			turnsSrv.buyDamageEffects.Critical.value = 0;
+			turnsSrv.buyDamageEffects[0].value = 0;
+			turnsSrv.buyDamageEffects[1].value = 0;
+			turnsSrv.buyDamageEffects[2].value = 0;
 		};
 
 		turnsSrv.thisTurn.maxEffects = 1 + character.attributes.PER - 10;
