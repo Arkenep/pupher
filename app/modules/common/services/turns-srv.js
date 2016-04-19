@@ -136,9 +136,9 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 	];
 	
 	turns.buyDamageEffects = [
-		{name: 'Bleed', icon: 'Bleed.png', value: 0, vigorCost: 1},
-		{name: 'Trauma', icon: 'Trauma.png', value: 0, vigorCost: 2},
-		{name: 'Critical', icon: 'Critical.png', value: 0, vigorCost: 3}
+		{name: 'Bleed', icon: 'Bleed.png', value: 0, vigorCost: 1, available: false},
+		{name: 'Trauma', icon: 'Trauma.png', value: 0, vigorCost: 2, available: false},
+		{name: 'Critical', icon: 'Critical.png', value: 0, vigorCost: 3, available: false}
 	];
 
 	turns.combatRoll = 0;
@@ -155,7 +155,6 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 		damage: 0,
 		piercing: 0,
 		weaponEffects: {},
-		availableEffects: [0,0,0],
 		maxEffects: 0,
 		finalEffects: 1,
 		currentEffects: [0,0,0],

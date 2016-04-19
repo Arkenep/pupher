@@ -305,7 +305,7 @@
 							</span>
 						</button>
 						<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button" style="min-width: 132px;">
-							<li ng-repeat="activeDamageEffect in turns.buyDamageEffects" role="menuitem" auto-close="disabled">
+							<li ng-repeat="activeDamageEffect in turns.buyDamageEffects | filter: true : available" role="menuitem" auto-close="disabled">
 								<div>
 									<a>
 										<div style="float: left; padding-left: 5px; padding-right: 5px;"><img src="/app/img/{{activeDamageEffect.icon}}" alt="{{activeDamageEffect.name}}" title="{{activeDamageEffect.name}}"></div>

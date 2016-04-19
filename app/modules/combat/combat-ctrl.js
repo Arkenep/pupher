@@ -166,28 +166,19 @@ angular.module('myApp.combat', ['ngRoute'])
 		}
 
 		function disableUnavailableEffects() {
-			turnsSrv.thisTurn.availableEffects = [0,0,0];
+			turnsSrv.buyDamageEffects[0].available = false;
+			turnsSrv.buyDamageEffects[1].available = false;
+			turnsSrv.buyDamageEffects[2].available = false;
+
 			for (i=0; i < turnsSrv.thisTurn.weaponEffects.length; i++ ) {
 				if (turnsSrv.thisTurn.weaponEffects[i].name == 'Bleed') {
-					turnsSrv.thisTurn.availableEffects[0] = 1;
+					turnsSrv.buyDamageEffects[0].available = true;
 				} else if (turnsSrv.thisTurn.weaponEffects[i].name == 'Trauma') {
-					turnsSrv.thisTurn.availableEffects[1] = 1;
+					turnsSrv.buyDamageEffects[1].available = true;
 				} else if (turnsSrv.thisTurn.weaponEffects[i].name == 'Critical') {
-					turnsSrv.thisTurn.availableEffects[2] = 1;
+					turnsSrv.buyDamageEffects[2].available = true;
 				}
 			}
-
-			//reik cia tvarkyt
-			/*$scope.removeUnusedEffects = function () {
-				for (i=0; i < turnsSrv.thisTurn.availableEffects.length; i++ ) {
-					if (turnsSrv.thisTurn.availableEffects[i] == 0) {
-						return false;
-					}
-					return true;
-				}
-
-			}
-			 */
 		}
 
 		$scope.setLocation = function(location) {
