@@ -93,6 +93,8 @@ angular.module('myApp.combat', ['ngRoute'])
 		/*function mainHandDV() {
 			character.characterMHDV = character.combatSkills[skill] + character.attributes.REF + character.mainHandWeapon.defenceValueBonus;
 		}*/
+		
+		
 
 		function setActionTypeOptions(action) {
 			if (action == 'offHand') {
@@ -138,6 +140,7 @@ angular.module('myApp.combat', ['ngRoute'])
 		}
 
 
+
 		$scope.setActionType = function (action, options) {
 			turnsSrv.currentActionType = action;
 			setActionTypeOptions(action);
@@ -153,11 +156,41 @@ angular.module('myApp.combat', ['ngRoute'])
 				turnsSrv.thisTurn.damage = turnsSrv.attackWeapon.thrustDamage;
 				turnsSrv.thisTurn.piercing = turnsSrv.attackWeapon.thrustDamagePiercing;
 				turnsSrv.thisTurn.weaponEffects = turnsSrv.attackWeapon.thrustDamageEffects;
+				disableUnavailableEffects();
 			} else {
 				turnsSrv.thisTurn.damage = turnsSrv.attackWeapon.swingDamage;
 				turnsSrv.thisTurn.piercing = turnsSrv.attackWeapon.swingDamagePiercing;
 				turnsSrv.thisTurn.weaponEffects = turnsSrv.attackWeapon.swingDamageEffects;
+				disableUnavailableEffects();
 			}
+		}
+
+		function disableUnavailableEffects() {
+			turnsSrv.thisTurn.availableEffects = [0,0,0];
+			for (i=0; i < turnsSrv.thisTurn.weaponEffects.length; i++ ) {
+				if (turnsSrv.thisTurn.weaponEffects[i].name == 'Bleed') {
+					turnsSrv.thisTurn.availableEffects[0] = 1;
+				} else if (turnsSrv.thisTurn.weaponEffects[i].name == 'Trauma') {
+					turnsSrv.thisTurn.availableEffects[1] = 1;
+				} else if (turnsSrv.thisTurn.weaponEffects[i].name == 'Critical') {
+					turnsSrv.thisTurn.availableEffects[2] = 1;
+				}
+			}
+
+			//reik cia tvarkyt
+			/*turnsSrv.buyDamageEffects.Bleed.value = 0;
+			turnsSrv.buyDamageEffects.Trauma.value = 0;
+			turnsSrv.buyDamageEffects.Critical.value = 0;
+			$scope.removeUnusedEffects = function () {
+				for (i=0; i < turnsSrv.thisTurn.availableEffects.length; i++ ) {
+					if (turnsSrv.thisTurn.availableEffects[i] == 0) {
+						return false;
+					}
+					return true;
+				}
+
+			}
+			 */
 		}
 
 		$scope.setLocation = function(location, value) {
@@ -170,8 +203,6 @@ angular.module('myApp.combat', ['ngRoute'])
 		$scope.setActiveWeaponEffectRoll = function () {
 			var roll = turnsSrv.activeWeaponEffectRoll;
 			var value = turnsSrv.thisTurn.weaponEffects[roll-1].name;
-			console.log(value);
-			//console.log(Object.keys(turnsSrv.thisTurn.effects)[roll]);
 			if (value == "Bleed") {
 				turnsSrv.activeWeaponEffect = [1,0,0];
 			} else if (value == "Trauma") {

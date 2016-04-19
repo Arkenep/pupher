@@ -155,6 +155,7 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 		damage: 0,
 		piercing: 0,
 		weaponEffects: {},
+		availableEffects: [0,0,0],
 		maxEffects: 0,
 		finalEffects: 1,
 		currentEffects: [0,0,0],

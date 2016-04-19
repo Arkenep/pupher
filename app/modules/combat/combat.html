@@ -204,8 +204,8 @@
 					<div class="div-table-col div-table-col-borderless-2">Init Roll</div>
 					<div class="div-table-col"><input type="number" min="1" max="6" class="form-control form-control-stats" ng-model="turns.thisTurn.initiativeRoll" ng-value=turns.thisTurn.initiativeRoll ng-change="calcInit()" style="padding: 0px;"></div>
 					<div class="div-table-col div-table-col-borderless-2">Bonus</div>
-					<div class="div-table-col"><input type="number" min="0" class="form-control form-control-stats" ng-model="turns.thisTurn.bonus" ng-change="initBonus()" style="padding: 0px;"></div>
-					<div type="button" title="Start Combat" class="div-table-col div-table-col-borderless btn btn-success weapon-change" ng-click="startCombat()">
+					<div class="div-table-col"><input type="number" min="0" class="form-control form-control-stats" ng-disabled="disableInitValue" ng-init="disableInitValue=false" ng-model="turns.thisTurn.bonus" ng-change="initBonus()" style="padding: 0px;"></div>
+					<div type="button" title="Start Combat" class="div-table-col div-table-col-borderless btn btn-success weapon-change" ng-click="disableInitValue=!disableInitValue">
 						<span class="glyphicon glyphicon-chevron-right"></span>
 					</div>
 				</div>
