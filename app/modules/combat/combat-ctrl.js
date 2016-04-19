@@ -27,7 +27,7 @@ angular.module('myApp.combat', ['ngRoute'])
 			}
 			turnsSrv.weaponHands = character.mainHandWeapon.defaultHands;
 			if (turnsSrv.weaponHands == 2) {
-				turnsSrv.currentActionType = Object.keys(turnsSrv.actionType)[0];
+				turnsSrv.currentActionType = turnsSrv.actionType[0].name;
 			}
 			mainHandAV();
 			initiativeCalc();
@@ -78,7 +78,7 @@ angular.module('myApp.combat', ['ngRoute'])
 		$scope.hands = function () {
 			if ( turnsSrv.weaponHands == 1) {
 				turnsSrv.weaponHands = 2;
-				turnsSrv.currentActionType = Object.keys(turnsSrv.actionType)[0];
+				turnsSrv.currentActionType = turnsSrv.actionType[0].name;
 				setActionTypeOptions();
 			} else {
 				turnsSrv.weaponHands = 1;
@@ -97,7 +97,7 @@ angular.module('myApp.combat', ['ngRoute'])
 		
 
 		function setActionTypeOptions(action) {
-			if (action == 'offHand') {
+			if (action == 'Offhand') {
 				offHandWeaponPick();
 			} else {
 				mainHandWeaponPick();
@@ -141,9 +141,9 @@ angular.module('myApp.combat', ['ngRoute'])
 
 
 
-		$scope.setActionType = function (action, options) {
-			turnsSrv.currentActionType = action;
-			setActionTypeOptions(action);
+		$scope.setActionType = function (action) {
+			turnsSrv.currentActionType = action.name;
+			setActionTypeOptions(action.name);
 		};
 
 		$scope.setAttackType = function(type) {

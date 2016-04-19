@@ -170,10 +170,10 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 	turns.activeWeaponEffect = [0,0,0];
 	turns.attackWeapon = {};
 	turns.currentActionType = 'Pick';
-	turns.actionType = {
-		mainHand: {cost: 0, bonus: 0},
-		offHand: {cost: 0, bonus: 0}
-	};
+	turns.actionType = [
+		{name: 'Main Hand', cost: 0, bonus: 0},
+		{name: 'Offhand', cost: 0, bonus: 0}
+	];
 	
 	return turns;
 }]);
