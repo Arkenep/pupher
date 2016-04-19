@@ -190,10 +190,10 @@ angular.module('myApp.combat', ['ngRoute'])
 			 */
 		}
 
-		$scope.setLocation = function(location, value) {
-			turnsSrv.currentLocation = value.name;
-			turnsSrv.sublocation = value.sublocation;
-			turnsSrv.finalAVElement[2] = value.bonusAV;
+		$scope.setLocation = function(location) {
+			turnsSrv.currentLocation = location.name;
+			turnsSrv.sublocation = location.sublocation;
+			turnsSrv.finalAVElement[2] = location.bonusAV;
 			addToFinalAV();
 		};
 
@@ -214,8 +214,8 @@ angular.module('myApp.combat', ['ngRoute'])
 
 
 
-		$scope.setSublocation = function(location, value) {
-			turnsSrv.sublocationPick = location;
+		$scope.setSublocation = function(location) {
+			turnsSrv.sublocationPick = location.name;
 			calcEffects();
 		};
 		//EFFEKTU GALIMA PIRKTI TIK 1+PER-10. TIK TOKIU KOKIUS WEAPONAS TURI.

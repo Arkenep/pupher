@@ -40,92 +40,92 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 
 	turns.sublocation = 'Pick';
 	turns.sublocationPick = 'Pick';
-	turns.location = {
-		rnd: {
+	turns.location = [
+		{
 			name: 'Random',
 			bonusAV : 0,
-			sublocation: {
-				'Head': 0,
-				'Body': 0,
-				'Right Arm': 0,
-				'Left Arm': 0,
-				'Right Leg': 0,
-				'Left Leg': 0
-			}
+			sublocation: [
+				{name: 'Head', value: 0},
+				{name: 'Body', value: 0},
+				{name: 'Right Arm', value: 0},
+				{name: 'Left Arm', value: 0},
+				{name: 'Right Leg', value: 0},
+				{name: 'Left Leg', value: 0}
+			]
 		},
-		head: {
+		{
 			name: 'Head',
 			bonusAV : -3, 
-			sublocation: {
-				vieta1: 0,
-				vieta2: 0,
-				vieta3: 0,
-				vieta4: 0,
-				vieta5: 0,
-				vieta6: 0
-			}
+			sublocation: [
+				{name: 'Vieta 1', value: 0},
+				{name: 'Vieta 2', value: 0},
+				{name: 'Vieta 3', value: 0},
+				{name: 'Vieta 4', value: 0},
+				{name: 'Vieta 5', value: 0},
+				{name: 'Vieta 6', value: 0}
+			]
 		},
-		body: {
+		{
 			name: 'Body',
 			bonusAV : -2,
-			sublocation: {
-				vieta1: 0,
-				vieta2: 0,
-				vieta3: 0,
-				vieta4: 0,
-				vieta5: 0,
-				vieta6: 0
-			}
+			sublocation: [
+				{name: 'Vieta 1', value: 0},
+				{name: 'Vieta 2', value: 0},
+				{name: 'Vieta 3', value: 0},
+				{name: 'Vieta 4', value: 0},
+				{name: 'Vieta 5', value: 0},
+				{name: 'Vieta 6', value: 0}
+			]
 		},
-		rArm: {
+		{
 			name: 'Right Arm',
 			bonusAV : -1,
-			sublocation: {
-				vieta1: 0,
-				vieta2: 0,
-				vieta3: 0,
-				vieta4: 0,
-				vieta5: 0,
-				vieta6: 0
-			}
+			sublocation: [
+				{name: 'Vieta 1', value: 0},
+				{name: 'Vieta 2', value: 0},
+				{name: 'Vieta 3', value: 0},
+				{name: 'Vieta 4', value: 0},
+				{name: 'Vieta 5', value: 0},
+				{name: 'Vieta 6', value: 0}
+			]
 		},
-		lArm: {
+		{
 			name: 'Left Arm',
 			bonusAV : -1,
-			sublocation: {
-				vieta1: 0,
-				vieta2: 0,
-				vieta3: 0,
-				vieta4: 0,
-				vieta5: 0,
-				vieta6: 0
-			}
+			sublocation: [
+				{name: 'Vieta 1', value: 0},
+				{name: 'Vieta 2', value: 0},
+				{name: 'Vieta 3', value: 0},
+				{name: 'Vieta 4', value: 0},
+				{name: 'Vieta 5', value: 0},
+				{name: 'Vieta 6', value: 0}
+			]
 		},
-		rLeg: {
+		{
 			name: 'Right Leg',
 			bonusAV : -1,
-			sublocation: {
-				vieta1: 0,
-				vieta2: 0,
-				vieta3: 0,
-				vieta4: 0,
-				vieta5: 0,
-				vieta6: 0
-			}
+			sublocation: [
+				{name: 'Vieta 1', value: 0},
+				{name: 'Vieta 2', value: 0},
+				{name: 'Vieta 3', value: 0},
+				{name: 'Vieta 4', value: 0},
+				{name: 'Vieta 5', value: 0},
+				{name: 'Vieta 6', value: 0}
+			]
 		},
-		lLeg: {
-			name: 'Left Leg',
+		{
+			name: 'Left leg',
 			bonusAV : -1,
-			sublocation: {
-				vieta1: 0,
-				vieta2: 0,
-				vieta3: 0,
-				vieta4: 0,
-				vieta5: 0,
-				vieta6: 0
-			}
+			sublocation: [
+				{name: 'Vieta 1', value: 0},
+				{name: 'Vieta 2', value: 0},
+				{name: 'Vieta 3', value: 0},
+				{name: 'Vieta 4', value: 0},
+				{name: 'Vieta 5', value: 0},
+				{name: 'Vieta 6', value: 0}
+			]
 		}
-	};
+	];
 
 	turns.specials = [
 		{name: 'Normal', bonus: 0, cost: 0},
