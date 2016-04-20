@@ -83,19 +83,14 @@ angular.module('myApp.combat', ['ngRoute'])
 			} else {
 				turnsSrv.weaponHands = 1;
 				turnsSrv.currentActionType = 'Pick';
-				
 			}
 		};
-
-	
 
 		// not yet setup.
 		/*function mainHandDV() {
 			character.characterMHDV = character.combatSkills[skill] + character.attributes.REF + character.mainHandWeapon.defenceValueBonus;
 		}*/
 		
-		
-
 		function setActionTypeOptions(action) {
 			if (action == 'Offhand') {
 				offHandWeaponPick();
@@ -138,8 +133,6 @@ angular.module('myApp.combat', ['ngRoute'])
 			addToFinalAV();
 			vigorCost();
 		}
-
-
 
 		$scope.setActionType = function (action) {
 			turnsSrv.currentActionType = action.name;
@@ -188,6 +181,9 @@ angular.module('myApp.combat', ['ngRoute'])
 			addToFinalAV();
 		};
 
+
+		//this works with one roll. effects rolls has to be (STR-10)
+		//kaip metamas pirktas rollas 4-6 success? kaip skaiciuojami success visu?
 		$scope.setActiveWeaponEffectRoll = function () {
 			var roll = turnsSrv.activeWeaponEffectRoll;
 			var value = turnsSrv.thisTurn.weaponEffects[roll-1].name;
@@ -202,14 +198,12 @@ angular.module('myApp.combat', ['ngRoute'])
 			}
 			calcEffects();
 		};
-
-
-
+		
 		$scope.setSublocation = function(location) {
 			turnsSrv.sublocationPick = location.name;
 			calcEffects();
 		};
-		//EFFEKTU GALIMA PIRKTI TIK 1+PER-10. TIK TOKIU KOKIUS WEAPONAS TURI.
+		
 		function calcEffects() {
 			turnsSrv.thisTurn.effects[0].value = turnsSrv.buyDamageEffects[0].value + turnsSrv.activeWeaponEffect[0];
 			turnsSrv.thisTurn.effects[1].value = turnsSrv.buyDamageEffects[1].value + turnsSrv.activeWeaponEffect[1];
@@ -251,7 +245,6 @@ angular.module('myApp.combat', ['ngRoute'])
 
 		$scope.vigorDamageEffectsCost = function (effect, index) {
 			var originalIndex = turnsSrv.buyDamageEffects.indexOf(effect);
-			
 			turnsSrv.vigorEffectsCost[originalIndex] = effect.value * effect.vigorCost;
 			turnsSrv.thisTurn.currentEffects[originalIndex] = effect.value;
 			vigorCost();
@@ -259,7 +252,6 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.buyDamageEffects[0].max = turnsSrv.thisTurn.maxEffects - turnsSrv.buyDamageEffects[1].value - turnsSrv.buyDamageEffects[2].value;
 			turnsSrv.buyDamageEffects[1].max = turnsSrv.thisTurn.maxEffects - turnsSrv.buyDamageEffects[0].value - turnsSrv.buyDamageEffects[2].value;
 			turnsSrv.buyDamageEffects[2].max = turnsSrv.thisTurn.maxEffects - turnsSrv.buyDamageEffects[1].value - turnsSrv.buyDamageEffects[0].value;
-
 		};
 
 		turnsSrv.buyDamageEffects[0].max = 1 + character.attributes.PER - 10;

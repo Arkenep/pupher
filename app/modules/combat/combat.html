@@ -306,27 +306,11 @@
 							</span>
 						</button>
 						<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button" style="min-width: 132px;">
-
-
-
-
 							<li ng-repeat="effect in turns.buyDamageEffects | filter: true : available" role="menuitem" auto-close="disabled">
 								<div>
 									<a>
 										<div style="float: left; padding-left: 5px; padding-right: 5px;"><img src="/app/img/{{effect.icon}}" alt="{{effect.name}}" title="{{effect.name}}"></div>
 										<input type="number" min="0" max="{{effect.max}}" class="form-control form-control-stats" ng-model="effect.value" ng-change="vigorDamageEffectsCost(effect, $index)" style="float: left; width: 88px; height: 44px; padding: 0px;">
-									</a>
-								</div>
-							</li>
-
-
-
-
-
-							<li>
-								<div>
-									<a>
-										<div style="float: left; padding-left: 5px; padding-right: 5px;"><button ng-click="resetEffects()">Reset</button></div>
 									</a>
 								</div>
 							</li>
