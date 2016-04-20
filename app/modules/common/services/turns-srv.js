@@ -136,9 +136,9 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 	];
 	
 	turns.buyDamageEffects = [
-		{name: 'Bleed', icon: 'Bleed.png', value: 0, vigorCost: 1, available: false},
-		{name: 'Trauma', icon: 'Trauma.png', value: 0, vigorCost: 2, available: false},
-		{name: 'Critical', icon: 'Critical.png', value: 0, vigorCost: 3, available: false}
+		{name: 'Bleed', icon: 'Bleed.png', value: 0, vigorCost: 1, available: false, max: 0},
+		{name: 'Trauma', icon: 'Trauma.png', value: 0, vigorCost: 2, available: false, max: 0},
+		{name: 'Critical', icon: 'Critical.png', value: 0, vigorCost: 3, available: false, max: 0}
 	];
 
 	turns.combatRoll = 0;

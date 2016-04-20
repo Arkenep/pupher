@@ -250,27 +250,21 @@ angular.module('myApp.combat', ['ngRoute'])
 		}
 
 		$scope.vigorDamageEffectsCost = function (effect, index) {
-			turnsSrv.vigorEffectsCost[index] = effect.value * effect.vigorCost;
-			turnsSrv.thisTurn.currentEffects[index] = effect.value;
+			var originalIndex = turnsSrv.buyDamageEffects.indexOf(effect);
+			
+			turnsSrv.vigorEffectsCost[originalIndex] = effect.value * effect.vigorCost;
+			turnsSrv.thisTurn.currentEffects[originalIndex] = effect.value;
 			vigorCost();
 			calcEffects();
-			//disables when max reached
-			/*$scope.disableEffects = function() {
-				if (turnsSrv.thisTurn.finalEffects >= turnsSrv.thisTurn.maxEffects) {
-					return true;
-				}
-			};*/
+			turnsSrv.buyDamageEffects[0].max = turnsSrv.thisTurn.maxEffects - turnsSrv.buyDamageEffects[1].value - turnsSrv.buyDamageEffects[2].value;
+			turnsSrv.buyDamageEffects[1].max = turnsSrv.thisTurn.maxEffects - turnsSrv.buyDamageEffects[0].value - turnsSrv.buyDamageEffects[2].value;
+			turnsSrv.buyDamageEffects[2].max = turnsSrv.thisTurn.maxEffects - turnsSrv.buyDamageEffects[1].value - turnsSrv.buyDamageEffects[0].value;
+
 		};
 
-		//resets effects when disabled
-		/*$scope.resetEffects = function () {
-			turnsSrv.thisTurn.currentEffects = [0,0,0];
-			turnsSrv.thisTurn.finalEffects = 0;
-			turnsSrv.buyDamageEffects[0].value = 0;
-			turnsSrv.buyDamageEffects[1].value = 0;
-			turnsSrv.buyDamageEffects[2].value = 0;
-		};*/
-
+		turnsSrv.buyDamageEffects[0].max = 1 + character.attributes.PER - 10;
+		turnsSrv.buyDamageEffects[1].max = 1 + character.attributes.PER - 10;
+		turnsSrv.buyDamageEffects[2].max = 1 + character.attributes.PER - 10;
 		turnsSrv.thisTurn.maxEffects = 1 + character.attributes.PER - 10;
 
 		$scope.calcInit = function() {
