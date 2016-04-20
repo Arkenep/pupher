@@ -7,6 +7,7 @@ angular.module('myApp', [
 	'myApp.combat',
 	'myApp.version',
 	'myApp.services',
+	'myApp.directives', //for directive example
 	'ui.bootstrap'
 ]).
 config(['$routeProvider', function($routeProvider) {

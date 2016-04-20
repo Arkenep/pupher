@@ -277,5 +277,7 @@ angular.module('myApp.combat', ['ngRoute'])
 		initiativeCalc();
 
 		$scope.setAttackType(turnsSrv.currentAttackType);
+
+		$scope.myObject = "asdasdasd asd asdasd asd asd"; //example of directive
 		
 	}]);
