@@ -241,6 +241,7 @@
 
 				</div>
 				<div class="div-table-row">
+					<div class="div-table-col">Attack</div>
 					<div class="div-table-col div-table-col-2">Action</div>
 					<div class="div-table-col div-table-col-2">Attack Type</div>
 					<div class="div-table-col">Bonus</div>
@@ -253,6 +254,26 @@
 				</div>
 
 
+				<!--Start of NEW Attack-->
+				<div>
+					<div style="width: 44px; float: left;">
+						<div type="button" title="Add Attack" ng-click="addAttack()" class="div-table-col div-table-col-borderless btn btn-success weapon-change">
+							<span class="glyphicon glyphicon-plus"></span>
+						</div>
+					</div>
+					<div style="float: left;">
+						<div class="div-table-row" ng-repeat="attack in turns.attacks" style="float: left;">
+							<!--Action-->
+							<div class="btn-group" uib-dropdown style="width: 88px; display: table-column;height: 44px;text-align: center;line-height: 44px;vertical-align: middle;float: left;">
+								<button id="btn-append-to-single-button-attack-action" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 88px;height: 44px;">{{attack.currentAction}}
+								</button>
+								<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
+									<li ng-repeat="(id, properties) in attack.actions" role="menuitem"><a ng-click="setAction(id, properties, $parent.$index)">{{properties.name}}</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
 				<!--Start of Attack-->
 				<div class="div-table-row">
 					<!--Action-->

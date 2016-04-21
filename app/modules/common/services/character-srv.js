@@ -29,6 +29,7 @@ angular.module('myApp.services').service('character', function() {
 		{
 			name: 'Long Sword',
 			type: {name: 'Blade', value: 0},
+			attackWeight: 3,
 			thrust: true,
 			swing: true,
 			defaultHands: 2,
@@ -62,6 +63,7 @@ angular.module('myApp.services').service('character', function() {
 		{
 			name: 'Short Sword',
 			type: {name: 'Blade', value: 0},
+			attackWeight: 1,
 			thrust: true,
 			swing: true,
 			defaultHands: 1,
@@ -95,6 +97,7 @@ angular.module('myApp.services').service('character', function() {
 		{
 			name: 'Spear',
 			type: {name: 'Spear', value: 0},
+			attackWeight: 2,
 			thrust: true,
 			swing: false,
 			defaultHands: 1,
@@ -128,6 +131,7 @@ angular.module('myApp.services').service('character', function() {
 		{
 			name: 'Mace',
 			type: {name: 'Unbalanced', value: 0},
+			attackWeight: 2,
 			thrust: false,
 			swing: true,
 			defaultHands: 1,
@@ -161,6 +165,7 @@ angular.module('myApp.services').service('character', function() {
 		{
 			name: 'Axe',
 			type: {name: 'Unbalanced', value: 0},
+			attackWeight: 2,
 			thrust: false,
 			swing: true,
 			defaultHands: 1,

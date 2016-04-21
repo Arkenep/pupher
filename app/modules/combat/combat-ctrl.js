@@ -91,6 +91,35 @@ angular.module('myApp.combat', ['ngRoute'])
 			character.characterMHDV = character.combatSkills[skill] + character.attributes.REF + character.mainHandWeapon.defenceValueBonus;
 		}*/
 		
+		//START of attacks
+		
+		$scope.addAttack = function () {
+			var tempAttack = {};
+			angular.copy(turnsSrv.defaultAttack, tempAttack);
+			tempAttack.index = turnsSrv.attacks.length;
+			turnsSrv.attacks.push(tempAttack);
+
+		}
+		
+		$scope.setAction = function (objId, properties, parentIndex) {
+			turnsSrv.attacks[parentIndex].currentAction = properties.name;
+		};
+		
+		
+		
+		//END of attacks
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		function setActionTypeOptions(action) {
 			if (action == 'Offhand') {
 				offHandWeaponPick();
@@ -144,7 +173,7 @@ angular.module('myApp.combat', ['ngRoute'])
 			selectAttackType(type);
 		};
 		$scope.setAttackType(turnsSrv.currentAttackType);
-		
+
 		function selectAttackType(type) {
 			if (type.name == 'Thrust') {
 				turnsSrv.thisTurn.damage = turnsSrv.attackWeapon.thrustDamage;

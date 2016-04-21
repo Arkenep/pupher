@@ -23,6 +23,41 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 		}
 	};
 	
+	
+	
+	turns.attacks = [];
+	
+	turns.defaultAttack = {
+		currentAction: 'Pick',
+		actions: {
+			mainHand: {
+				name: 'Main Hand',
+				weapon: {}
+			},
+			offHand: {
+				name: 'Offhand',
+				weapon: {}
+			}
+		}
+	};
+	
+	
+	
+	
+	
+	
+	//from here old stuff
+	
+	turns.currentActionType = 'Pick';
+	turns.actionType = [
+		{name: 'Main Hand', cost: 0, bonus: 0},
+		{name: 'Offhand', cost: 0, bonus: 0}
+	];
+	
+	
+	
+	
+	
 	turns.currentAttackType = 'Pick';
 	turns.currentLocation = 'Pick';
 	turns.currentSpecial = 'Pick';
@@ -168,11 +203,7 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 	turns.activeWeaponEffectRoll = 0;
 	turns.activeWeaponEffect = [0,0,0];
 	turns.attackWeapon = {};
-	turns.currentActionType = 'Pick';
-	turns.actionType = [
-		{name: 'Main Hand', cost: 0, bonus: 0},
-		{name: 'Offhand', cost: 0, bonus: 0}
-	];
+	
 	
 	return turns;
 }]);
