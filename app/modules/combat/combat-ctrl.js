@@ -97,8 +97,10 @@ angular.module('myApp.combat', ['ngRoute'])
 			var tempAttack = {};
 			angular.copy(turnsSrv.defaultAttack, tempAttack);
 			turnsSrv.attacks.push(tempAttack);
-
+			console.log(turnsSrv.attacks);
 		};
+
+		
 
 		function setWeapon() {
 			for (i=0; i < turnsSrv.attacks.length; i++) {
