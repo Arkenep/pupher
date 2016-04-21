@@ -188,27 +188,17 @@
 		<div class="col-md-12">
 			<div class="div-table">
 				<div class="div-table-row">
-					<div class="div-table-col div-table-col-borderless">Turn</div>
-					<div class="div-table-col temp-bg-bolor">1</div>
-					<div class="div-table-col temp-bg-bolor">2</div>
-					<div class="div-table-col temp-bg-bolor-2">3</div>
-					<div class="div-table-col">4</div>
-					<div class="div-table-col">5</div>
-					<div class="div-table-col">6</div>
-					<div class="div-table-col">7</div>
-					<div class="div-table-col">8</div>
-					<div class="div-table-col">9</div>
-					<div class="div-table-col">10</div>
-					<div class="div-table-col">11</div>
-					<div class="div-table-col">12</div>
-					<div class="div-table-col">13</div>
 					<div class="div-table-col div-table-col-borderless-2">Init Roll</div>
 					<div class="div-table-col"><input type="number" min="1" max="6" class="form-control form-control-stats" ng-model="turns.thisTurn.initiativeRoll" ng-value=turns.thisTurn.initiativeRoll ng-change="calcInit()" style="padding: 0px;"></div>
 					<div class="div-table-col div-table-col-borderless-2">Bonus</div>
 					<div class="div-table-col"><input type="number" min="0" class="form-control form-control-stats" ng-disabled="disableInitValue" ng-init="disableInitValue=false" ng-model="turns.thisTurn.bonus" ng-change="initBonus()" style="padding: 0px;"></div>
-					<div type="button" title="Start Combat" class="div-table-col div-table-col-borderless btn btn-success weapon-change" ng-click="disableInitValue=!disableInitValue">
-						<span class="glyphicon glyphicon-chevron-right"></span>
-					</div>
+					<button type="button" title="Start Combat" class="div-table-col div-table-col-borderless btn btn-success weapon-change" ng-click="startCombat()" style="width: 88px; height: 44px; float: left;">Start Combat</button>
+				</div>
+				<div class="div-table-row">
+					<div class="div-table-col div-table-col-borderless">Turn</div>
+					<button type="button" ng-repeat="turn in turns.combat" style="width: 44px; height: 44px; float: left;">
+						<div>{{turn.number}}</div>
+					</button>
 				</div>
 			</div>
 		</div>
@@ -222,27 +212,15 @@
 		<div class="col-md-12">
 			<div class="div-table">
 				<div class="div-table-row">
-					<div class="div-table-col div-table-col-borderless"></div>
-					<div class="div-table-col div-table-col-borderless"></div>
 					<div class="div-table-col div-table-col-borderless">Init</div>
 					<div class="div-table-col" ng-model="turns.thisTurn.initiativeRoll">{{turns.thisTurn.initiative}}</div>
 					<div class="div-table-col div-table-col-borderless">Bonus</div>
 					<div class="div-table-col div-table-col-borderless">{{turns.thisTurn.currentBonus}}</div>
-
-					<div class="div-table-col div-table-col-borderless">Luck</div>
-					<div class="div-table-col">-</div>
-
-					<div class="div-table-col div-table-col-3">Complete Attack</div>
-					<div type="button" title="Complete Attack" class="div-table-col div-table-col-borderless btn btn-primary weapon-change">
-						<span class="glyphicon glyphicon-chevron-right"></span>
-					</div>
-					<div class="div-table-col div-table-col-3">Enemy Status</div>
-					<div class="div-table-col div-table-col-3">Dead</div>
-
+					<button type="button" title="Add Action" ng-click="addAction()" class="btn btn-success" style="width: 88px; height: 44px; float: left;">Add Action</button>
+					<button type="button" title="End Turn" class="btn btn-success" ng-click="endTurn()" style="width: 88px; height: 44px; float: left;">End Turn</button>
 				</div>
 				<div class="div-table-row">
-					<div class="div-table-col">Attack</div>
-					<div class="div-table-col div-table-col-2">Action</div>
+					<div class="div-table-col div-table-col-3">Action</div>
 					<div class="div-table-col div-table-col-2">Attack Type</div>
 					<div class="div-table-col">Bonus</div>
 					<div class="div-table-col div-table-col-2">Location</div>
@@ -257,18 +235,16 @@
 				<!--Start of NEW Attack-->
 				<div>
 					<div style="width: 44px; float: left;">
-						<div type="button" title="Add Attack" ng-click="addAttack()" class="div-table-col div-table-col-borderless btn btn-success weapon-change">
-							<span class="glyphicon glyphicon-plus"></span>
-						</div>
+
 					</div>
 					<div style="float: left;">
-						<div class="div-table-row" ng-repeat="attack in turns.attacks" style="float: left;">
+						<div class="div-table-row" ng-repeat="action in turns.actions" style="float: left;">
 							<!--Action-->
-							<div class="btn-group" uib-dropdown style="width: 88px; display: table-column;height: 44px;text-align: center;line-height: 44px;vertical-align: middle;float: left;">
-								<button id="btn-append-to-single-button-attack-action" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 88px;height: 44px;">{{attack.currentAction}}
+							<div class="btn-group" uib-dropdown style="width: 132px; display: table-column;height: 44px;text-align: center;line-height: 44px;vertical-align: middle;float: left;">
+								<button id="btn-append-to-single-button-action" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 132px;height: 44px;">{{action.currentAction}}
 								</button>
 								<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
-									<li ng-repeat="(id, properties) in attack.actions" role="menuitem"><a ng-click="setAction(id, properties, $parent.$index)">{{properties.name}}</a></li>
+									<li ng-repeat="(id, properties) in action.type" role="menuitem"><a ng-click="setAction(id, properties, $parent.$index)">{{properties.weapon.name}}</a></li>
 								</ul>
 							</div>
 

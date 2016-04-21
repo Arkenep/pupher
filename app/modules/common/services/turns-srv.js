@@ -3,38 +3,15 @@
 angular.module('myApp.services').service('turnsSrv', ['character', function(character) {
 	var turns = {};
 
-	
-
-	
-/*
-	turns.spendLuck = function (n) {
-		if (character.luck >= n) {
-			character.luck -= n;
-			return character.luck;
-		} else {
-			return false;
-		}
-	};*/
-	
-	/*
-	turns.endTurn = function () {
-		var tempTurn = {};
-		
-		angular.copy(turns.thisTurn, tempTurn);
-		
-		tempTurn.index = turns.combat.length;
-		turns.combat.push(tempTurn);
-	};*/
-	
 	turns.combat = [];
 	
 	turns.turn = {};
 
-	turns.attacks = [];
+	turns.actions = [];
 	
-	turns.defaultAttack = {
+	turns.action = {
 		currentAction: 'Pick',
-		actions: {
+		type: {
 			mainHand: {
 				name: 'Main Hand',
 				weapon: {}

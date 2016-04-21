@@ -86,21 +86,49 @@ angular.module('myApp.combat', ['ngRoute'])
 			}
 		};
 
-		// not yet setup.
-		/*function mainHandDV() {
-			character.characterMHDV = character.combatSkills[skill] + character.attributes.REF + character.mainHandWeapon.defenceValueBonus;
-		}*/
+
 		
 		//START of attacks
 		
-		$scope.addAttack = function () {
-			var tempAttack = {};
-			angular.copy(turnsSrv.defaultAttack, tempAttack);
-			turnsSrv.attacks.push(tempAttack);
-			console.log(turnsSrv.attacks);
+		$scope.startCombat = function () {
+			newTurn();
+			newAction();
+
+			console.log(['combat'],[turnsSrv.combat],['turn'],[turnsSrv.turn],['actions'],[turnsSrv.actions]);
+		};
+		
+		$scope.endTurn = function () {
+			newTurn();
+		};
+		
+		function newTurn() {
+			var tempTurn = {};
+			angular.copy(turnsSrv.turn, tempTurn);
+			tempTurn.number = turnsSrv.combat.length+1;
+			turnsSrv.combat.push(tempTurn);
+		}
+		
+		$scope.addAction = function () {
+			newAction();
 		};
 
-		
+		function newAction() {
+			var tempAction = {};
+			turnsSrv.action.type.mainHand.weapon = character.mainHandWeapon;
+			turnsSrv.action.type.offHand.weapon = character.offHandWeapon;
+			turnsSrv.action.currentAction = turnsSrv.action.type.mainHand.weapon.name;
+			angular.copy(turnsSrv.action, tempAction);
+			turnsSrv.actions.push(tempAction);
+
+		}
+
+		//GOOD
+		$scope.setAction = function (objId, properties, parentIndex) {
+			turnsSrv.actions[parentIndex].currentAction = properties.weapon.name;
+			
+		};
+
+
 
 		function setWeapon() {
 			for (i=0; i < turnsSrv.attacks.length; i++) {
@@ -109,9 +137,8 @@ angular.module('myApp.combat', ['ngRoute'])
 			}
 		}
 
-		$scope.setAction = function (objId, properties, parentIndex) {
-			turnsSrv.attacks[parentIndex].currentAction = properties.name;
-		};
+
+
 		
 		
 		
