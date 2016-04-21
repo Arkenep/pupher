@@ -57,72 +57,72 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 			name: 'Head',
 			bonusAV : -3, 
 			sublocation: [
-				{name: 'Vieta 1', value: 0},
-				{name: 'Vieta 2', value: 0},
-				{name: 'Vieta 3', value: 0},
-				{name: 'Vieta 4', value: 0},
-				{name: 'Vieta 5', value: 0},
-				{name: 'Vieta 6', value: 0}
+				{name: 'Forehead', value: 0},
+				{name: 'Skull', value: 0},
+				{name: 'Face', value: 0},
+				{name: 'Neck', value: 0},
+				{name: 'Temple', value: 0},
+				{name: 'Eye', value: 0}
 			]
 		},
 		{
 			name: 'Body',
 			bonusAV : -2,
 			sublocation: [
-				{name: 'Vieta 1', value: 0},
-				{name: 'Vieta 2', value: 0},
-				{name: 'Vieta 3', value: 0},
-				{name: 'Vieta 4', value: 0},
-				{name: 'Vieta 5', value: 0},
-				{name: 'Vieta 6', value: 0}
+				{name: 'Rib Cage', value: 0},
+				{name: 'Lungs', value: 0},
+				{name: 'Flesh', value: 0},
+				{name: 'Liver', value: 0},
+				{name: 'Kidney', value: 0},
+				{name: 'Heart', value: 0}
 			]
 		},
 		{
 			name: 'Right Arm',
 			bonusAV : -1,
 			sublocation: [
-				{name: 'Vieta 1', value: 0},
-				{name: 'Vieta 2', value: 0},
-				{name: 'Vieta 3', value: 0},
-				{name: 'Vieta 4', value: 0},
-				{name: 'Vieta 5', value: 0},
-				{name: 'Vieta 6', value: 0}
+				{name: 'Flesh', value: 0},
+				{name: 'Flesh', value: 0},
+				{name: 'Muscle', value: 0},
+				{name: 'Vein', value: 0},
+				{name: 'Palm', value: 0},
+				{name: 'Elbow', value: 0}
 			]
 		},
 		{
 			name: 'Left Arm',
 			bonusAV : -1,
 			sublocation: [
-				{name: 'Vieta 1', value: 0},
-				{name: 'Vieta 2', value: 0},
-				{name: 'Vieta 3', value: 0},
-				{name: 'Vieta 4', value: 0},
-				{name: 'Vieta 5', value: 0},
-				{name: 'Vieta 6', value: 0}
+				{name: 'Flesh', value: 0},
+				{name: 'Flesh', value: 0},
+				{name: 'Muscle', value: 0},
+				{name: 'Vein', value: 0},
+				{name: 'Palm', value: 0},
+				{name: 'Elbow', value: 0}
 			]
 		},
 		{
 			name: 'Right Leg',
 			bonusAV : -1,
 			sublocation: [
-				{name: 'Vieta 1', value: 0},
-				{name: 'Vieta 2', value: 0},
-				{name: 'Vieta 3', value: 0},
-				{name: 'Vieta 4', value: 0},
-				{name: 'Vieta 5', value: 0},
-				{name: 'Vieta 6', value: 0}
+				{name: 'Flesh', value: 0},
+				{name: 'Flesh', value: 0},
+				{name: 'Muscle', value: 0},
+				{name: 'Vein', value: 0},
+				{name: 'Foot', value: 0},
+				{name: 'Knee', value: 0}
 			]
 		},
 		{
 			name: 'Left leg',
 			bonusAV : -1,
 			sublocation: [
-				{name: 'Vieta 1', value: 0},
-				{name: 'Vieta 2', value: 0},
-				{name: 'Vieta 3', value: 0},
-				{name: 'Vieta 4', value: 0},
-				{name: 'Vieta 5', value: 0},
-				{name: 'Vieta 6', value: 0}
+				{name: 'Flesh', value: 0},
+				{name: 'Flesh', value: 0},
+				{name: 'Muscle', value: 0},
+				{name: 'Vein', value: 0},
+				{name: 'Foot', value: 0},
+				{name: 'Knee', value: 0}
 			]
 		}
 	];

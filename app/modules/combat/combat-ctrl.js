@@ -143,7 +143,8 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.currentAttackType = type.name;
 			selectAttackType(type);
 		};
-
+		$scope.setAttackType(turnsSrv.currentAttackType);
+		
 		function selectAttackType(type) {
 			if (type.name == 'Thrust') {
 				turnsSrv.thisTurn.damage = turnsSrv.attackWeapon.thrustDamage;
@@ -268,7 +269,7 @@ angular.module('myApp.combat', ['ngRoute'])
 		}
 		initiativeCalc();
 
-		$scope.setAttackType(turnsSrv.currentAttackType);
+
 
 		$scope.myObject = "asdasdasd asd asdasd asd asd"; //example of directive
 		
