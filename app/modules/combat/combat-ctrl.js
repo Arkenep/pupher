@@ -96,11 +96,17 @@ angular.module('myApp.combat', ['ngRoute'])
 		$scope.addAttack = function () {
 			var tempAttack = {};
 			angular.copy(turnsSrv.defaultAttack, tempAttack);
-			tempAttack.index = turnsSrv.attacks.length;
 			turnsSrv.attacks.push(tempAttack);
 
+		};
+
+		function setWeapon() {
+			for (i=0; i < turnsSrv.attacks.length; i++) {
+				turnsSrv.attacks[i].mainHand.weapon = character.mainHandWeapon;
+				turnsSrv.attacks[i].offHand.weapon = character.offHandWeapon;
+			}
 		}
-		
+
 		$scope.setAction = function (objId, properties, parentIndex) {
 			turnsSrv.attacks[parentIndex].currentAction = properties.name;
 		};
