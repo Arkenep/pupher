@@ -123,37 +123,77 @@ angular.module('myApp.combat', ['ngRoute'])
 			newAction();
 		};
 
+		$scope.removeAction = function (index) {
+
+			turnsSrv.actions.splice(index, 1);
+			checkNumberOfAttacks();
+
+		};
+
 		function newAction() {
+
 			var tempAction = {};
 			turnsSrv.action.type.mainHand.weapon = character.mainHandWeapon;
 			turnsSrv.action.type.offHand.weapon = character.offHandWeapon;
 			turnsSrv.action.currentAction.name = turnsSrv.action.type.mainHand.weapon.name;
 			turnsSrv.action.currentAction.type = turnsSrv.action.type.mainHand.name;
-			//console.log(turnsSrv.action.currentAction.type);
+			turnsSrv.action.currentAction.weight = turnsSrv.action.type.mainHand.weapon.attackWeight;
 			angular.copy(turnsSrv.action, tempAction);
 			turnsSrv.actions.push(tempAction);
-
+			checkNumberOfAttacks();
 		}
 
 		//GOOD
 		$scope.setAction = function (obj, properties, parentIndex) {
+
 			turnsSrv.actions[parentIndex].currentAction.name = properties.weapon.name;
 			turnsSrv.actions[parentIndex].currentAction.type = properties.name;
+			turnsSrv.actions[parentIndex].currentAction.weight = properties.weapon.attackWeight;
+			checkNumberOfAttacks();
 		};
 
 		function refreshWeapon() {
+
 			for (var i=0; i < turnsSrv.actions.length; i++) {
 				turnsSrv.actions[i].type.mainHand.weapon = character.mainHandWeapon;
 				turnsSrv.actions[i].type.offHand.weapon = character.offHandWeapon;
 				if (turnsSrv.actions[i].currentAction.type == turnsSrv.actions[i].type.mainHand.name) {
 					turnsSrv.actions[i].currentAction.name = turnsSrv.actions[i].type.mainHand.weapon.name;
+					turnsSrv.actions[i].currentAction.weight = turnsSrv.actions[i].type.mainHand.weapon.attackWeight;
 				} else {
 					turnsSrv.actions[i].currentAction.name = turnsSrv.actions[i].type.offHand.weapon.name;
+					turnsSrv.actions[i].currentAction.weight = turnsSrv.actions[i].type.offHand.weapon.attackWeight;
 				}
-
 			}
+			checkNumberOfAttacks();
 		}
 
+		function checkNumberOfAttacks() {
+			var sorted = turnsSrv.actions;
+			sorted.sort(function (b,a) {
+				if (a.currentAction.weight > b.currentAction.weight) {
+					return 1;
+				}
+				if (a.currentAction.weight < b.currentAction.weight) {
+					return -1;
+				}
+				return 0;
+			});
+
+			var sum = 0;
+
+			for (var i=0; i < sorted.length; i++) {
+				console.log('elementas', i);
+				sum = sum + sorted[i].currentAction.weight;
+				if (sum > 12) {
+					turnsSrv.actionStatus = 'Too many Attacks!';
+				}
+				if (sum <= 12) {
+					turnsSrv.actionStatus = 'You can attacks!';
+				}
+			}
+			console.log(sum, turnsSrv.actionStatus);
+		}
 
 	/*	$scope.refreshWeapon = function (index) {
 			turnsSrv.actions[index].type.mainHand.weapon = character.mainHandWeapon;

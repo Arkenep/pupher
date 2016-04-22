@@ -22,14 +22,14 @@
 	<div style="width: 100%; float: left;">
 		<div>
 			<div type="button" title="Change Main Hand" ng-click="hands()" class="div-table-col div-table-col-borderless btn btn-success weapon-change">{{turns.weaponHands}}H</div>
-				<div class="btn-group" uib-dropdown style="width: 308px; display: table-column;height: 44px;text-align: center;line-height: 44px;vertical-align: middle;float: left;">
-					<button id="btn-append-to-single-button-mainhand" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 308px;height: 44px;">
-						{{character.mainHandWeapon.name}} <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
-						<li ng-repeat="weapon in character.weapons" role="menuitem"><a ng-click="setMainHandWeapon(weapon)">{{weapon.name}}</a></li>
-					</ul>
-				</div>
+			<div class="btn-group" uib-dropdown style="width: 308px; display: table-column;height: 44px;text-align: center;line-height: 44px;vertical-align: middle;float: left;">
+				<button id="btn-append-to-single-button-mainhand" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 308px;height: 44px;">
+					{{character.mainHandWeapon.name}} <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
+					<li ng-repeat="weapon in character.weapons" role="menuitem"><a ng-click="setMainHandWeapon(weapon)">{{weapon.name}}</a></li>
+				</ul>
+			</div>
 			<div title="Thrust Effects" class="div-table-col div-table-col-2">Thrust</div>
 			<div title="Thrust Damage" class="div-table-col">
 				<div ng-if="character.mainHandWeapon.thrust">{{character.mainHandWeapon.thrustDamage + ' + ' + character.mainHandWeapon.thrustDamagePiercing}}</div>
@@ -239,6 +239,9 @@
 					</div>
 					<div style="float: left;">
 						<div class="div-table-row" ng-repeat="action in turns.actions" style="float: left;">
+
+							<!--Remove Action-->
+							<div type="button" title="Remove Action" ng-click="removeAction($index)" class="div-table-col div-table-col-borderless btn btn-danger weapon-change"><span class="glyphicon glyphicon-minus"></span></div>
 							<!--Action-->
 							<div class="btn-group" uib-dropdown style="width: 132px; display: table-column;height: 44px;text-align: center;line-height: 44px;vertical-align: middle;float: left;">
 								<button id="btn-append-to-single-button-action" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 132px;height: 44px;">{{action.currentAction.name}}

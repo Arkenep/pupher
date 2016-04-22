@@ -29,7 +29,7 @@ angular.module('myApp.services').service('character', function() {
 		{
 			name: 'Long Sword',
 			type: {name: 'Blade', value: 0},
-			attackWeight: 3,
+			attackWeight: 6,
 			thrust: true,
 			swing: true,
 			defaultHands: 2,
@@ -63,7 +63,7 @@ angular.module('myApp.services').service('character', function() {
 		{
 			name: 'Short Sword',
 			type: {name: 'Blade', value: 0},
-			attackWeight: 1,
+			attackWeight: 3,
 			thrust: true,
 			swing: true,
 			defaultHands: 1,
@@ -97,7 +97,7 @@ angular.module('myApp.services').service('character', function() {
 		{
 			name: 'Spear',
 			type: {name: 'Spear', value: 0},
-			attackWeight: 2,
+			attackWeight: 4,
 			thrust: true,
 			swing: false,
 			defaultHands: 1,
@@ -129,9 +129,43 @@ angular.module('myApp.services').service('character', function() {
 			reach: 2
 		},
 		{
+			name: 'Great Axe',
+			type: {name: 'Unbalanced', value: 0},
+			attackWeight: 12,
+			thrust: false,
+			swing: true,
+			defaultHands: 2,
+			thrustDamage: 0,
+			thrustDamagePiercing: 0,
+			isActive : false,
+			thrustDamageEffects: [
+				{icon: '', name: ''},
+				{icon: '', name: ''},
+				{icon: '', name: ''},
+				{icon: '', name: ''},
+				{icon: '', name: ''},
+				{icon: '', name: ''}
+			],
+			swingDamage: 7,
+			swingDamagePiercing: 1,
+			swingDamageEffects: [
+				{icon: '', name: ''},
+				{icon: '', name: ''},
+				{icon: 'Bleed.png', name: 'Bleed'},
+				{icon: 'Bleed.png', name: 'Bleed'},
+				{icon: 'Bleed.png', name: 'Bleed'},
+				{icon: 'Trauma.png', name: 'Trauma'}
+			],
+			STRRequired: 13,
+			attackValueBonus: 0,
+			defenceValueBonus: 0,
+			weight: 4,
+			reach: 2
+		},
+		{
 			name: 'Mace',
 			type: {name: 'Unbalanced', value: 0},
-			attackWeight: 2,
+			attackWeight: 4,
 			thrust: false,
 			swing: true,
 			defaultHands: 1,
@@ -165,7 +199,7 @@ angular.module('myApp.services').service('character', function() {
 		{
 			name: 'Axe',
 			type: {name: 'Unbalanced', value: 0},
-			attackWeight: 2,
+			attackWeight: 4,
 			thrust: false,
 			swing: true,
 			defaultHands: 1,

@@ -10,7 +10,7 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 	turns.actions = [];
 	
 	turns.action = {
-		currentAction: {name:'Pick', type: ''},
+		currentAction: {name:'Pick', type: '', weight: 0},
 		type: {
 			mainHand: {
 				name: 'Main Hand',
@@ -23,7 +23,7 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 		}
 	};
 	
-	
+	turns.actionStatus = '';
 	
 	
 	
