@@ -241,7 +241,7 @@
 						<div class="div-table-row" ng-repeat="action in turns.actions" style="float: left;">
 							<!--Action-->
 							<div class="btn-group" uib-dropdown style="width: 132px; display: table-column;height: 44px;text-align: center;line-height: 44px;vertical-align: middle;float: left;">
-								<button id="btn-append-to-single-button-action" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 132px;height: 44px;">{{action.currentAction}}
+								<button id="btn-append-to-single-button-action" type="button" class="btn btn-primary" uib-dropdown-toggle ng-click="refreshWeapon($index)" style="width: 132px;height: 44px;">{{action.currentAction}}
 								</button>
 								<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
 									<li ng-repeat="(id, properties) in action.type" role="menuitem"><a ng-click="setAction(id, properties, $parent.$index)">{{properties.weapon.name}}</a></li>

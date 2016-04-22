@@ -125,10 +125,13 @@ angular.module('myApp.combat', ['ngRoute'])
 		//GOOD
 		$scope.setAction = function (objId, properties, parentIndex) {
 			turnsSrv.actions[parentIndex].currentAction = properties.weapon.name;
-			
+
 		};
 
-
+		$scope.refreshWeapon = function (index) {
+			turnsSrv.actions[index].type.mainHand.weapon = character.mainHandWeapon;
+			turnsSrv.actions[index].type.offHand.weapon = character.offHandWeapon;
+		};
 
 		function setWeapon() {
 			for (i=0; i < turnsSrv.attacks.length; i++) {
