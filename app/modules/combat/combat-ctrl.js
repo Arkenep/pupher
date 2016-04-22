@@ -29,9 +29,11 @@ angular.module('myApp.combat', ['ngRoute'])
 			if (turnsSrv.weaponHands == 2) {
 				turnsSrv.currentActionType = turnsSrv.actionType[0].name;
 			}
+			refreshWeapon();
+			
 			mainHandAV();
 			initiativeCalc();
-			setActionTypeOptions();
+			setActionTypeOptions(); //OLD remove when needed.
 		};
 		$scope.setMainHandWeapon(character.mainHandWeapon);
 
@@ -48,8 +50,10 @@ angular.module('myApp.combat', ['ngRoute'])
 					character.offHandWeapon.type.value = character.combatSkills[skill];
 				}
 			}
+			refreshWeapon();
+
 			offHandAV();
-			setActionTypeOptions();
+			setActionTypeOptions(); //OLD remove when needed.
 
 		};
 		$scope.setOffHandWeapon(character.offHandWeapon);
@@ -79,14 +83,21 @@ angular.module('myApp.combat', ['ngRoute'])
 			if ( turnsSrv.weaponHands == 1) {
 				turnsSrv.weaponHands = 2;
 				turnsSrv.currentActionType = turnsSrv.actionType[0].name;
-				setActionTypeOptions();
+				setActionTypeOptions(); //OLD remove when needed.
 			} else {
 				turnsSrv.weaponHands = 1;
 				turnsSrv.currentActionType = 'Pick';
 			}
 		};
-
-
+		
+		$scope.calcInit = function() {
+			initiativeCalc();
+		};
+		
+		function initiativeCalc() {
+			turnsSrv.thisTurn.initiative = turnsSrv.thisTurn.initiativeRoll + Math.ceil(character.mainHandWeapon.type.value/2) + character.mainHandWeapon.reach + character.attributes.PER;
+		}
+		initiativeCalc();
 		
 		//START of attacks
 		
@@ -116,29 +127,45 @@ angular.module('myApp.combat', ['ngRoute'])
 			var tempAction = {};
 			turnsSrv.action.type.mainHand.weapon = character.mainHandWeapon;
 			turnsSrv.action.type.offHand.weapon = character.offHandWeapon;
-			turnsSrv.action.currentAction = turnsSrv.action.type.mainHand.weapon.name;
+			turnsSrv.action.currentAction.name = turnsSrv.action.type.mainHand.weapon.name;
+			turnsSrv.action.currentAction.type = turnsSrv.action.type.mainHand.name;
+			//console.log(turnsSrv.action.currentAction.type);
 			angular.copy(turnsSrv.action, tempAction);
 			turnsSrv.actions.push(tempAction);
 
 		}
 
 		//GOOD
-		$scope.setAction = function (objId, properties, parentIndex) {
-			turnsSrv.actions[parentIndex].currentAction = properties.weapon.name;
-
+		$scope.setAction = function (obj, properties, parentIndex) {
+			turnsSrv.actions[parentIndex].currentAction.name = properties.weapon.name;
+			turnsSrv.actions[parentIndex].currentAction.type = properties.name;
 		};
 
-		$scope.refreshWeapon = function (index) {
+		function refreshWeapon() {
+			for (var i=0; i < turnsSrv.actions.length; i++) {
+				turnsSrv.actions[i].type.mainHand.weapon = character.mainHandWeapon;
+				turnsSrv.actions[i].type.offHand.weapon = character.offHandWeapon;
+				if (turnsSrv.actions[i].currentAction.type == turnsSrv.actions[i].type.mainHand.name) {
+					turnsSrv.actions[i].currentAction.name = turnsSrv.actions[i].type.mainHand.weapon.name;
+				} else {
+					turnsSrv.actions[i].currentAction.name = turnsSrv.actions[i].type.offHand.weapon.name;
+				}
+
+			}
+		}
+
+
+	/*	$scope.refreshWeapon = function (index) {
 			turnsSrv.actions[index].type.mainHand.weapon = character.mainHandWeapon;
 			turnsSrv.actions[index].type.offHand.weapon = character.offHandWeapon;
-		};
+		};*/
 
-		function setWeapon() {
-			for (i=0; i < turnsSrv.attacks.length; i++) {
+		/*function setWeapon() {
+			for (var i=0; i < turnsSrv.attacks.length; i++) {
 				turnsSrv.attacks[i].mainHand.weapon = character.mainHandWeapon;
 				turnsSrv.attacks[i].offHand.weapon = character.offHandWeapon;
 			}
-		}
+		}*/
 
 
 
@@ -156,7 +183,7 @@ angular.module('myApp.combat', ['ngRoute'])
 		
 		
 		
-		
+		//START OF OLD attacks
 		
 		function setActionTypeOptions(action) {
 			if (action == 'Offhand') {
@@ -327,14 +354,7 @@ angular.module('myApp.combat', ['ngRoute'])
 		turnsSrv.buyDamageEffects[2].max = 1 + character.attributes.PER - 10;
 		turnsSrv.thisTurn.maxEffects = 1 + character.attributes.PER - 10;
 
-		$scope.calcInit = function() {
-			initiativeCalc();
-		};
-
-		function initiativeCalc() {
-			turnsSrv.thisTurn.initiative = turnsSrv.thisTurn.initiativeRoll + Math.ceil(character.mainHandWeapon.type.value/2) + character.mainHandWeapon.reach + character.attributes.PER;
-		}
-		initiativeCalc();
+		
 
 
 
