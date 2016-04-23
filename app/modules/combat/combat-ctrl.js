@@ -169,30 +169,24 @@ angular.module('myApp.combat', ['ngRoute'])
 		}
 
 		function checkNumberOfAttacks() {
-			var sorted = turnsSrv.actions;
-			sorted.sort(function (b,a) {
-				if (a.currentAction.weight > b.currentAction.weight) {
-					return 1;
+			for (var i=0; i < turnsSrv.actions.length; i++) {
+				if (turnsSrv.actions[i].currentAction.weight == 'Super Heavy' && turnsSrv.actions.length > 1) {
+					return;
 				}
-				if (a.currentAction.weight < b.currentAction.weight) {
-					return -1;
+				if (turnsSrv.actions[i].currentAction.weight == 'Heavy' && turnsSrv.actions.length > 2) {
+					return;
 				}
-				return 0;
-			});
-
-			var sum = 0;
-
-			for (var i=0; i < sorted.length; i++) {
-				console.log('elementas', i);
-				sum = sum + sorted[i].currentAction.weight;
-				if (sum > 12) {
-					turnsSrv.actionStatus = 'Too many Attacks!';
+				if (turnsSrv.actions[i].currentAction.weight == 'Medium' && turnsSrv.actions.length > 3) {
+					return;
 				}
-				if (sum <= 12) {
-					turnsSrv.actionStatus = 'You can attacks!';
+				if (turnsSrv.actions[i].currentAction.weight == 'Light' && turnsSrv.actions.length > 4) {
+					return;
 				}
+				turnsSrv.actionStatus = 'You can attack!';
 			}
-			console.log(sum, turnsSrv.actionStatus);
+
+			console.log(turnsSrv.actionStatus);
+
 		}
 
 	/*	$scope.refreshWeapon = function (index) {

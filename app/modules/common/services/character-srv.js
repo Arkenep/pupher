@@ -29,7 +29,7 @@ angular.module('myApp.services').service('character', function() {
 		{
 			name: 'Long Sword',
 			type: {name: 'Blade', value: 0},
-			attackWeight: 6,
+			attackWeight: 'Heavy',
 			thrust: true,
 			swing: true,
 			defaultHands: 2,
@@ -63,7 +63,7 @@ angular.module('myApp.services').service('character', function() {
 		{
 			name: 'Short Sword',
 			type: {name: 'Blade', value: 0},
-			attackWeight: 3,
+			attackWeight: 'Light',
 			thrust: true,
 			swing: true,
 			defaultHands: 1,
@@ -97,7 +97,7 @@ angular.module('myApp.services').service('character', function() {
 		{
 			name: 'Spear',
 			type: {name: 'Spear', value: 0},
-			attackWeight: 4,
+			attackWeight: 'Medium',
 			thrust: true,
 			swing: false,
 			defaultHands: 1,
@@ -131,7 +131,7 @@ angular.module('myApp.services').service('character', function() {
 		{
 			name: 'Great Axe',
 			type: {name: 'Unbalanced', value: 0},
-			attackWeight: 12,
+			attackWeight: 'Super Heavy',
 			thrust: false,
 			swing: true,
 			defaultHands: 2,
@@ -165,7 +165,7 @@ angular.module('myApp.services').service('character', function() {
 		{
 			name: 'Mace',
 			type: {name: 'Unbalanced', value: 0},
-			attackWeight: 4,
+			attackWeight: 'Medium',
 			thrust: false,
 			swing: true,
 			defaultHands: 1,
@@ -199,7 +199,7 @@ angular.module('myApp.services').service('character', function() {
 		{
 			name: 'Axe',
 			type: {name: 'Unbalanced', value: 0},
-			attackWeight: 4,
+			attackWeight: 'Medium',
 			thrust: false,
 			swing: true,
 			defaultHands: 1,
