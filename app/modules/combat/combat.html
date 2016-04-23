@@ -252,7 +252,14 @@
 									<li ng-repeat="(obj, properties) in action.type" role="menuitem"><a ng-click="setAction(obj, properties, $parent.$index)">{{properties.weapon.name}}</a></li>
 								</ul>
 							</div>
-
+							<!--Attack type-->
+							<div class="btn-group" uib-dropdown style="width: 88px; display: table-column;height: 44px;text-align: center;line-height: 44px;vertical-align: middle;float: left;">
+								<button id="btn-append-to-single-button-action-type" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 88px;height: 44px;">{{turns.currentAttackType}}
+								</button>
+								<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
+									<li ng-repeat="type in action.attackType | filter : true : type.value" role="menuitem"><a ng-click="setType(type)">{{type.name}}</a></li>
+								</ul>
+							</div>
 
 
 
@@ -263,7 +270,7 @@
 				<div class="div-table-row">
 					<!--Action-->
 					<div class="btn-group" uib-dropdown style="width: 88px; display: table-column;height: 44px;text-align: center;line-height: 44px;vertical-align: middle;float: left;">
-						<button id="btn-append-to-single-button-action-type" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 88px;height: 44px;">{{turns.currentActionType}}
+						<button id="btn-append-to-single-button-action-types" type="button" class="btn btn-primary" uib-dropdown-toggle style="width: 88px;height: 44px;">{{turns.currentActionType}}
 						</button>
 						<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-single-button">
 							<li ng-repeat="activeAction in turns.actionType" role="menuitem"><a ng-click="setActionType(activeAction)">{{activeAction.name}}</a></li>

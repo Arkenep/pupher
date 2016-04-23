@@ -123,9 +123,15 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.actions[parentIndex].currentAction.name = properties.weapon.name;
 			turnsSrv.actions[parentIndex].currentAction.type = properties.name;
 			turnsSrv.actions[parentIndex].currentAction.weight = properties.weapon.attackWeight;
+			turnsSrv.actions[parentIndex].currentAction.weapon = properties.weapon;
+			console.log(turnsSrv.actions[parentIndex].currentAction.weapon);
 			checkNumberOfAttacks();
 		};
 
+		$scope.setType = function () {
+
+		};
+		
 		function newTurn() {
 			var tempTurn = {};
 			angular.copy(turnsSrv.turn, tempTurn);
@@ -140,9 +146,12 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.action.currentAction.name = turnsSrv.action.type.mainHand.weapon.name;
 			turnsSrv.action.currentAction.type = turnsSrv.action.type.mainHand.name;
 			turnsSrv.action.currentAction.weight = turnsSrv.action.type.mainHand.weapon.attackWeight;
+			turnsSrv.action.currentAction.weapon = turnsSrv.action.type.mainHand.weapon;
+			//console.log(turnsSrv.action.currentAction.weapon);
 			angular.copy(turnsSrv.action, tempAction);
 			turnsSrv.actions.push(tempAction);
 			checkNumberOfAttacks();
+
 		}
 		
 		function refreshWeapon() {
@@ -152,9 +161,11 @@ angular.module('myApp.combat', ['ngRoute'])
 				if (turnsSrv.actions[i].currentAction.type == turnsSrv.actions[i].type.mainHand.name) {
 					turnsSrv.actions[i].currentAction.name = turnsSrv.actions[i].type.mainHand.weapon.name;
 					turnsSrv.actions[i].currentAction.weight = turnsSrv.actions[i].type.mainHand.weapon.attackWeight;
+					turnsSrv.actions[i].currentAction.weapon = turnsSrv.actions[i].type.mainHand.weapon;
 				} else {
 					turnsSrv.actions[i].currentAction.name = turnsSrv.actions[i].type.offHand.weapon.name;
 					turnsSrv.actions[i].currentAction.weight = turnsSrv.actions[i].type.offHand.weapon.attackWeight;
+					turnsSrv.actions[i].currentAction.weapon = turnsSrv.actions[i].type.offHand.weapon;
 				}
 			}
 			checkNumberOfAttacks();
