@@ -52,7 +52,6 @@ angular.module('myApp.combat', ['ngRoute'])
 				}
 			}
 			refreshWeapon();
-
 			offHandAV();
 			setActionTypeOptions(); //OLD remove when needed.
 
@@ -85,14 +84,8 @@ angular.module('myApp.combat', ['ngRoute'])
 				turnsSrv.weaponHands = 2;
 				character.offHandWeapon = character.emptyWeapon;
 				refreshWeapon();
-				
-
-
-				//turnsSrv.currentActionType = turnsSrv.actionType[0].name;
-				//setActionTypeOptions(); //OLD remove when needed.
 			} else {
 				turnsSrv.weaponHands = 1;
-				//turnsSrv.currentActionType = 'Pick'; //OLD
 			}
 		};
 		
@@ -105,26 +98,18 @@ angular.module('myApp.combat', ['ngRoute'])
 		}
 		initiativeCalc();
 		
-		//START of attacks
+		//START of actions
 		
 		$scope.startCombat = function () {
 			newTurn();
 			newAction();
-
 			console.log(['combat'],[turnsSrv.combat],['turn'],[turnsSrv.turn],['actions'],[turnsSrv.actions]);
 		};
-		
+
 		$scope.endTurn = function () {
 			newTurn();
 		};
-		
-		function newTurn() {
-			var tempTurn = {};
-			angular.copy(turnsSrv.turn, tempTurn);
-			tempTurn.number = turnsSrv.combat.length+1;
-			turnsSrv.combat.push(tempTurn);
-		}
-		
+
 		$scope.addAction = function () {
 			newAction();
 		};
@@ -134,6 +119,20 @@ angular.module('myApp.combat', ['ngRoute'])
 			checkNumberOfAttacks();
 		};
 
+		$scope.setAction = function (obj, properties, parentIndex) {
+			turnsSrv.actions[parentIndex].currentAction.name = properties.weapon.name;
+			turnsSrv.actions[parentIndex].currentAction.type = properties.name;
+			turnsSrv.actions[parentIndex].currentAction.weight = properties.weapon.attackWeight;
+			checkNumberOfAttacks();
+		};
+
+		function newTurn() {
+			var tempTurn = {};
+			angular.copy(turnsSrv.turn, tempTurn);
+			tempTurn.number = turnsSrv.combat.length+1;
+			turnsSrv.combat.push(tempTurn);
+		}
+		
 		function newAction() {
 			var tempAction = {};
 			turnsSrv.action.type.mainHand.weapon = character.mainHandWeapon;
@@ -145,15 +144,7 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.actions.push(tempAction);
 			checkNumberOfAttacks();
 		}
-
-		//GOOD
-		$scope.setAction = function (obj, properties, parentIndex) {
-			turnsSrv.actions[parentIndex].currentAction.name = properties.weapon.name;
-			turnsSrv.actions[parentIndex].currentAction.type = properties.name;
-			turnsSrv.actions[parentIndex].currentAction.weight = properties.weapon.attackWeight;
-			checkNumberOfAttacks();
-		};
-
+		
 		function refreshWeapon() {
 			for (var i=0; i < turnsSrv.actions.length; i++) {
 				turnsSrv.actions[i].type.mainHand.weapon = character.mainHandWeapon;
@@ -191,13 +182,7 @@ angular.module('myApp.combat', ['ngRoute'])
 			}
 		}
 		
-		
-		
 		//END of attacks
-		
-	
-		
-		
 		
 		//START OF OLD attacks
 		
@@ -291,10 +276,7 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.finalAVElement[2] = location.bonusAV;
 			addToFinalAV();
 		};
-
-
-		//this works with one roll. effects rolls has to be (STR-10)
-		//kaip metamas pirktas rollas 4-6 success? kaip skaiciuojami success visu?
+		
 		$scope.setActiveWeaponEffectRoll = function () {
 			var roll = turnsSrv.activeWeaponEffectRoll;
 			var value = turnsSrv.thisTurn.weaponEffects[roll-1].name;
@@ -369,10 +351,6 @@ angular.module('myApp.combat', ['ngRoute'])
 		turnsSrv.buyDamageEffects[1].max = 1 + character.attributes.PER - 10;
 		turnsSrv.buyDamageEffects[2].max = 1 + character.attributes.PER - 10;
 		turnsSrv.thisTurn.maxEffects = 1 + character.attributes.PER - 10;
-
-		
-
-
 
 		$scope.myObject = "asdasdasd asd asdasd asd asd"; //example of directive
 		
