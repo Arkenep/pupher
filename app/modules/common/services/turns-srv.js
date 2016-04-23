@@ -23,7 +23,7 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 		}
 	};
 	
-	turns.actionStatus = '';
+	turns.actionStatus = true;
 	
 	
 	

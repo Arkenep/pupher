@@ -171,49 +171,30 @@ angular.module('myApp.combat', ['ngRoute'])
 		function checkNumberOfAttacks() {
 			for (var i=0; i < turnsSrv.actions.length; i++) {
 				if (turnsSrv.actions[i].currentAction.weight == 'Super Heavy' && turnsSrv.actions.length > 1) {
+					turnsSrv.actionStatus = false;
 					return;
 				}
 				if (turnsSrv.actions[i].currentAction.weight == 'Heavy' && turnsSrv.actions.length > 2) {
+					turnsSrv.actionStatus = false;
 					return;
 				}
 				if (turnsSrv.actions[i].currentAction.weight == 'Medium' && turnsSrv.actions.length > 3) {
+					turnsSrv.actionStatus = false;
 					return;
 				}
 				if (turnsSrv.actions[i].currentAction.weight == 'Light' && turnsSrv.actions.length > 4) {
+					turnsSrv.actionStatus = false;
 					return;
 				}
-				turnsSrv.actionStatus = 'You can attack!';
+				turnsSrv.actionStatus = true;
 			}
-
-			console.log(turnsSrv.actionStatus);
-
 		}
-
-	/*	$scope.refreshWeapon = function (index) {
-			turnsSrv.actions[index].type.mainHand.weapon = character.mainHandWeapon;
-			turnsSrv.actions[index].type.offHand.weapon = character.offHandWeapon;
-		};*/
-
-		/*function setWeapon() {
-			for (var i=0; i < turnsSrv.attacks.length; i++) {
-				turnsSrv.attacks[i].mainHand.weapon = character.mainHandWeapon;
-				turnsSrv.attacks[i].offHand.weapon = character.offHandWeapon;
-			}
-		}*/
-
-
-
 		
 		
 		
 		//END of attacks
 		
-		
-		
-		
-		
-		
-		
+	
 		
 		
 		
