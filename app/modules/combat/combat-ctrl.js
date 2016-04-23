@@ -27,7 +27,8 @@ angular.module('myApp.combat', ['ngRoute'])
 			}
 			turnsSrv.weaponHands = character.mainHandWeapon.defaultHands;
 			if (turnsSrv.weaponHands == 2) {
-				turnsSrv.currentActionType = turnsSrv.actionType[0].name;
+				character.offHandWeapon = character.emptyWeapon;
+				//turnsSrv.currentActionType = turnsSrv.actionType[0].name;
 			}
 			refreshWeapon();
 			
@@ -82,11 +83,16 @@ angular.module('myApp.combat', ['ngRoute'])
 		$scope.hands = function () {
 			if ( turnsSrv.weaponHands == 1) {
 				turnsSrv.weaponHands = 2;
-				turnsSrv.currentActionType = turnsSrv.actionType[0].name;
-				setActionTypeOptions(); //OLD remove when needed.
+				character.offHandWeapon = character.emptyWeapon;
+				refreshWeapon();
+				
+
+
+				//turnsSrv.currentActionType = turnsSrv.actionType[0].name;
+				//setActionTypeOptions(); //OLD remove when needed.
 			} else {
 				turnsSrv.weaponHands = 1;
-				turnsSrv.currentActionType = 'Pick';
+				//turnsSrv.currentActionType = 'Pick'; //OLD
 			}
 		};
 		
@@ -124,14 +130,11 @@ angular.module('myApp.combat', ['ngRoute'])
 		};
 
 		$scope.removeAction = function (index) {
-
 			turnsSrv.actions.splice(index, 1);
 			checkNumberOfAttacks();
-
 		};
 
 		function newAction() {
-
 			var tempAction = {};
 			turnsSrv.action.type.mainHand.weapon = character.mainHandWeapon;
 			turnsSrv.action.type.offHand.weapon = character.offHandWeapon;
@@ -145,7 +148,6 @@ angular.module('myApp.combat', ['ngRoute'])
 
 		//GOOD
 		$scope.setAction = function (obj, properties, parentIndex) {
-
 			turnsSrv.actions[parentIndex].currentAction.name = properties.weapon.name;
 			turnsSrv.actions[parentIndex].currentAction.type = properties.name;
 			turnsSrv.actions[parentIndex].currentAction.weight = properties.weapon.attackWeight;
@@ -153,7 +155,6 @@ angular.module('myApp.combat', ['ngRoute'])
 		};
 
 		function refreshWeapon() {
-
 			for (var i=0; i < turnsSrv.actions.length; i++) {
 				turnsSrv.actions[i].type.mainHand.weapon = character.mainHandWeapon;
 				turnsSrv.actions[i].type.offHand.weapon = character.offHandWeapon;

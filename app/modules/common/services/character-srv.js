@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp.services').service('character', function() {
-	var profile, attributes, combatSkills, weapons, shields, armor, combat;
+	var profile, attributes, combatSkills, weapons, shields, armor;
 
 	attributes = {
 		STR: 10,
@@ -289,6 +289,10 @@ angular.module('myApp.services').service('character', function() {
 	var mainHandWeapon = {
 		name: 'None',
 		type: {name: 'None', value: 0},
+		attackWeight: '',
+		thrust: false,
+		swing: false,
+		defaultHands: 0,
 		thrustDamage: 0,
 		isActive : false,
 		thrustDamagePiercing: 0,
@@ -316,37 +320,9 @@ angular.module('myApp.services').service('character', function() {
 		weight: 0,
 		reach: 0
 	};
-
-	var offHandWeapon = {
-		name: 'None',
-		type: {name: 'None', value: 0},
-		thrustDamage: 0,
-		isActive : false,
-		thrustDamagePiercing: 0,
-		thrustDamageEffects: [
-			{icon: '', name: ''},
-			{icon: '', name: ''},
-			{icon: '', name: ''},
-			{icon: '', name: ''},
-			{icon: '', name: ''},
-			{icon: '', name: ''}
-		],
-		swingDamage: 0,
-		swingDamagePiercing: 0,
-		swingDamageEffects: [
-			{icon: '', name: ''},
-			{icon: '', name: ''},
-			{icon: '', name: ''},
-			{icon: '', name: ''},
-			{icon: '', name: ''},
-			{icon: '', name: ''}
-		],
-		STRRequired: 0,
-		attackValueBonus: 0,
-		defenceValueBonus: 0,
-		weight: 0,
-		reach: 0
-	};
+	var emptyWeapon = mainHandWeapon;
+	var offHandWeapon = mainHandWeapon;
+		
 	var resetWeapon = mainHandWeapon;
 	var characterMHAV = 0;
 	var characterMHDV = 0;
@@ -365,6 +341,7 @@ angular.module('myApp.services').service('character', function() {
 		mainHandWeapon: mainHandWeapon,
 		offHandWeapon: offHandWeapon,
 		resetWeapon: resetWeapon,
+		emptyWeapon: emptyWeapon,
 		characterMHAV: characterMHAV,
 		characterMHDV: characterMHDV,
 		characterOHAV: characterOHAV,

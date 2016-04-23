@@ -218,7 +218,7 @@
 					<div class="div-table-col div-table-col-borderless">{{turns.thisTurn.currentBonus}}</div>
 					<button type="button" title="Add Action" ng-click="addAction()" class="btn btn-success" style="width: 88px; height: 44px; float: left;">Add Action</button>
 					<button type="button" title="End Turn" class="btn btn-success" ng-click="endTurn()" style="width: 88px; height: 44px; float: left;">End Turn</button>
-					<div class="div-table-col div-table-col-3" ng-if="turns.actionStatus">You can attack</div>
+					<div class="div-table-col div-table-col-3" ng-if="!turns.actionStatus">Too many actions!</div>
 				</div>
 				<div class="div-table-row">
 					<div class="div-table-col div-table-col-3">Action</div>
