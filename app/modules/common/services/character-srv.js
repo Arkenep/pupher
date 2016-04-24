@@ -37,7 +37,6 @@ angular.module('myApp.services').service('character', function() {
 			defaultHands: 2,
 			thrustDamage: 4,
 			thrustDamagePiercing: 1,
-			isActive : false,
 			thrustDamageEffects: [
 				{icon: '', name: ''},
 				{icon: '', name: ''},
@@ -73,7 +72,6 @@ angular.module('myApp.services').service('character', function() {
 			defaultHands: 1,
 			thrustDamage: 2,
 			thrustDamagePiercing: 1,
-			isActive : false,
 			thrustDamageEffects: [
 				{icon: '', name: ''},
 				{icon: '', name: ''},
@@ -109,7 +107,6 @@ angular.module('myApp.services').service('character', function() {
 			defaultHands: 1,
 			thrustDamage: 3,
 			thrustDamagePiercing: 1,
-			isActive : false,
 			thrustDamageEffects: [
 				{icon: '', name: ''},
 				{icon: '', name: ''},
@@ -145,7 +142,6 @@ angular.module('myApp.services').service('character', function() {
 			defaultHands: 2,
 			thrustDamage: 0,
 			thrustDamagePiercing: 0,
-			isActive : false,
 			thrustDamageEffects: [
 				{icon: '', name: ''},
 				{icon: '', name: ''},
@@ -181,7 +177,6 @@ angular.module('myApp.services').service('character', function() {
 			defaultHands: 1,
 			thrustDamage: 0,
 			thrustDamagePiercing: 0,
-			isActive : false,
 			thrustDamageEffects: [
 				{icon: '', name: ''},
 				{icon: '', name: ''},
@@ -216,7 +211,6 @@ angular.module('myApp.services').service('character', function() {
 			],
 			defaultHands: 1,
 			thrustDamage: 0,
-			isActive : false,
 			thrustDamagePiercing: 0,
 			thrustDamageEffects: [
 				{icon: '', name: ''},
@@ -308,7 +302,6 @@ angular.module('myApp.services').service('character', function() {
 		],
 		defaultHands: 0,
 		thrustDamage: 0,
-		isActive : false,
 		thrustDamagePiercing: 0,
 		thrustDamageEffects: [
 			{icon: '', name: ''},

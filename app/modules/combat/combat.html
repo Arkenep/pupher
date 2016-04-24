@@ -260,6 +260,8 @@
 									<li ng-repeat="type in action.currentAction.weapon.attackType | filter: true : type.value" role="menuitem"><a ng-click="setType(type, $index, $parent.$index)">{{type.name}}</a></li>
 								</ul>
 							</div>
+							<!--Bonus-->
+							<div class="div-table-col"><input type="number" min="0" max="{{turns.thisTurn.bonus}}" class="form-control form-control-stats" ng-model="turns.thisTurn.bonusUsed" ng-change="bonusUsed()" style="padding: 0px;"></div>
 
 
 
