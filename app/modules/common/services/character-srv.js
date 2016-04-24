@@ -31,30 +31,36 @@ angular.module('myApp.services').service('character', function() {
 			type: {name: 'Blade', value: 0},
 			attackWeight: 'Heavy',
 			attackType: [
-				{name: 'Thrust', value: true},
-				{name: 'Swing', value: true}
+				{
+					name: 'Thrust', 
+					value: true,
+					damage: 4,
+					piercing: 1,
+					effects: [
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: 'Bleed.png', name: 'Bleed'},
+						{icon: 'Bleed.png', name: 'Bleed'},
+						{icon: 'Critical.png', name: 'Critical'}
+					]
+				},
+				{
+					name: 'Swing', 
+					value: true,
+					damage: 5,
+					piercing: 0,
+					effects: [
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: 'Bleed.png', name: 'Bleed'},
+						{icon: 'Bleed.png', name: 'Bleed'},
+						{icon: 'Bleed.png', name: 'Bleed'},
+						{icon: 'Trauma.png', name: 'Trauma'}
+					]
+				}
 			],
 			defaultHands: 2,
-			thrustDamage: 4,
-			thrustDamagePiercing: 1,
-			thrustDamageEffects: [
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: 'Bleed.png', name: 'Bleed'},
-				{icon: 'Bleed.png', name: 'Bleed'},
-				{icon: 'Critical.png', name: 'Critical'}
-			],
-			swingDamage: 5,
-			swingDamagePiercing: 0,
-			swingDamageEffects: [
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: 'Bleed.png', name: 'Bleed'},
-				{icon: 'Bleed.png', name: 'Bleed'},
-				{icon: 'Bleed.png', name: 'Bleed'},
-				{icon: 'Trauma.png', name: 'Trauma'}
-			],
 			STRRequired: 12,
 			attackValueBonus: 0,
 			defenceValueBonus: 0,
@@ -66,30 +72,36 @@ angular.module('myApp.services').service('character', function() {
 			type: {name: 'Blade', value: 0},
 			attackWeight: 'Light',
 			attackType: [
-				{name: 'Thrust', value: true},
-				{name: 'Swing', value: true}
+				{
+					name: 'Thrust',
+					value: true,
+					damage: 2,
+					piercing: 1,
+					effects: [
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: 'Bleed.png', name: 'Bleed'},
+						{icon: 'Bleed.png', name: 'Bleed'},
+						{icon: 'Critical.png', name: 'Critical'}
+					]
+				},
+				{
+					name: 'Swing',
+					value: true,
+					damage: 2,
+					piercing: -1,
+					effects: [
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: 'Bleed.png', name: 'Bleed'},
+						{icon: 'Bleed.png', name: 'Bleed'},
+						{icon: 'Trauma.png', name: 'Trauma'}
+					]
+				}
 			],
 			defaultHands: 1,
-			thrustDamage: 2,
-			thrustDamagePiercing: 1,
-			thrustDamageEffects: [
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: 'Bleed.png', name: 'Bleed'},
-				{icon: 'Bleed.png', name: 'Bleed'},
-				{icon: 'Critical.png', name: 'Critical'}
-			],
-			swingDamage: 2,
-			swingDamagePiercing: -1,
-			swingDamageEffects: [
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: 'Bleed.png', name: 'Bleed'},
-				{icon: 'Bleed.png', name: 'Bleed'},
-				{icon: 'Trauma.png', name: 'Trauma'}
-			],
 			STRRequired: 9,
 			attackValueBonus: 0,
 			defenceValueBonus: 0,
@@ -101,30 +113,36 @@ angular.module('myApp.services').service('character', function() {
 			type: {name: 'Spear', value: 0},
 			attackWeight: 'Medium',
 			attackType: [
-				{name: 'Thrust', value: true},
-				{name: 'Swing', value: false}
+				{
+					name: 'Thrust',
+					value: true,
+					damage: 3,
+					piercing: 1,
+					effects: [
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: 'Bleed.png', name: 'Bleed'},
+						{icon: 'Bleed.png', name: 'Bleed'},
+						{icon: 'Critical.png', name: 'Critical'}
+					]
+				},
+				{
+					name: 'Swing',
+					value: false,
+					damage: 0,
+					piercing: 0,
+					effects: [
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: '', name: ''}
+					]
+				}
 			],
 			defaultHands: 1,
-			thrustDamage: 3,
-			thrustDamagePiercing: 1,
-			thrustDamageEffects: [
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: 'Bleed.png', name: 'Bleed'},
-				{icon: 'Bleed.png', name: 'Bleed'},
-				{icon: 'Critical.png', name: 'Critical'}
-			],
-			swingDamage: 0,
-			swingDamagePiercing: 0,
-			swingDamageEffects: [
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''}
-			],
 			STRRequired: 10,
 			attackValueBonus: 0,
 			defenceValueBonus: 0,
@@ -136,30 +154,36 @@ angular.module('myApp.services').service('character', function() {
 			type: {name: 'Unbalanced', value: 0},
 			attackWeight: 'Super Heavy',
 			attackType: [
-				{name: 'Thrust', value: false},
-				{name: 'Swing', value: true}
+				{
+					name: 'Thrust',
+					value: false,
+					damage: 0,
+					piercing: 0,
+					effects: [
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: '', name: ''}
+					]
+				},
+				{
+					name: 'Swing',
+					value: true,
+					damage: 7,
+					piercing: 1,
+					effects: [
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: 'Bleed.png', name: 'Bleed'},
+						{icon: 'Bleed.png', name: 'Bleed'},
+						{icon: 'Bleed.png', name: 'Bleed'},
+						{icon: 'Trauma.png', name: 'Trauma'}
+					]
+				}
 			],
 			defaultHands: 2,
-			thrustDamage: 0,
-			thrustDamagePiercing: 0,
-			thrustDamageEffects: [
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''}
-			],
-			swingDamage: 7,
-			swingDamagePiercing: 1,
-			swingDamageEffects: [
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: 'Bleed.png', name: 'Bleed'},
-				{icon: 'Bleed.png', name: 'Bleed'},
-				{icon: 'Bleed.png', name: 'Bleed'},
-				{icon: 'Trauma.png', name: 'Trauma'}
-			],
 			STRRequired: 13,
 			attackValueBonus: 0,
 			defenceValueBonus: 0,
@@ -171,30 +195,36 @@ angular.module('myApp.services').service('character', function() {
 			type: {name: 'Unbalanced', value: 0},
 			attackWeight: 'Medium',
 			attackType: [
-				{name: 'Thrust', value: false},
-				{name: 'Swing', value: true}
+				{
+					name: 'Thrust',
+					value: false,
+					damage: 0,
+					piercing: 0,
+					effects: [
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: '', name: ''}
+					]
+				},
+				{
+					name: 'Swing',
+					value: true,
+					damage: 4,
+					piercing: 0,
+					effects: [
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: 'Trauma.png', name: 'Trauma'},
+						{icon: 'Trauma.png', name: 'Trauma'},
+						{icon: 'Trauma.png', name: 'Trauma'},
+						{icon: 'Critical.png', name: 'Critical'}
+					]
+				}
 			],
 			defaultHands: 1,
-			thrustDamage: 0,
-			thrustDamagePiercing: 0,
-			thrustDamageEffects: [
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''}
-			],
-			swingDamage: 4,
-			swingDamagePiercing: 0,
-			swingDamageEffects: [
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: 'Trauma.png', name: 'Trauma'},
-				{icon: 'Trauma.png', name: 'Trauma'},
-				{icon: 'Trauma.png', name: 'Trauma'},
-				{icon: 'Critical.png', name: 'Critical'}
-			],
 			STRRequired: 11,
 			attackValueBonus: 0,
 			defenceValueBonus: 0,
@@ -206,30 +236,36 @@ angular.module('myApp.services').service('character', function() {
 			type: {name: 'Unbalanced', value: 0},
 			attackWeight: 'Medium',
 			attackType: [
-				{name: 'Thrust', value: false},
-				{name: 'Swing', value: true}
+				{
+					name: 'Thrust',
+					value: false,
+					damage: 0,
+					piercing: 0,
+					effects: [
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: '', name: ''}
+					]
+				},
+				{
+					name: 'Swing',
+					value: true,
+					damage: 3,
+					piercing: 1,
+					effects: [
+						{icon: '', name: ''},
+						{icon: '', name: ''},
+						{icon: 'Trauma.png', name: 'Trauma'},
+						{icon: 'Trauma.png', name: 'Trauma'},
+						{icon: 'Bleed.png', name: 'Bleed'},
+						{icon: 'Bleed.png', name: 'Bleed'}
+					]
+				}
 			],
 			defaultHands: 1,
-			thrustDamage: 0,
-			thrustDamagePiercing: 0,
-			thrustDamageEffects: [
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: '', name: ''}
-			],
-			swingDamage: 3,
-			swingDamagePiercing: 1,
-			swingDamageEffects: [
-				{icon: '', name: ''},
-				{icon: '', name: ''},
-				{icon: 'Trauma.png', name: 'Trauma'},
-				{icon: 'Trauma.png', name: 'Trauma'},
-				{icon: 'Bleed.png', name: 'Bleed'},
-				{icon: 'Bleed.png', name: 'Bleed'}
-			],
 			STRRequired: 11,
 			attackValueBonus: 0,
 			defenceValueBonus: 0,
@@ -297,30 +333,36 @@ angular.module('myApp.services').service('character', function() {
 		type: {name: 'None', value: 0},
 		attackWeight: '',
 		attackType: [
-			{name: 'Thrust', value: false},
-			{name: 'Swing', value: false}
+			{
+				name: 'Thrust',
+				value: false,
+				damage: 0,
+				piercing: 0,
+				effects: [
+					{icon: '', name: ''},
+					{icon: '', name: ''},
+					{icon: '', name: ''},
+					{icon: '', name: ''},
+					{icon: '', name: ''},
+					{icon: '', name: ''}
+				]
+			},
+			{
+				name: 'Swing',
+				value: false,
+				damage: 0,
+				piercing: 0,
+				effects: [
+					{icon: '', name: ''},
+					{icon: '', name: ''},
+					{icon: '', name: ''},
+					{icon: '', name: ''},
+					{icon: '', name: ''},
+					{icon: '', name: ''}
+				]
+			}
 		],
 		defaultHands: 0,
-		thrustDamage: 0,
-		thrustDamagePiercing: 0,
-		thrustDamageEffects: [
-			{icon: '', name: ''},
-			{icon: '', name: ''},
-			{icon: '', name: ''},
-			{icon: '', name: ''},
-			{icon: '', name: ''},
-			{icon: '', name: ''}
-		],
-		swingDamage: 0,
-		swingDamagePiercing: 0,
-		swingDamageEffects: [
-			{icon: '', name: ''},
-			{icon: '', name: ''},
-			{icon: '', name: ''},
-			{icon: '', name: ''},
-			{icon: '', name: ''},
-			{icon: '', name: ''}
-		],
 		STRRequired: 0,
 		attackValueBonus: 0,
 		defenceValueBonus: 0,

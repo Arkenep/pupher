@@ -32,9 +32,9 @@
 			</div>
 			<div title="Thrust Effects" class="div-table-col div-table-col-2">Thrust</div>
 			<div title="Thrust Damage" class="div-table-col">
-				<div ng-if="character.mainHandWeapon.thrust">{{character.mainHandWeapon.thrustDamage + ' + ' + character.mainHandWeapon.thrustDamagePiercing}}</div>
+				<div ng-if="character.mainHandWeapon.attackType[0].value">{{character.mainHandWeapon.attackType[0].damage + ' + ' + character.mainHandWeapon.attackType[0].piercing}}</div>
 			</div>
-			<div class="div-table-col" ng-repeat="thEff in character.mainHandWeapon.thrustDamageEffects"><img src="/app/img/{{thEff.icon}}" alt="{{thEff.name}}" title="{{thEff.name}}" ng-if="thEff.icon"></div>
+			<div class="div-table-col" ng-repeat="thEff in character.mainHandWeapon.attackType[0].effects"><img src="/app/img/{{thEff.icon}}" alt="{{thEff.name}}" title="{{thEff.name}}" ng-if="thEff.icon"></div>
 
 			<div title="Attack Value" class="div-table-col div-table-col-borderless">Skill</div>
 			<div class="btn-group" uib-dropdown style="width: 132px; display: table-column;height: 44px;text-align: center;line-height: 44px;vertical-align: middle;float: left;">
@@ -55,9 +55,9 @@
 			<div class="div-table-col">{{character.mainHandWeapon.reach}}</div>
 			<div title="Swing Effects" class="div-table-col div-table-col-2">Swing</div>
 			<div title="Swing Damage" class="div-table-col">
-				<div ng-if="character.mainHandWeapon.swing">{{character.mainHandWeapon.swingDamage + ' + ' + character.mainHandWeapon.swingDamagePiercing}}</div>
+				<div ng-if="character.mainHandWeapon.attackType[1].value">{{character.mainHandWeapon.attackType[1].damage + ' + ' + character.mainHandWeapon.attackType[1].piercing}}</div>
 			</div>
-			<div class="div-table-col" ng-repeat="swEff in character.mainHandWeapon.swingDamageEffects"><img src="/app/img/{{swEff.icon}}" alt="{{swEff.name}}" title="{{swEff.name}}" ng-if="swEff.icon"></div>
+			<div class="div-table-col" ng-repeat="swEff in character.mainHandWeapon.attackType[1].effects"><img src="/app/img/{{swEff.icon}}" alt="{{swEff.name}}" title="{{swEff.name}}" ng-if="swEff.icon"></div>
 			<div title="Attack Value" class="div-table-col div-table-col-borderless"></div>
 			<div title="Attack Value" class="div-table-col div-table-col-borderless"></div>
 			<div title="Attack Value" class="div-table-col div-table-col-borderless"></div>
@@ -82,9 +82,9 @@
 			<div title="Thrust Effects" class="div-table-col div-table-col-2">Thrust</div>
 
 			<div title="Thrust Damage" class="div-table-col">
-				<div ng-if="character.offHandWeapon.thrust">{{character.offHandWeapon.thrustDamage + ' + ' + character.offHandWeapon.thrustDamagePiercing}}</div>
+				<div ng-if="character.offHandWeapon.attackType[0].value">{{character.offHandWeapon.attackType[0].damage + ' + ' + character.offHandWeapon.attackType[0].piercing}}</div>
 			</div>
-			<div class="div-table-col" ng-repeat="thEff in character.offHandWeapon.thrustDamageEffects"><img src="/app/img/{{thEff.icon}}" alt="{{thEff.name}}" title="{{thEff.name}}" ng-if="thEff.icon"></div>
+			<div class="div-table-col" ng-repeat="thEff in character.offHandWeapon.attackType[0].effects"><img src="/app/img/{{thEff.icon}}" alt="{{thEff.name}}" title="{{thEff.name}}" ng-if="thEff.icon"></div>
 
 			<div title="Attack Value" class="div-table-col div-table-col-borderless">Skill</div>
 			<div class="btn-group" uib-dropdown style="width: 132px; display: table-column;height: 44px;text-align: center;line-height: 44px;vertical-align: middle;float: left;">
@@ -105,9 +105,9 @@
 			<div class="div-table-col">{{character.offHandWeapon.reach}}</div>
 			<div title="Swing Effects" class="div-table-col div-table-col-2">Swing</div>
 			<div title="Thrust Damage" class="div-table-col">
-				<div ng-if="character.offHandWeapon.swing">{{character.offHandWeapon.swingDamage + ' + ' + character.offHandWeapon.swingDamagePiercing}}</div>
+				<div ng-if="character.offHandWeapon.attackType[1].value">{{character.offHandWeapon.attackType[1].damage + ' + ' + character.offHandWeapon.attackType[1].piercing}}</div>
 			</div>
-			<div class="div-table-col" ng-repeat="swEff in character.offHandWeapon.swingDamageEffects"><img src="/app/img/{{swEff.icon}}" alt="{{swEff.name}}" title="{{swEff.name}}" ng-if="swEff.icon"></div>
+			<div class="div-table-col" ng-repeat="swEff in character.offHandWeapon.attackType[1].effects"><img src="/app/img/{{swEff.icon}}" alt="{{swEff.name}}" title="{{swEff.name}}" ng-if="swEff.icon"></div>
 			<div title="Attack Value" class="div-table-col div-table-col-borderless"></div>
 			<div title="Attack Value" class="div-table-col div-table-col-borderless"></div>
 			<div title="Attack Value" class="div-table-col div-table-col-borderless"></div>

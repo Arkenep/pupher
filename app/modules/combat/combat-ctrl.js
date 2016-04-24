@@ -59,7 +59,7 @@ angular.module('myApp.combat', ['ngRoute'])
 		$scope.setOffHandWeapon(character.offHandWeapon);
 
 		function offHandAV() {
-			character.characterOHAV = character.offHandWeapon.type.value + character.attributes.REF + character.offHandWeapon.attackValueBonus -3;
+			character.characterOHAV = character.offHandWeapon.type.value + character.attributes.REF + character.offHandWeapon.attackValueBonus - 3;
 		}
 		offHandAV();
 
@@ -285,8 +285,9 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.buyDamageEffects[0].available = false;
 			turnsSrv.buyDamageEffects[1].available = false;
 			turnsSrv.buyDamageEffects[2].available = false;
-
-			for (i=0; i < turnsSrv.thisTurn.weaponEffects.length; i++ ) {
+		//from old does not work if enabled
+			
+		/*	for (i=0; i < turnsSrv.thisTurn.weaponEffects.length; i++ ) {
 				if (turnsSrv.thisTurn.weaponEffects[i].name == 'Bleed') {
 					turnsSrv.buyDamageEffects[0].available = true;
 				} else if (turnsSrv.thisTurn.weaponEffects[i].name == 'Trauma') {
@@ -294,7 +295,7 @@ angular.module('myApp.combat', ['ngRoute'])
 				} else if (turnsSrv.thisTurn.weaponEffects[i].name == 'Critical') {
 					turnsSrv.buyDamageEffects[2].available = true;
 				}
-			}
+			}*/
 		}
 
 		$scope.setLocation = function(location) {
