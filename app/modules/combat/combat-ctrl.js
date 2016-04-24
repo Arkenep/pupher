@@ -124,12 +124,13 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.actions[parentIndex].currentAction.type = properties.name;
 			turnsSrv.actions[parentIndex].currentAction.weight = properties.weapon.attackWeight;
 			turnsSrv.actions[parentIndex].currentAction.weapon = properties.weapon;
-			console.log(turnsSrv.actions[parentIndex].currentAction.weapon);
+			
+			checkThrustOrSwing(parentIndex);
 			checkNumberOfAttacks();
 		};
 
-		$scope.setType = function () {
-
+		$scope.setType = function (obj, index, parentIndex) {
+			turnsSrv.actions[parentIndex].currentAction.attackType = obj.name;
 		};
 		
 		function newTurn() {
@@ -147,13 +148,17 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.action.currentAction.type = turnsSrv.action.type.mainHand.name;
 			turnsSrv.action.currentAction.weight = turnsSrv.action.type.mainHand.weapon.attackWeight;
 			turnsSrv.action.currentAction.weapon = turnsSrv.action.type.mainHand.weapon;
-			//console.log(turnsSrv.action.currentAction.weapon);
+			for (var i=0; i < turnsSrv.action.currentAction.weapon.attackType.length; i++) {
+				if (turnsSrv.action.currentAction.weapon.attackType[i].value) {
+					turnsSrv.action.currentAction.attackType = turnsSrv.action.currentAction.weapon.attackType[i].name;
+					break;
+				}
+			}
 			angular.copy(turnsSrv.action, tempAction);
 			turnsSrv.actions.push(tempAction);
 			checkNumberOfAttacks();
-
 		}
-		
+
 		function refreshWeapon() {
 			for (var i=0; i < turnsSrv.actions.length; i++) {
 				turnsSrv.actions[i].type.mainHand.weapon = character.mainHandWeapon;
@@ -162,13 +167,24 @@ angular.module('myApp.combat', ['ngRoute'])
 					turnsSrv.actions[i].currentAction.name = turnsSrv.actions[i].type.mainHand.weapon.name;
 					turnsSrv.actions[i].currentAction.weight = turnsSrv.actions[i].type.mainHand.weapon.attackWeight;
 					turnsSrv.actions[i].currentAction.weapon = turnsSrv.actions[i].type.mainHand.weapon;
+					checkThrustOrSwing(i);
 				} else {
 					turnsSrv.actions[i].currentAction.name = turnsSrv.actions[i].type.offHand.weapon.name;
 					turnsSrv.actions[i].currentAction.weight = turnsSrv.actions[i].type.offHand.weapon.attackWeight;
 					turnsSrv.actions[i].currentAction.weapon = turnsSrv.actions[i].type.offHand.weapon;
+					checkThrustOrSwing(i);
 				}
 			}
 			checkNumberOfAttacks();
+		}
+
+		function checkThrustOrSwing(i) {
+			for (var j=0; j < turnsSrv.actions[i].currentAction.weapon.attackType.length; j++) {
+				if (turnsSrv.actions[i].currentAction.weapon.attackType[j].value) {
+					turnsSrv.actions[i].currentAction.attackType = turnsSrv.actions[i].currentAction.weapon.attackType[j].name;
+					break;
+				}
+			}
 		}
 
 		function checkNumberOfAttacks() {

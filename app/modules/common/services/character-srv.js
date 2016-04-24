@@ -30,8 +30,10 @@ angular.module('myApp.services').service('character', function() {
 			name: 'Long Sword',
 			type: {name: 'Blade', value: 0},
 			attackWeight: 'Heavy',
-			thrust: true,
-			swing: true,
+			attackType: [
+				{name: 'Thrust', value: true},
+				{name: 'Swing', value: true}
+			],
 			defaultHands: 2,
 			thrustDamage: 4,
 			thrustDamagePiercing: 1,
@@ -64,8 +66,10 @@ angular.module('myApp.services').service('character', function() {
 			name: 'Short Sword',
 			type: {name: 'Blade', value: 0},
 			attackWeight: 'Light',
-			thrust: true,
-			swing: true,
+			attackType: [
+				{name: 'Thrust', value: true},
+				{name: 'Swing', value: true}
+			],
 			defaultHands: 1,
 			thrustDamage: 2,
 			thrustDamagePiercing: 1,
@@ -98,8 +102,10 @@ angular.module('myApp.services').service('character', function() {
 			name: 'Spear',
 			type: {name: 'Spear', value: 0},
 			attackWeight: 'Medium',
-			thrust: true,
-			swing: false,
+			attackType: [
+				{name: 'Thrust', value: true},
+				{name: 'Swing', value: false}
+			],
 			defaultHands: 1,
 			thrustDamage: 3,
 			thrustDamagePiercing: 1,
@@ -132,8 +138,10 @@ angular.module('myApp.services').service('character', function() {
 			name: 'Great Axe',
 			type: {name: 'Unbalanced', value: 0},
 			attackWeight: 'Super Heavy',
-			thrust: false,
-			swing: true,
+			attackType: [
+				{name: 'Thrust', value: false},
+				{name: 'Swing', value: true}
+			],
 			defaultHands: 2,
 			thrustDamage: 0,
 			thrustDamagePiercing: 0,
@@ -166,8 +174,10 @@ angular.module('myApp.services').service('character', function() {
 			name: 'Mace',
 			type: {name: 'Unbalanced', value: 0},
 			attackWeight: 'Medium',
-			thrust: false,
-			swing: true,
+			attackType: [
+				{name: 'Thrust', value: false},
+				{name: 'Swing', value: true}
+			],
 			defaultHands: 1,
 			thrustDamage: 0,
 			thrustDamagePiercing: 0,
@@ -200,8 +210,10 @@ angular.module('myApp.services').service('character', function() {
 			name: 'Axe',
 			type: {name: 'Unbalanced', value: 0},
 			attackWeight: 'Medium',
-			thrust: false,
-			swing: true,
+			attackType: [
+				{name: 'Thrust', value: false},
+				{name: 'Swing', value: true}
+			],
 			defaultHands: 1,
 			thrustDamage: 0,
 			isActive : false,
@@ -290,8 +302,10 @@ angular.module('myApp.services').service('character', function() {
 		name: 'None',
 		type: {name: 'None', value: 0},
 		attackWeight: '',
-		thrust: false,
-		swing: false,
+		attackType: [
+			{name: 'Thrust', value: false},
+			{name: 'Swing', value: false}
+		],
 		defaultHands: 0,
 		thrustDamage: 0,
 		isActive : false,
