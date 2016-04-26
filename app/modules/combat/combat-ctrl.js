@@ -1,21 +1,10 @@
 angular.module('myApp.combat', ['ngRoute'])
 	.controller('combatCtrl', ['$scope', 'character', 'turnsSrv', function ($scope, character, turnsSrv) {
-/* SARO STUFF KOL KAS NEPANAUDOTAS
-		$scope.endTurn = function() {
-			turnsSrv.endTurn();
-		};
 
-		$scope.spendLuck = function(n) {
-			if(turnsSrv.spendLuck(n)) {
-				console.log(n + " luck has been spent");
-			} else {
-				console.log(n + " no luck pal");
-			}
-		};*/
 		$scope.turns = turnsSrv;
 		$scope.character = character;
 		
-		$scope.autofail = 6; //needs to be added through input.
+		$scope.autofail = 6;
 
 		$scope.setMainHandWeapon = function(weapon) {
 			character.mainHandWeapon = weapon;
@@ -28,7 +17,6 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.weaponHands = character.mainHandWeapon.defaultHands;
 			if (turnsSrv.weaponHands == 2) {
 				character.offHandWeapon = character.emptyWeapon;
-				//turnsSrv.currentActionType = turnsSrv.actionType[0].name;
 			}
 			refreshWeapon();
 			
@@ -124,7 +112,6 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.actions[parentIndex].currentAction.type = properties.name;
 			turnsSrv.actions[parentIndex].currentAction.weight = properties.weapon.attackWeight;
 			turnsSrv.actions[parentIndex].currentAction.weapon = properties.weapon;
-			
 			checkThrustOrSwing(parentIndex);
 			checkNumberOfAttacks();
 		};
@@ -132,6 +119,33 @@ angular.module('myApp.combat', ['ngRoute'])
 		$scope.setType = function (obj, index, parentIndex) {
 			turnsSrv.actions[parentIndex].currentAction.attackType = obj.name;
 		};
+		
+		$scope.initiativeBonus = function () {
+			turnsSrv.totalBonus = turnsSrv.initiativeTotalBonus;
+			calculateBonus();
+		};
+
+		$scope.actionBonusUsed = function (obj, index) {
+
+
+			calculateBonus();
+			turnsSrv.bonusMax = turnsSrv.bonusLeft + obj;
+		};
+
+
+
+		function calculateBonus() {
+			for (var i=0; i < turnsSrv.actions.length; i++) {
+				turnsSrv.bonusArray[i] = turnsSrv.actions[i].bonusUsed;
+			}
+			turnsSrv.currentUsedBonus = turnsSrv.bonusArray.reduce(add, 0);
+			turnsSrv.bonusLeft = turnsSrv.totalBonus - turnsSrv.currentUsedBonus;
+
+			function add(a, b) {
+				return a + b;
+			}
+			
+		}
 		
 		function newTurn() {
 			var tempTurn = {};
@@ -142,6 +156,7 @@ angular.module('myApp.combat', ['ngRoute'])
 		
 		function newAction() {
 			var tempAction = {};
+			turnsSrv.bonusMax = turnsSrv.totalBonus - turnsSrv.currentUsedBonus; //lets rethink?
 			turnsSrv.action.type.mainHand.weapon = character.mainHandWeapon;
 			turnsSrv.action.type.offHand.weapon = character.offHandWeapon;
 			turnsSrv.action.currentAction.name = turnsSrv.action.type.mainHand.weapon.name;

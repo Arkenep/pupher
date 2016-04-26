@@ -191,7 +191,7 @@
 					<div class="div-table-col div-table-col-borderless-2">Init Roll</div>
 					<div class="div-table-col"><input type="number" min="1" max="6" class="form-control form-control-stats" ng-model="turns.thisTurn.initiativeRoll" ng-value=turns.thisTurn.initiativeRoll ng-change="calcInit()" style="padding: 0px;"></div>
 					<div class="div-table-col div-table-col-borderless-2">Bonus</div>
-					<div class="div-table-col"><input type="number" min="0" class="form-control form-control-stats" ng-disabled="disableInitValue" ng-init="disableInitValue=false" ng-model="turns.thisTurn.bonus" ng-change="initBonus()" style="padding: 0px;"></div>
+					<div class="div-table-col"><input type="number" min="0" class="form-control form-control-stats" ng-disabled="disableInitValue" ng-init="disableInitValue=false" ng-model="turns.initiativeTotalBonus" ng-change="initiativeBonus()" style="padding: 0px;"></div>
 					<button type="button" title="Start Combat" class="div-table-col div-table-col-borderless btn btn-success weapon-change" ng-click="startCombat()" style="width: 88px; height: 44px; float: left;">Start Combat</button>
 				</div>
 				<div class="div-table-row">
@@ -215,7 +215,7 @@
 					<div class="div-table-col div-table-col-borderless">Init</div>
 					<div class="div-table-col" ng-model="turns.thisTurn.initiativeRoll">{{turns.thisTurn.initiative}}</div>
 					<div class="div-table-col div-table-col-borderless">Bonus</div>
-					<div class="div-table-col div-table-col-borderless">{{turns.thisTurn.currentBonus}}</div>
+					<div class="div-table-col div-table-col-borderless">{{turns.bonusLeft}}</div>
 					<button type="button" title="Add Action" ng-click="addAction()" class="btn btn-success" style="width: 88px; height: 44px; float: left;">Add Action</button>
 					<button type="button" title="End Turn" class="btn btn-success" ng-click="endTurn()" style="width: 88px; height: 44px; float: left;">End Turn</button>
 					<div class="div-table-col div-table-col-3" ng-if="!turns.actionStatus">Too many actions!</div>
@@ -261,7 +261,7 @@
 								</ul>
 							</div>
 							<!--Bonus-->
-							<div class="div-table-col"><input type="number" min="0" max="{{turns.thisTurn.bonus}}" class="form-control form-control-stats" ng-model="turns.thisTurn.bonusUsed" ng-change="bonusUsed()" style="padding: 0px;"></div>
+							<div class="div-table-col"><input type="number" min="0" max="{{turns.bonusMax}}" class="form-control form-control-stats" ng-model="action.bonusUsed" ng-change="actionBonusUsed(action.bonusUsed, $index)" style="padding: 0px;"></div>
 
 
 

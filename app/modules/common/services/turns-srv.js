@@ -31,10 +31,12 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 	};
 	
 	turns.actionStatus = true; //ar cia tikrai palikt? gal deti reiks i turn objekta?
-	
-	
-
-
+	turns.totalBonus = 0;
+	turns.bonusArray = [];
+	turns.initiativeTotalBonus = 0;
+	turns.currentUsedBonus = 0;
+	turns.bonusLeft = 0;
+	turns.bonusMax = 0;
 
 
 	
