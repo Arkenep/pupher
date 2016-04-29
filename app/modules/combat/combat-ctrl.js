@@ -129,7 +129,7 @@ angular.module('myApp.combat', ['ngRoute'])
 
 
 			calculateBonus();
-			turnsSrv.bonusMax = turnsSrv.bonusLeft + obj;
+			
 		};
 
 
@@ -137,6 +137,7 @@ angular.module('myApp.combat', ['ngRoute'])
 		function calculateBonus() {
 			for (var i=0; i < turnsSrv.actions.length; i++) {
 				turnsSrv.bonusArray[i] = turnsSrv.actions[i].bonusUsed;
+				turnsSrv.actions[i].bonusMax = turnsSrv.bonusLeft + turnsSrv.actions[i].bonusUsed - 1;
 			}
 			turnsSrv.currentUsedBonus = turnsSrv.bonusArray.reduce(add, 0);
 			turnsSrv.bonusLeft = turnsSrv.totalBonus - turnsSrv.currentUsedBonus;
@@ -156,7 +157,7 @@ angular.module('myApp.combat', ['ngRoute'])
 		
 		function newAction() {
 			var tempAction = {};
-			turnsSrv.bonusMax = turnsSrv.totalBonus - turnsSrv.currentUsedBonus; //lets rethink?
+			turnsSrv.action.bonusMax = turnsSrv.totalBonus - turnsSrv.currentUsedBonus; //lets rethink?
 			turnsSrv.action.type.mainHand.weapon = character.mainHandWeapon;
 			turnsSrv.action.type.offHand.weapon = character.offHandWeapon;
 			turnsSrv.action.currentAction.name = turnsSrv.action.type.mainHand.weapon.name;

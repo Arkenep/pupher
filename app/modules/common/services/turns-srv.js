@@ -10,6 +10,7 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 	turns.actions = [];
 	
 	turns.action = {
+		bonusMax: 0,
 		bonusUsed: 0,
 		currentAction: {
 			name:'Pick',
@@ -36,7 +37,7 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 	turns.initiativeTotalBonus = 0;
 	turns.currentUsedBonus = 0;
 	turns.bonusLeft = 0;
-	turns.bonusMax = 0;
+
 
 
 	
