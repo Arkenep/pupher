@@ -28,7 +28,94 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 				name: 'Offhand',
 				weapon: {}
 			}
+		},
+		currentLocation: 'Pick',
+		location: [
+		{
+			name: 'Random',
+			bonusAV : 0,
+			sublocation: [
+				{name: 'Head', value: 0},
+				{name: 'Body', value: 0},
+				{name: 'Right Arm', value: 0},
+				{name: 'Left Arm', value: 0},
+				{name: 'Right Leg', value: 0},
+				{name: 'Left Leg', value: 0}
+			]
+		},
+		{
+			name: 'Head',
+			bonusAV : -3,
+			sublocation: [
+				{name: 'Forehead', value: 0},
+				{name: 'Skull', value: 0},
+				{name: 'Face', value: 0},
+				{name: 'Neck', value: 0},
+				{name: 'Temple', value: 0},
+				{name: 'Eye', value: 0}
+			]
+		},
+		{
+			name: 'Body',
+			bonusAV : -2,
+			sublocation: [
+				{name: 'Rib Cage', value: 0},
+				{name: 'Lungs', value: 0},
+				{name: 'Flesh', value: 0},
+				{name: 'Liver', value: 0},
+				{name: 'Kidney', value: 0},
+				{name: 'Heart', value: 0}
+			]
+		},
+		{
+			name: 'Right Arm',
+			bonusAV : -1,
+			sublocation: [
+				{name: 'Flesh', value: 0},
+				{name: 'Flesh', value: 0},
+				{name: 'Muscle', value: 0},
+				{name: 'Vein', value: 0},
+				{name: 'Palm', value: 0},
+				{name: 'Elbow', value: 0}
+			]
+		},
+		{
+			name: 'Left Arm',
+			bonusAV : -1,
+			sublocation: [
+				{name: 'Flesh', value: 0},
+				{name: 'Flesh', value: 0},
+				{name: 'Muscle', value: 0},
+				{name: 'Vein', value: 0},
+				{name: 'Palm', value: 0},
+				{name: 'Elbow', value: 0}
+			]
+		},
+		{
+			name: 'Right Leg',
+			bonusAV : -1,
+			sublocation: [
+				{name: 'Flesh', value: 0},
+				{name: 'Flesh', value: 0},
+				{name: 'Muscle', value: 0},
+				{name: 'Vein', value: 0},
+				{name: 'Foot', value: 0},
+				{name: 'Knee', value: 0}
+			]
+		},
+		{
+			name: 'Left leg',
+			bonusAV : -1,
+			sublocation: [
+				{name: 'Flesh', value: 0},
+				{name: 'Flesh', value: 0},
+				{name: 'Muscle', value: 0},
+				{name: 'Vein', value: 0},
+				{name: 'Foot', value: 0},
+				{name: 'Knee', value: 0}
+			]
 		}
+	]
 	};
 	
 	turns.actionStatus = true; //ar cia tikrai palikt? gal deti reiks i turn objekta?

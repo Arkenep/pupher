@@ -131,6 +131,10 @@ angular.module('myApp.combat', ['ngRoute'])
 			calculateBonus();
 		};
 
+		$scope.setActionLocation = function(location, parentIndex) {
+			turnsSrv.actions[parentIndex].currentLocation = location.name;
+		};
+
 		function calculateBonus() {
 			for (var i=0; i < turnsSrv.actions.length; i++) {
 				turnsSrv.bonusArray[i] = turnsSrv.actions[i].bonusUsed;
@@ -142,7 +146,6 @@ angular.module('myApp.combat', ['ngRoute'])
 			function add(a, b) {
 				return a + b;
 			}
-			
 		}
 		
 		function newTurn() {
