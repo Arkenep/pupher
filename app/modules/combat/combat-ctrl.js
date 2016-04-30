@@ -104,7 +104,9 @@ angular.module('myApp.combat', ['ngRoute'])
 
 		$scope.removeAction = function (index) {
 			turnsSrv.actions.splice(index, 1);
+			turnsSrv.bonusArray.splice(index,1);
 			checkNumberOfAttacks();
+			calculateBonus();
 		};
 
 		$scope.setAction = function (obj, properties, parentIndex) {
@@ -126,13 +128,8 @@ angular.module('myApp.combat', ['ngRoute'])
 		};
 
 		$scope.actionBonusUsed = function (obj, index) {
-
-
 			calculateBonus();
-			
 		};
-
-
 
 		function calculateBonus() {
 			for (var i=0; i < turnsSrv.actions.length; i++) {

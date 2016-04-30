@@ -39,6 +39,8 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 	turns.bonusLeft = 0;
 
 
+	
+	
 
 	
 	
