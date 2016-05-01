@@ -7,11 +7,11 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 	
 	turns.turn = {
 		specials: [
-			{name: 'Normal', bonus: 0, cost: 0, count: true},
-			{name: 'Hard Attack', bonus: 2, cost: 2, count: true},
-			{name: 'Kneel', bonus: 3, cost: 0, count: true},
-			{name: 'Fall', bonus: 5, cost: 0, count: true},
-			{name: 'Stand', bonus: -5, cost: 0, count: true}
+			{name: 'Normal', bonus: 0, cost: 0},
+			{name: 'Hard Attack', bonus: 2, cost: 2},
+			{name: 'Kneel', bonus: 3, cost: 0},
+			{name: 'Fall', bonus: 5, cost: 0},
+			{name: 'Stand', bonus: -5, cost: 0}
 		]
 	};
 
@@ -124,7 +124,12 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 				]
 			}
 		],
-		currentSpecial: 'Pick'
+		currentSpecial: 'Pick',
+		buyDamageEffects: [
+			{name: 'Bleed', icon: 'Bleed.png', value: 0, vigorCost: 1, available: false, max: 0},
+			{name: 'Trauma', icon: 'Trauma.png', value: 0, vigorCost: 2, available: false, max: 0},
+			{name: 'Critical', icon: 'Critical.png', value: 0, vigorCost: 3, available: false, max: 0}
+		]
 	};
 	
 	turns.actionStatus = true; //ar cia tikrai palikt? gal deti reiks i turn objekta?
@@ -133,7 +138,7 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 	turns.initiativeTotalBonus = 0;
 	turns.currentUsedBonus = 0;
 	turns.bonusLeft = 0;
-
+	turns.maxTurnEffects = 0;
 
 	
 	

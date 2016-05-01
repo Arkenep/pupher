@@ -140,6 +140,36 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.actions[parentIndex].currentSpecial = special.name;
 		};
 
+		$scope.buyEffects = function (effect, index) {
+			
+		};
+		
+		turnsSrv.maxTurnEffects = 1 + character.attributes.PER - 10;
+
+
+	/*	$scope.vigorDamageEffectsCost = function (effect, index) {
+			var originalIndex = turnsSrv.buyDamageEffects.indexOf(effect);
+			turnsSrv.vigorEffectsCost[originalIndex] = effect.value * effect.vigorCost;
+			turnsSrv.thisTurn.currentEffects[originalIndex] = effect.value;
+			vigorCost();
+			calcEffects();
+			turnsSrv.buyDamageEffects[0].max = turnsSrv.thisTurn.maxEffects - turnsSrv.buyDamageEffects[1].value - turnsSrv.buyDamageEffects[2].value;
+			turnsSrv.buyDamageEffects[1].max = turnsSrv.thisTurn.maxEffects - turnsSrv.buyDamageEffects[0].value - turnsSrv.buyDamageEffects[2].value;
+			turnsSrv.buyDamageEffects[2].max = turnsSrv.thisTurn.maxEffects - turnsSrv.buyDamageEffects[1].value - turnsSrv.buyDamageEffects[0].value;
+		};
+
+		turnsSrv.buyDamageEffects[0].max = 1 + character.attributes.PER - 10;
+		turnsSrv.buyDamageEffects[1].max = 1 + character.attributes.PER - 10;
+		turnsSrv.buyDamageEffects[2].max = 1 + character.attributes.PER - 10;
+		turnsSrv.thisTurn.maxEffects = 1 + character.attributes.PER - 10;
+		*/
+
+
+
+
+
+
+		
 		function calculateBonus() {
 			for (var i=0; i < turnsSrv.actions.length; i++) {
 				turnsSrv.bonusArray[i] = turnsSrv.actions[i].bonusUsed;
