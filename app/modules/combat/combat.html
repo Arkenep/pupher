@@ -290,7 +290,7 @@
 										<div>
 											<a>
 												<div style="float: left; padding-left: 5px; padding-right: 5px;"><img src="/app/img/{{effect.icon}}" alt="{{effect.name}}" title="{{effect.name}}"></div>
-												<input type="number" min="0" max="{{effect.max}}" class="form-control form-control-stats" ng-model="effect.value" ng-change="buyEffects(effect, $index)" style="float: left; width: 88px; height: 44px; padding: 0px;">
+												<input type="number" min="0" max="{{effect.max}}" class="form-control form-control-stats" ng-model="effect.value" ng-change="buyEffects(effect, $index, $parent.$index)" style="float: left; width: 88px; height: 44px; padding: 0px;">
 											</a>
 										</div>
 									</li>

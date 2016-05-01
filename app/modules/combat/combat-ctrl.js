@@ -140,12 +140,20 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.actions[parentIndex].currentSpecial = special.name;
 		};
 
-		$scope.buyEffects = function (effect, index) {
-			
+		$scope.buyEffects = function (effect, index, parentIndex) {
+			for (var i=0; turnsSrv.actions.length; i++) {
+				turnsSrv.usedEffectsArray[i] = turnsSrv.actions[parentIndex].buyDamageEffects[i].max
+			}
+
+			turnsSrv.usedEffects = turnsSrv.usedEffectsArray.reduce(add, 0);
+			function add(a, b) {
+				return a + b;
+			}
+
 		};
 		
-		turnsSrv.maxTurnEffects = 1 + character.attributes.PER - 10;
-
+		turnsSrv.maxTurnEffects = 10 + character.attributes.PER - 10; //istaisyt kai viskas veiks
+		console.log(turnsSrv.maxTurnEffects);
 
 	/*	$scope.vigorDamageEffectsCost = function (effect, index) {
 			var originalIndex = turnsSrv.buyDamageEffects.indexOf(effect);
