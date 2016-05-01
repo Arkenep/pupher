@@ -135,7 +135,7 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.actions[parentIndex].currentLocation = location.name;
 		};
 
-		$scope.setActionSpecial = function(special, parentIndex) {
+		$scope.setActionSpecial = function(special, index, parentIndex) {
 			//need to filter if used options good example: http://stackoverflow.com/questions/28918430/exclude-selected-options-from-multiple-dropdowns-in-angularjs
 			turnsSrv.actions[parentIndex].currentSpecial = special.name;
 		};

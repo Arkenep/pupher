@@ -5,7 +5,15 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 
 	turns.combat = [];
 	
-	turns.turn = {};
+	turns.turn = {
+		specials: [
+			{name: 'Normal', bonus: 0, cost: 0, count: true},
+			{name: 'Hard Attack', bonus: 2, cost: 2, count: true},
+			{name: 'Kneel', bonus: 3, cost: 0, count: true},
+			{name: 'Fall', bonus: 5, cost: 0, count: true},
+			{name: 'Stand', bonus: -5, cost: 0, count: true}
+		]
+	};
 
 	turns.actions = [];
 	
@@ -116,14 +124,7 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 				]
 			}
 		],
-		currentSpecial: 'Pick',
-		specials: [
-			{name: 'Normal', bonus: 0, cost: 0},
-			{name: 'Hard Attack', bonus: 2, cost: 2},
-			{name: 'Kneel', bonus: 3, cost: 0},
-			{name: 'Fall', bonus: 5, cost: 0},
-			{name: 'Stand', bonus: -5, cost: 0}
-		]
+		currentSpecial: 'Pick'
 	};
 	
 	turns.actionStatus = true; //ar cia tikrai palikt? gal deti reiks i turn objekta?
