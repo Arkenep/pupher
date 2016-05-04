@@ -143,11 +143,12 @@ angular.module('myApp.combat', ['ngRoute'])
 		$scope.buyEffects = function (effect, index, parentIndex) {
 			for (var i=0; i < turnsSrv.actions.length; i++) {
 				for (var j=0; j < turnsSrv.action.buyDamageEffects.length; j++) {
+
 					turnsSrv.usedActionEffectsArray[j] = turnsSrv.actions[i].buyDamageEffects[j].value;
 
 				}
 				console.log(turnsSrv.usedActionEffectsArray);
-				turnsSrv.usedAllEffectsArray[1][i] = turnsSrv.usedActionEffectsArray;
+				turnsSrv.usedAllEffectsArray[i] = turnsSrv.usedActionEffectsArray;
 				turnsSrv.usedActionEffects[i] = turnsSrv.usedActionEffectsArray.reduce(add, 0);
 			}
 			console.log([turnsSrv.usedAllEffectsArray]);
@@ -163,30 +164,8 @@ angular.module('myApp.combat', ['ngRoute'])
 		turnsSrv.action.buyDamageEffects[1].max = 10;
 		turnsSrv.action.buyDamageEffects[2].max = 10;
 		turnsSrv.maxTurnEffects = 10 + character.attributes.PER - 10; //istaisyt kai viskas veiks
-		//console.log(turnsSrv.maxTurnEffects);
-
-	/*	$scope.vigorDamageEffectsCost = function (effect, index) {
-			var originalIndex = turnsSrv.buyDamageEffects.indexOf(effect);
-			turnsSrv.vigorEffectsCost[originalIndex] = effect.value * effect.vigorCost;
-			turnsSrv.thisTurn.currentEffects[originalIndex] = effect.value;
-			vigorCost();
-			calcEffects();
-			turnsSrv.buyDamageEffects[0].max = turnsSrv.thisTurn.maxEffects - turnsSrv.buyDamageEffects[1].value - turnsSrv.buyDamageEffects[2].value;
-			turnsSrv.buyDamageEffects[1].max = turnsSrv.thisTurn.maxEffects - turnsSrv.buyDamageEffects[0].value - turnsSrv.buyDamageEffects[2].value;
-			turnsSrv.buyDamageEffects[2].max = turnsSrv.thisTurn.maxEffects - turnsSrv.buyDamageEffects[1].value - turnsSrv.buyDamageEffects[0].value;
-		};
-
-		turnsSrv.buyDamageEffects[0].max = 1 + character.attributes.PER - 10;
-		turnsSrv.buyDamageEffects[1].max = 1 + character.attributes.PER - 10;
-		turnsSrv.buyDamageEffects[2].max = 1 + character.attributes.PER - 10;
-		turnsSrv.thisTurn.maxEffects = 1 + character.attributes.PER - 10;
-		*/
-
-
-
-
-
-
+			
+		
 		
 		function calculateBonus() {
 			for (var i=0; i < turnsSrv.actions.length; i++) {
