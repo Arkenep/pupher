@@ -142,12 +142,12 @@ angular.module('myApp.combat', ['ngRoute'])
 
 		$scope.buyEffects = function (effect, index, parentIndex) {
 			for (var i=0; i < turnsSrv.actions.length; i++) {
+				var tmpArr = [];
 				for (var j=0; j < turnsSrv.action.buyDamageEffects.length; j++) {
-
-					turnsSrv.usedActionEffectsArray[j] = turnsSrv.actions[i].buyDamageEffects[j].value;
-
+					tmpArr.push(turnsSrv.actions[i].buyDamageEffects[j].value);
 				}
-				console.log(turnsSrv.usedActionEffectsArray);
+				turnsSrv.usedActionEffectsArray[i] = tmpArr;
+				//console.log(turnsSrv.usedActionEffectsArray);
 				turnsSrv.usedAllEffectsArray[i] = turnsSrv.usedActionEffectsArray;
 				turnsSrv.usedActionEffects[i] = turnsSrv.usedActionEffectsArray.reduce(add, 0);
 			}
@@ -156,7 +156,7 @@ angular.module('myApp.combat', ['ngRoute'])
 			function add(a, b) {
 				return a + b;
 			}
-			console.log(turnsSrv.usedAllEffects);
+			//console.log(turnsSrv.usedAllEffects);
 
 		};
 
@@ -164,8 +164,6 @@ angular.module('myApp.combat', ['ngRoute'])
 		turnsSrv.action.buyDamageEffects[1].max = 10;
 		turnsSrv.action.buyDamageEffects[2].max = 10;
 		turnsSrv.maxTurnEffects = 10 + character.attributes.PER - 10; //istaisyt kai viskas veiks
-			
-		
 		
 		function calculateBonus() {
 			for (var i=0; i < turnsSrv.actions.length; i++) {
