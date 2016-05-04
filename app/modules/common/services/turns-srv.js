@@ -139,9 +139,10 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 	turns.currentUsedBonus = 0;
 	turns.bonusLeft = 0;
 	turns.maxTurnEffects = 0;
-	turns.usedEffectsArray = [];
-	turns.usedEffects = 0;
-	
+	turns.usedActionEffectsArray = [];
+	turns.usedAllEffectsArray = [[],[]];
+	turns.usedAllEffects = 0;
+	turns.usedActionEffects = [];
 	
 
 	

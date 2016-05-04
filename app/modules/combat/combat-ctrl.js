@@ -141,19 +141,29 @@ angular.module('myApp.combat', ['ngRoute'])
 		};
 
 		$scope.buyEffects = function (effect, index, parentIndex) {
-			for (var i=0; turnsSrv.actions.length; i++) {
-				turnsSrv.usedEffectsArray[i] = turnsSrv.actions[parentIndex].buyDamageEffects[i].max
-			}
+			for (var i=0; i < turnsSrv.actions.length; i++) {
+				for (var j=0; j < turnsSrv.action.buyDamageEffects.length; j++) {
+					turnsSrv.usedActionEffectsArray[j] = turnsSrv.actions[i].buyDamageEffects[j].value;
 
-			turnsSrv.usedEffects = turnsSrv.usedEffectsArray.reduce(add, 0);
+				}
+				console.log(turnsSrv.usedActionEffectsArray);
+				turnsSrv.usedAllEffectsArray[1][i] = turnsSrv.usedActionEffectsArray;
+				turnsSrv.usedActionEffects[i] = turnsSrv.usedActionEffectsArray.reduce(add, 0);
+			}
+			console.log([turnsSrv.usedAllEffectsArray]);
+			turnsSrv.usedAllEffects = turnsSrv.usedActionEffects.reduce(add, 0);
 			function add(a, b) {
 				return a + b;
 			}
+			console.log(turnsSrv.usedAllEffects);
 
 		};
-		
+
+		turnsSrv.action.buyDamageEffects[0].max = 10;
+		turnsSrv.action.buyDamageEffects[1].max = 10;
+		turnsSrv.action.buyDamageEffects[2].max = 10;
 		turnsSrv.maxTurnEffects = 10 + character.attributes.PER - 10; //istaisyt kai viskas veiks
-		console.log(turnsSrv.maxTurnEffects);
+		//console.log(turnsSrv.maxTurnEffects);
 
 	/*	$scope.vigorDamageEffectsCost = function (effect, index) {
 			var originalIndex = turnsSrv.buyDamageEffects.indexOf(effect);
