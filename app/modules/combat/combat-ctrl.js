@@ -140,30 +140,30 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.actions[parentIndex].currentSpecial = special.name;
 		};
 
-		$scope.buyEffects = function (effect, index, parentIndex) {
+		$scope.buyEffects = function () { //klaida kai sumazini vienu maximimas gaunas NaN kazkodel?
 			for (var i=0; i < turnsSrv.actions.length; i++) {
 				var tmpArr = [];
+				var current = turnsSrv.actions[i].buyDamageEffects[j].max;
 				for (var j=0; j < turnsSrv.action.buyDamageEffects.length; j++) {
 					tmpArr.push(turnsSrv.actions[i].buyDamageEffects[j].value);
+					turnsSrv.actions[i].buyDamageEffects[j].max = turnsSrv.maxTurnEffects - turnsSrv.usedAllEffects + turnsSrv.actions[i].buyDamageEffects[j].value - 1;
 				}
 				turnsSrv.usedActionEffectsArray[i] = tmpArr;
-				//console.log(turnsSrv.usedActionEffectsArray);
 				turnsSrv.usedAllEffectsArray[i] = turnsSrv.usedActionEffectsArray;
-				turnsSrv.usedActionEffects[i] = turnsSrv.usedActionEffectsArray.reduce(add, 0);
+				turnsSrv.usedActionEffects[i] = tmpArr.reduce(add, 0);
 			}
-			console.log([turnsSrv.usedAllEffectsArray]);
+
 			turnsSrv.usedAllEffects = turnsSrv.usedActionEffects.reduce(add, 0);
 			function add(a, b) {
 				return a + b;
 			}
-			//console.log(turnsSrv.usedAllEffects);
-
+			console.log(turnsSrv.usedAllEffects);
 		};
+		turnsSrv.maxTurnEffects = 1 + character.attributes.PER - 10;
+		turnsSrv.action.buyDamageEffects[0].max = turnsSrv.maxTurnEffects;
+		turnsSrv.action.buyDamageEffects[1].max = turnsSrv.maxTurnEffects;
+		turnsSrv.action.buyDamageEffects[2].max = turnsSrv.maxTurnEffects;
 
-		turnsSrv.action.buyDamageEffects[0].max = 10;
-		turnsSrv.action.buyDamageEffects[1].max = 10;
-		turnsSrv.action.buyDamageEffects[2].max = 10;
-		turnsSrv.maxTurnEffects = 10 + character.attributes.PER - 10; //istaisyt kai viskas veiks
 		
 		function calculateBonus() {
 			for (var i=0; i < turnsSrv.actions.length; i++) {
