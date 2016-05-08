@@ -129,7 +129,8 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 			{name: 'Bleed', icon: 'Bleed.png', value: 0, vigorCost: 1, available: false, max: 0},
 			{name: 'Trauma', icon: 'Trauma.png', value: 0, vigorCost: 2, available: false, max: 0},
 			{name: 'Critical', icon: 'Critical.png', value: 0, vigorCost: 3, available: false, max: 0}
-		]
+		],
+		roll: 0
 	};
 	
 	turns.actionStatus = true; //ar cia tikrai palikt? gal deti reiks i turn objekta?
