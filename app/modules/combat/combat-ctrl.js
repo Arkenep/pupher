@@ -3,7 +3,7 @@ angular.module('myApp.combat', ['ngRoute'])
 
 		$scope.turns = turnsSrv;
 		$scope.character = character;
-		
+
 		$scope.autofail = 6;
 
 		$scope.setMainHandWeapon = function(weapon) {
@@ -19,10 +19,11 @@ angular.module('myApp.combat', ['ngRoute'])
 				character.offHandWeapon = character.emptyWeapon;
 			}
 			refreshWeapon();
-			
+
 			mainHandAV();
 			initiativeCalc();
 			setActionTypeOptions(); //OLD remove when needed.
+
 		};
 		$scope.setMainHandWeapon(character.mainHandWeapon);
 
@@ -56,6 +57,7 @@ angular.module('myApp.combat', ['ngRoute'])
 			character.mainHandWeapon.type.value = value;
 			mainHandAV();
 			initiativeCalc();
+			refreshWeapon();
 		};
 		$scope.setMHActiveSkill(character.mainHandWeapon.type.name, character.mainHandWeapon.type.value);
 
@@ -63,6 +65,7 @@ angular.module('myApp.combat', ['ngRoute'])
 			character.offHandWeapon.type.name = skill;
 			character.offHandWeapon.type.value = value;
 			offHandAV();
+			refreshWeapon();
 		};
 		$scope.setOHActiveSkill(character.offHandWeapon.type.name, character.offHandWeapon.type.value);
 
@@ -76,18 +79,18 @@ angular.module('myApp.combat', ['ngRoute'])
 				turnsSrv.weaponHands = 1;
 			}
 		};
-		
+
 		$scope.calcInit = function() {
 			initiativeCalc();
 		};
-		
+
 		function initiativeCalc() {
 			turnsSrv.thisTurn.initiative = turnsSrv.thisTurn.initiativeRoll + Math.ceil(character.mainHandWeapon.type.value/2) + character.mainHandWeapon.reach + character.attributes.PER;
 		}
 		initiativeCalc();
-		
+
 		//START of actions
-		
+
 		$scope.startCombat = function () {
 			newTurn();
 			newAction();
@@ -100,6 +103,7 @@ angular.module('myApp.combat', ['ngRoute'])
 
 		$scope.addAction = function () {
 			newAction();
+
 		};
 
 		$scope.removeAction = function (index) {
@@ -114,14 +118,21 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.actions[parentIndex].currentAction.type = properties.name;
 			turnsSrv.actions[parentIndex].currentAction.weight = properties.weapon.attackWeight;
 			turnsSrv.actions[parentIndex].currentAction.weapon = properties.weapon;
+			if (turnsSrv.actions[parentIndex].currentAction.type == 'Offhand') {
+				turnsSrv.actions[parentIndex].currentAction.AV = character.characterOHAV;
+			} else {
+				turnsSrv.actions[parentIndex].currentAction.AV = character.characterMHAV;
+			}
+
 			checkThrustOrSwing(parentIndex);
 			checkNumberOfAttacks();
+			calcAV();
 		};
 
 		$scope.setType = function (obj, index, parentIndex) {
 			turnsSrv.actions[parentIndex].currentAction.attackType = obj.name;
 		};
-		
+
 		$scope.initiativeBonus = function () {
 			turnsSrv.totalBonus = turnsSrv.initiativeTotalBonus;
 			calculateBonus();
@@ -129,15 +140,20 @@ angular.module('myApp.combat', ['ngRoute'])
 
 		$scope.actionBonusUsed = function (obj, index) {
 			calculateBonus();
+			calcAV();
 		};
 
 		$scope.setActionLocation = function(location, parentIndex) {
 			turnsSrv.actions[parentIndex].currentLocation = location.name;
+			turnsSrv.actions[parentIndex].currentLocationBonus = location.bonusAV;
+			calcAV();
 		};
 
 		$scope.setActionSpecial = function(special, index, parentIndex) {
 			//need to filter if used options good example: http://stackoverflow.com/questions/28918430/exclude-selected-options-from-multiple-dropdowns-in-angularjs
 			turnsSrv.actions[parentIndex].currentSpecial = special.name;
+			turnsSrv.actions[parentIndex].currentSpecialBonus = special.bonus;
+			calcAV();
 		};
 
 		$scope.buyEffects = function () { //klaida kai sumazini vienu maximumas gaunas NaN kazkodel?
@@ -160,13 +176,25 @@ angular.module('myApp.combat', ['ngRoute'])
 		turnsSrv.action.buyDamageEffects[0].max = turnsSrv.maxTurnEffects;
 		turnsSrv.action.buyDamageEffects[1].max = turnsSrv.maxTurnEffects;
 		turnsSrv.action.buyDamageEffects[2].max = turnsSrv.maxTurnEffects;
-		
-		$scope.setActionRoll = function (index) {
-			
+
+		$scope.setActionRoll = function () {
+			calcAV();
 		};
-		
-		
-		
+
+		function calcAV() {
+			for (var i=0; i < turnsSrv.actions.length; i++) {
+				turnsSrv.actions[i].sumAV =
+					turnsSrv.actions[i].roll +
+					turnsSrv.actions[i].currentAction.AV +
+					turnsSrv.actions[i].currentAction.weapon.attackValueBonus +
+					turnsSrv.actions[i].bonusUsed +
+					turnsSrv.actions[i].currentLocationBonus +
+					turnsSrv.actions[i].currentSpecialBonus -
+					i*2;
+			}
+		}
+		calcAV();
+
 		function calculateBonus() {
 			for (var i=0; i < turnsSrv.actions.length; i++) {
 				turnsSrv.bonusArray[i] = turnsSrv.actions[i].bonusUsed;
@@ -179,14 +207,14 @@ angular.module('myApp.combat', ['ngRoute'])
 				return a + b;
 			}
 		}
-		
+
 		function newTurn() {
 			var tempTurn = {};
 			angular.copy(turnsSrv.turn, tempTurn);
 			tempTurn.number = turnsSrv.combat.length+1;
 			turnsSrv.combat.push(tempTurn);
 		}
-		
+
 		function newAction() {
 			var tempAction = {};
 			turnsSrv.action.bonusMax = turnsSrv.totalBonus - turnsSrv.currentUsedBonus; //lets rethink?
@@ -196,6 +224,8 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.action.currentAction.type = turnsSrv.action.type.mainHand.name;
 			turnsSrv.action.currentAction.weight = turnsSrv.action.type.mainHand.weapon.attackWeight;
 			turnsSrv.action.currentAction.weapon = turnsSrv.action.type.mainHand.weapon;
+			turnsSrv.action.currentAction.AV = character.characterMHAV;
+
 			for (var i=0; i < turnsSrv.action.currentAction.weapon.attackType.length; i++) {
 				if (turnsSrv.action.currentAction.weapon.attackType[i].value) {
 					turnsSrv.action.currentAction.attackType = turnsSrv.action.currentAction.weapon.attackType[i].name;
@@ -205,6 +235,7 @@ angular.module('myApp.combat', ['ngRoute'])
 			angular.copy(turnsSrv.action, tempAction);
 			turnsSrv.actions.push(tempAction);
 			checkNumberOfAttacks();
+			calcAV();
 		}
 
 		function refreshWeapon() {
@@ -215,15 +246,18 @@ angular.module('myApp.combat', ['ngRoute'])
 					turnsSrv.actions[i].currentAction.name = turnsSrv.actions[i].type.mainHand.weapon.name;
 					turnsSrv.actions[i].currentAction.weight = turnsSrv.actions[i].type.mainHand.weapon.attackWeight;
 					turnsSrv.actions[i].currentAction.weapon = turnsSrv.actions[i].type.mainHand.weapon;
+					turnsSrv.actions[i].currentAction.AV = character.characterMHAV;
 					checkThrustOrSwing(i);
 				} else {
 					turnsSrv.actions[i].currentAction.name = turnsSrv.actions[i].type.offHand.weapon.name;
 					turnsSrv.actions[i].currentAction.weight = turnsSrv.actions[i].type.offHand.weapon.attackWeight;
 					turnsSrv.actions[i].currentAction.weapon = turnsSrv.actions[i].type.offHand.weapon;
+					turnsSrv.actions[i].currentAction.AV = character.characterOHAV;
 					checkThrustOrSwing(i);
 				}
 			}
 			checkNumberOfAttacks();
+			calcAV();
 		}
 
 		function checkThrustOrSwing(i) {
@@ -256,11 +290,11 @@ angular.module('myApp.combat', ['ngRoute'])
 				turnsSrv.actionStatus = true;
 			}
 		}
-		
+
 		//END of attacks
-		
+
 		//START OF OLD attacks
-		
+
 		function setActionTypeOptions(action) {
 			if (action == 'Offhand') {
 				offHandWeaponPick();
@@ -334,7 +368,7 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.buyDamageEffects[1].available = false;
 			turnsSrv.buyDamageEffects[2].available = false;
 		//from old does not work if enabled
-			
+
 		/*	for (i=0; i < turnsSrv.thisTurn.weaponEffects.length; i++ ) {
 				if (turnsSrv.thisTurn.weaponEffects[i].name == 'Bleed') {
 					turnsSrv.buyDamageEffects[0].available = true;
@@ -352,7 +386,7 @@ angular.module('myApp.combat', ['ngRoute'])
 			turnsSrv.finalAVElement[2] = location.bonusAV;
 			addToFinalAV();
 		};
-		
+
 		$scope.setActiveWeaponEffectRoll = function () {
 			var roll = turnsSrv.activeWeaponEffectRoll;
 			var value = turnsSrv.thisTurn.weaponEffects[roll-1].name;
@@ -367,12 +401,12 @@ angular.module('myApp.combat', ['ngRoute'])
 			}
 			calcEffects();
 		};
-		
+
 		$scope.setSublocation = function(location) {
 			turnsSrv.sublocationPick = location.name;
 			calcEffects();
 		};
-		
+
 		function calcEffects() {
 			turnsSrv.thisTurn.effects[0].value = turnsSrv.buyDamageEffects[0].value + turnsSrv.activeWeaponEffect[0];
 			turnsSrv.thisTurn.effects[1].value = turnsSrv.buyDamageEffects[1].value + turnsSrv.activeWeaponEffect[1];
@@ -387,12 +421,12 @@ angular.module('myApp.combat', ['ngRoute'])
 			vigorCost();
 		};
 
-		$scope.bonusUsed = function () {
+		/*$scope.bonusUsedxxx = function () {
 			turnsSrv.thisTurn.currentBonus = turnsSrv.thisTurn.bonus - turnsSrv.thisTurn.bonusUsed;
 			turnsSrv.finalAVElement[0] = turnsSrv.thisTurn.bonusUsed;
 			$scope.maxbBonusValue = turnsSrv.thisTurn.bonus;
 			addToFinalAV();
-		};
+		};*/
 
 		$scope.initBonus = function () {
 			turnsSrv.thisTurn.currentBonus = turnsSrv.thisTurn.bonus - turnsSrv.thisTurn.bonusUsed;
@@ -429,5 +463,5 @@ angular.module('myApp.combat', ['ngRoute'])
 		turnsSrv.thisTurn.maxEffects = 1 + character.attributes.PER - 10;
 
 		$scope.myObject = "asdasdasd asd asdasd asd asd"; //example of directive
-		
+
 	}]);

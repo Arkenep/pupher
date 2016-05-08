@@ -25,6 +25,7 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 			type: '',
 			weight: 0,
 			attackType: '',
+			AV: 0,
 			weapon: {}
 		},
 		type: {
@@ -124,13 +125,16 @@ angular.module('myApp.services').service('turnsSrv', ['character', function(char
 				]
 			}
 		],
+		currentLocationBonus: 0,
 		currentSpecial: 'Pick',
+		currentSpecialBonus: 0,
 		buyDamageEffects: [
 			{name: 'Bleed', icon: 'Bleed.png', value: 0, vigorCost: 1, available: false, max: 0},
 			{name: 'Trauma', icon: 'Trauma.png', value: 0, vigorCost: 2, available: false, max: 0},
 			{name: 'Critical', icon: 'Critical.png', value: 0, vigorCost: 3, available: false, max: 0}
 		],
-		roll: 0
+		roll: 3,
+		sumAV: 0
 	};
 	
 	turns.actionStatus = true; //ar cia tikrai palikt? gal deti reiks i turn objekta?
