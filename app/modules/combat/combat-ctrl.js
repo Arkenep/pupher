@@ -94,7 +94,6 @@ angular.module('myApp.combat', ['ngRoute'])
 		$scope.startCombat = function () {
 			newTurn();
 			newAction();
-			console.log(['combat'],[turnsSrv.combat],['turn'],[turnsSrv.turn],['actions'],[turnsSrv.actions]);
 		};
 
 		$scope.endTurn = function () {
