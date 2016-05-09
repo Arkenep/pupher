@@ -122,7 +122,7 @@ angular.module('myApp.combat', ['ngRoute'])
 			} else {
 				turnsSrv.actions[parentIndex].currentAction.AV = character.characterMHAV;
 			}
-
+			console.log (turnsSrv.actions[parentIndex].currentAction.weapon);
 			checkThrustOrSwing(parentIndex);
 			checkNumberOfAttacks();
 			calcAV();
@@ -130,6 +130,7 @@ angular.module('myApp.combat', ['ngRoute'])
 
 		$scope.setType = function (obj, index, parentIndex) {
 			turnsSrv.actions[parentIndex].currentAction.attackType = obj.name;
+			console.log(turnsSrv.actions[parentIndex].currentAction.attackType);
 		};
 
 		$scope.initiativeBonus = function () {
@@ -179,6 +180,24 @@ angular.module('myApp.combat', ['ngRoute'])
 		$scope.setActionRoll = function () {
 			calcAV();
 		};
+
+		/*function enableAvailableEffects(index) {
+			turnsSrv.action.buyDamageEffects[0].available = false;
+			turnsSrv.action.buyDamageEffects[1].available = false;
+			turnsSrv.action.buyDamageEffects[2].available = false;
+
+
+			for (i = 0; i < turnsSrv.actions[index].currentAction.weapon.length; i++) {
+				if (turnsSrv.thisTurn.weaponEffects[i].name == 'Bleed') {
+					turnsSrv.buyDamageEffects[0].available = true;
+				} else if (turnsSrv.thisTurn.weaponEffects[i].name == 'Trauma') {
+					turnsSrv.buyDamageEffects[1].available = true;
+				} else if (turnsSrv.thisTurn.weaponEffects[i].name == 'Critical') {
+					turnsSrv.buyDamageEffects[2].available = true;
+				}
+			}
+		}*/
+
 
 		function calcAV() {
 			for (var i=0; i < turnsSrv.actions.length; i++) {
