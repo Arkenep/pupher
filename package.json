@@ -2,8 +2,8 @@
   "name": "angular-seed",
   "private": true,
   "version": "0.0.0",
-  "description": "A starter project for AngularJS",
-  "repository": "https://github.com/angular/angular-seed",
+  "description": "Puppet Hero on AngularJS",
+  "repository": "https://github.com/Arkenep/pupher",
   "license": "MIT",
   "devDependencies": {
     "bower": "^1.3.1",
